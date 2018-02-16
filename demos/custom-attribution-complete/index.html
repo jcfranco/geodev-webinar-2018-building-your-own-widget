@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+
+  <title>Custom Attribution Widget</title>
+
+  <link rel="stylesheet" href="https://jsdev.arcgis.com/4.7/esri/css/main.css">
+
+  <script>
+    var href = location.href;
+    var demoLocation = href.slice(0, href.lastIndexOf("/"));
+    var dojoConfig = {
+      async: true,
+      packages: [{
+        name: "demo",
+        location: demoLocation + "/app"
+      }]
+    };
+
+  </script>
+
+  <script src="https://jsdev.arcgis.com/4.7/"></script>
+
+  <style>
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+  </style>
+
+  <script>
+    var customAttribution;
+
+    require([
+      "esri/WebMap",
+      "esri/views/MapView",
+      "demo/CustomAttribution",
+      "dojo/domReady!"
+    ], function (
+      WebMap,
+      MapView,
+      CustomAttribution
+    ) {
+
+      var webmap = new WebMap({
+        portalItem: {
+          id: "1c909e31eebd4d4cb7d314dc3923a690"
+        }
+      });
+
+      var view = new MapView({
+        container: "viewDiv",
+        map: webmap
+      });
+
+      var customAttribution = new CustomAttribution({
+        view: view
+      });
+
+      view.ui.add(customAttribution, "top-right");
+
+    });
+
+  </script>
+</head>
+
+<body>
+  <div id="viewDiv"></div>
+</body>
+
+</html>
+

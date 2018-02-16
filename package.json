@@ -1,0 +1,19 @@
+{
+  "name": "dev-summit-2018-building-your-own-widget",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "postinstall": "tsc"
+  },
+  "dependencies": {
+    "highlightjs": "^9.10.0",
+    "reveal.js": "^3.5.0"
+  },
+  "devDependencies": {
+    "@types/arcgis-js-api": "^4.6.0",
+    "dojo-typings": "^1.11.7",
+    "grunt": "^1.0.1",
+    "grunt-sass": "^2.0.0",
+    "typescript": "^2.2.1"
+  }
+}
