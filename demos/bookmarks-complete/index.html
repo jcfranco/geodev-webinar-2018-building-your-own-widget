@@ -44,35 +44,35 @@
   </style>
 
   <script>
-    var bookmarks;
+    var bookmarks, view;
 
     require([
       "esri/WebMap",
       "esri/views/MapView",
-      "demo/Bookmarks",
+      //"demo/Bookmarks",
       "dojo/domReady!"
     ], function (
       WebMap,
       MapView,
-      Bookmarks
+      //Bookmarks
     ) {
 
       var webmap = new WebMap({
         portalItem: {
-          id: "1c909e31eebd4d4cb7d314dc3923a690"
+          id: "402451b7c31247a6a61d7f3d077139bf"
         }
       });
 
-      var view = new MapView({
+      view = new MapView({
         container: "viewDiv",
         map: webmap
       });
 
-      var bookmarks = new Bookmarks({
-        view: view
-      });
+      // var bookmarks = new Bookmarks({
+      //   view: view
+      // });
 
-      view.ui.add(bookmarks, "top-right");
+      // view.ui.add(bookmarks, "top-right");
 
     });
 
