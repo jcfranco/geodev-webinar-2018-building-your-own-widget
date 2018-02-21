@@ -7,16 +7,16 @@ import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport
 import Widget = require("esri/widgets/Widget");
 import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
 
-import AttributionViewModel = require("esri/widgets/Attribution/AttributionViewModel");
+import BookmarksViewModel = require("./BookmarksViewModel");
 
 import View = require("esri/views/View");
 
 const CSS = {
-  base: "esri-custom-attribution esri-widget",
+  base: "esri-bookmarks",
 };
 
-@subclass("esri.widgets.Attribution")
-class Attribution extends declared(Widget) {
+@subclass("demo.Bookmarks")
+class Bookmarks extends declared(Widget) {
 
   //--------------------------------------------------------------------------
   //
@@ -29,9 +29,9 @@ class Attribution extends declared(Widget) {
   }
 
   postInitialize() {
-    this.own(
-      watchUtils.on(this, "viewModel.items", "change", () => this.scheduleRender())
-    );
+    // this.own(
+    //   watchUtils.on(this, "viewModel.items", "change", () => this.scheduleRender())
+    // );
   }
 
   //--------------------------------------------------------------------------
@@ -58,13 +58,13 @@ class Attribution extends declared(Widget) {
   //----------------------------------
 
   @property({
-    type: AttributionViewModel
+    type: BookmarksViewModel
   })
   @renderable([
-    "state",
-    "view.size"
+    //"state",
+    //"view.size"
   ])
-  viewModel: AttributionViewModel = new AttributionViewModel();
+  viewModel: BookmarksViewModel = new BookmarksViewModel();
 
   //--------------------------------------------------------------------------
   //
@@ -74,15 +74,8 @@ class Attribution extends declared(Widget) {
 
   render() {
     return (
-      <div
-        class={CSS.base}>
-        <table>
-          <tr>
-            <th>Layer</th>
-            <th>Source(s)</th>
-          </tr>
-          {this._renderItems()}
-        </table>
+      <div>
+
       </div>
     );
   }
@@ -93,28 +86,28 @@ class Attribution extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  private _renderItem(item: __esri.AttributionItem) {
-    const { text, layers } = item;
+  // private _renderItem(item: __esri.AttributionItem) {
+  //   const { text, layers } = item;
 
-    const layerNodes = layers.map(layer => {
-      return (
-        <td><a href={layer.url} target="_blank">{layer.title}</a></td>
-      );
-    });
+  //   const layerNodes = layers.map(layer => {
+  //     return (
+  //       <td><a href={layer.url} target="_blank">{layer.title}</a></td>
+  //     );
+  //   });
 
-    return (
-      <tr key={item}>
-        {layerNodes}
-        <td rowspan={layers.length}>{text}</td>
-      </tr>
-    );
-  }
+  //   return (
+  //     <tr key={item}>
+  //       {layerNodes}
+  //       <td rowspan={layers.length}>{text}</td>
+  //     </tr>
+  //   );
+  // }
 
-  private _renderItems(): any {
-    const { items } = this.viewModel;
-    return (items as any).toArray().map((item: __esri.AttributionItem) => this._renderItem(item));
-  }
+  // private _renderItems(): any {
+  //   const { items } = this.viewModel;
+  //   return (items as any).toArray().map((item: __esri.AttributionItem) => this._renderItem(item));
+  // }
 
 }
 
-export = Attribution;
+export = Bookmarks;

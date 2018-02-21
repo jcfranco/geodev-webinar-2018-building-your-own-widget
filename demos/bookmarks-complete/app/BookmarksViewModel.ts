@@ -15,6 +15,12 @@ import Map = require("esri/Map");
 import MapView = require("esri/views/MapView");
 import SceneView = require("esri/views/SceneView");
 
+import Collection = require("esri/core/Collection");
+
+import BookmarkItem = require("./BookmarkItem");
+
+const BookmarkItemCollection = Collection.ofType<BookmarkItem>(BookmarkItem);
+
 @subclass("demo.BookmarksViewModel")
 class BookmarksViewModel extends declared(Accessor) {
 
@@ -34,7 +40,10 @@ class BookmarksViewModel extends declared(Accessor) {
 
 
   destroy() {
-
+    //this._handles.destroy();
+    //this._handles = null;
+    this.view = null;
+    this.bookmarkItems.removeAll();
   }
 
   //--------------------------------------------------------------------------
@@ -49,6 +58,11 @@ class BookmarksViewModel extends declared(Accessor) {
   //
   //--------------------------------------------------------------------------
 
+  @property({
+    type: BookmarkItemCollection
+  })
+  bookmarkItems: Collection<BookmarkItem> = new BookmarkItemCollection;
+
   //----------------------------------
   //  view
   //----------------------------------
@@ -62,20 +76,12 @@ class BookmarksViewModel extends declared(Accessor) {
   //
   //--------------------------------------------------------------------------
 
-  updateView(): void {
-
-  }
-
   //--------------------------------------------------------------------------
   //
   //  Private Methods
   //
   //--------------------------------------------------------------------------
 
-  private _removeViewpointHandle(): void {
+}
 
-  }
-
-
-
-  export = BookmarksViewModel;
+export = BookmarksViewModel;
