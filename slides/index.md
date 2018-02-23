@@ -362,7 +362,7 @@ class MyClass extends declared(Base) {
 
 <!-- .slide: data-background="images/demo-background.png" -->
 
-[Magnifier](../demos/magnifier-complete)
+[Bookmarks](../demos/bookmarks-complete)
 
 <img src="images/magnifier.png" width="50%"/>
 
@@ -372,12 +372,12 @@ class MyClass extends declared(Base) {
 
 <!-- .slide: data-background="images/demo-background.png" -->
 
-- [Demo Start](../demos/magnifier-start/)
-- [HTML Steps](https://github.com/jcfranco/uc-2017-developing-your-own-widget/blob/master/demos/HTML-steps.md)
-- [ViewModel Steps](https://github.com/jcfranco/uc-2017-developing-your-own-widget/blob/master/demos/ViewModel-steps.md)
+- [Demo Start](../demos/bookmarks-start/)
+- [HTML Steps](https://github.com/jcfranco/ds-2018-developing-your-own-widget/blob/master/demos/HTML-steps.md)
+- [ViewModel Steps](https://github.com/jcfranco/ds-2018-developing-your-own-widget/blob/master/demos/ViewModel-steps.md)
 <!-- Presenter: JC -->
-- [View Steps](https://github.com/jcfranco/uc-2017-developing-your-own-widget/blob/master/demos/View-steps.md)
-- [Sass Steps](https://github.com/jcfranco/uc-2017-developing-your-own-widget/blob/master/demos/Sass-steps.md)
+- [View Steps](https://github.com/jcfranco/ds-2018-developing-your-own-widget/blob/master/demos/View-steps.md)
+- [Sass Steps](https://github.com/jcfranco/ds-2018-developing-your-own-widget/blob/master/demos/Sass-steps.md)
 
 ---
 
@@ -399,7 +399,7 @@ class MyClass extends declared(Base) {
 ## Suggested Session
 
 - [ArcGIS API for JavaScript: Customizing Widgets
-](https://userconference2017.schedule.esri.com/schedule/2040749922)
+](https://devsummit2018.schedule.esri.com/schedule/1073688966)
 
 ---
 
@@ -415,7 +415,7 @@ class MyClass extends declared(Base) {
 
 # Use the source, Luke
 
-## [esriurl.com/buildwidgetsuc2017](http://esriurl.com/buildwidgetsuc2017)
+## [esriurl.com/buildwidgetsds2018](http://esriurl.com/buildwidgetsds2018)
 
 ---
 
