@@ -13,13 +13,16 @@ import watchUtils = require("esri/core/watchUtils");
 import Map = require("esri/Map");
 
 import MapView = require("esri/views/MapView");
-import SceneView = require("esri/views/SceneView");
+
+import Extent = require("esri/geometry/Extent");
 
 import Collection = require("esri/core/Collection");
 
 import BookmarkItem = require("./BookmarkItem");
 
 const BookmarkItemCollection = Collection.ofType<BookmarkItem>(BookmarkItem);
+
+type State = "ready" | "loading" | "disabled";
 
 @subclass("demo.BookmarksViewModel")
 class BookmarksViewModel extends declared(Accessor) {
@@ -31,17 +34,14 @@ class BookmarksViewModel extends declared(Accessor) {
   //--------------------------------------------------------------------------
 
   initialize() {
-    // this._handles.push(
-    //   watchUtils.init(this, "view", view => this._viewChange(view)),
-    //   watchUtils.init(this, "layer", (newLayer, oldLayer) => this._layerChange(newLayer, oldLayer)),
-    //   watchUtils.init(this, "enabled", enabled => this._enabledChange(enabled))
-    // );
+    this._viewHandle = watchUtils.init(this, "view", view => this._viewUpdated(view))
   }
 
-
   destroy() {
-    //this._handles.destroy();
-    //this._handles = null;
+    this._viewHandle && this._viewHandle.remove();
+    this._viewHandle = null;
+    this._mapHandle && this._mapHandle.remove();
+    this._mapHandle = null;
     this.view = null;
     this.bookmarkItems.removeAll();
   }
@@ -52,11 +52,18 @@ class BookmarksViewModel extends declared(Accessor) {
   //
   //--------------------------------------------------------------------------
 
+  _viewHandle: IHandle = null;
+  _mapHandle: IHandle = null;
+
   //--------------------------------------------------------------------------
   //
   //  Properties
   //
   //--------------------------------------------------------------------------
+
+  //----------------------------------
+  //  bookmarkItems
+  //----------------------------------
 
   @property({
     type: BookmarkItemCollection
@@ -64,11 +71,26 @@ class BookmarksViewModel extends declared(Accessor) {
   bookmarkItems: Collection<BookmarkItem> = new BookmarkItemCollection;
 
   //----------------------------------
+  //  state
+  //----------------------------------
+
+  @property({
+    dependsOn: ["view.ready"],
+    readOnly: true
+  })
+  get state(): State {
+    const view = this.get("view");
+    const ready = this.get("view.ready");
+    return ready ? "ready" :
+      view ? "loading" : "disabled";
+  }
+
+  //----------------------------------
   //  view
   //----------------------------------
 
   @property()
-  view: MapView | SceneView = null;
+  view: MapView = null;
 
   //--------------------------------------------------------------------------
   //
@@ -81,6 +103,34 @@ class BookmarksViewModel extends declared(Accessor) {
   //  Private Methods
   //
   //--------------------------------------------------------------------------
+
+  private _viewUpdated(view: MapView): void {
+    if (!view) {
+      return;
+    }
+
+    const { _mapHandle } = this;
+
+    if (_mapHandle) {
+      _mapHandle.remove();
+    }
+
+    view.when(() => {
+      this._mapHandle = watchUtils.init(view, "map", map => this._mapUpdated(map))
+    });
+  }
+
+  private _mapUpdated(map: Map): void {
+    if (!map) {
+      return;
+    }
+
+    const { bookmarkItems } = this;
+
+    const bookmarks = map.get<BookmarkItem[]>("bookmarks");
+    bookmarkItems.removeAll();
+    bookmarkItems.addMany(bookmarks);
+  }
 
 }
 

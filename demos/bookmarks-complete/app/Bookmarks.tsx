@@ -7,12 +7,15 @@ import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport
 import Widget = require("esri/widgets/Widget");
 import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
 
-import BookmarksViewModel = require("./BookmarksViewModel");
+import BookmarksViewModel = require("./Bookmarks/BookmarksViewModel");
+import BookmarkItem = require("./Bookmarks/BookmarkItem");
 
-import View = require("esri/views/View");
+import MapView = require("esri/views/MapView");
 
 const CSS = {
-  base: "esri-bookmarks",
+  base: "demo-bookmarks",
+  bookmarkList: "demo-bookmarks__list",
+  bookmarkItem: "demo-bookmarks__item"
 };
 
 @subclass("demo.Bookmarks")
@@ -29,16 +32,10 @@ class Bookmarks extends declared(Widget) {
   }
 
   postInitialize() {
-    // this.own(
-    //   watchUtils.on(this, "viewModel.items", "change", () => this.scheduleRender())
-    // );
+    this.own(
+      watchUtils.on(this, "viewModel.bookmarkItems", "change", () => this.scheduleRender())
+    );
   }
-
-  //--------------------------------------------------------------------------
-  //
-  //  Variables
-  //
-  //--------------------------------------------------------------------------
 
   //--------------------------------------------------------------------------
   //
@@ -51,7 +48,7 @@ class Bookmarks extends declared(Widget) {
   //----------------------------------
 
   @aliasOf("viewModel.view")
-  view: View = null;
+  view: MapView = null;
 
   //----------------------------------
   //  viewModel
@@ -61,8 +58,8 @@ class Bookmarks extends declared(Widget) {
     type: BookmarksViewModel
   })
   @renderable([
-    //"state",
-    //"view.size"
+    "state",
+    "view.size"
   ])
   viewModel: BookmarksViewModel = new BookmarksViewModel();
 
@@ -73,10 +70,15 @@ class Bookmarks extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   render() {
-    return (
-      <div>
+    const bookmarkNodes = this._renderBookmarks();
 
-      </div>
+    const bookmarkListNode = bookmarkNodes.length ? [
+      <h2>Bookmarks</h2>,
+      <ul class={CSS.bookmarkList}>{bookmarkNodes}</ul>
+    ] : null;
+
+    return (
+      <div>{bookmarkListNode}</div>
     );
   }
 
@@ -86,27 +88,38 @@ class Bookmarks extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  // private _renderItem(item: __esri.AttributionItem) {
-  //   const { text, layers } = item;
+  private _renderBookmarks(): any {
+    const { bookmarkItems } = this.viewModel;
 
-  //   const layerNodes = layers.map(layer => {
-  //     return (
-  //       <td><a href={layer.url} target="_blank">{layer.title}</a></td>
-  //     );
-  //   });
+    return bookmarkItems.toArray().map(bookmarkItem => this._renderBookmark(bookmarkItem));
+  }
 
-  //   return (
-  //     <tr key={item}>
-  //       {layerNodes}
-  //       <td rowspan={layers.length}>{text}</td>
-  //     </tr>
-  //   );
-  // }
+  private _renderBookmark(bookmarkItem: BookmarkItem): any {
+    return (
+      <li bind={this}
+        data-bookmark-item={bookmarkItem}
+        class={CSS.bookmarkItem}
+        onclick={this._goToBookmark}
+        onkeydown={this._goToBookmark}
+        tabIndex={0}
+        role="button"
+        aria-label={bookmarkItem.name}
+      >{bookmarkItem.name}</li>
+    );
+  }
 
-  // private _renderItems(): any {
-  //   const { items } = this.viewModel;
-  //   return (items as any).toArray().map((item: __esri.AttributionItem) => this._renderItem(item));
-  // }
+  @accessibleHandler()
+  private _goToBookmark(event: Event): void {
+    const node = event.currentTarget as Element;
+    const bookmarkItem = node["data-bookmark-item"] as BookmarkItem;
+    const { view } = this;
+
+    if (!bookmarkItem || !view) {
+      return;
+    }
+
+    view.goTo(bookmarkItem.extent);
+  }
 
 }
 

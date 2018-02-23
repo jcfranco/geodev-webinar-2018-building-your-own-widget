@@ -1855,14 +1855,14 @@ declare namespace __esri {
      * | Degree | * | Asterisk | U+002A | &amp;#42; |
      * |  | ^ | Circumflex Accent | U+005E | &amp;#94;|
      * |  | ~ | Tilde | U+007E | &amp;#126; |
-     * |  | ° | Degree Sign | U+00B0 | &amp;#176; |
+     * |  | Â° | Degree Sign | U+00B0 | &amp;#176; |
      * | Minute | ' | Apostrophe | U+0027 | &amp;#39; |
-     * | | ′ | Prime | U+2032 | &amp;#8242; |
+     * | | â€² | Prime | U+2032 | &amp;#8242; |
      * | Second | " | Quotation Mark | U+0022 | &amp;#34; |
      * 
      * The latitude-longitude string may contain leading and trailing whitespace, and may also contain a space, comma, or vertical bar symbol to separate the latitude from the longitude. It may also contain the characters 'N', 'S', 'E' and 'W', or use a minus (-) symbol to indicate the hemisphere of each value.  Latitude-longitude notation examples:
      *   * 55 56 39.123N 003 09 43.034W
-     *   * 55°56′39″N 3°09′43″W
+     *   * 55Â°56â€²39â€³N 3Â°09â€²43â€³W
      *   * 55~56.65205', -003~09.71723'
      *   * 55.9442008* | -3.1619539*
      * 
@@ -7609,8 +7609,8 @@ declare namespace __esri {
      * Mode | Description
      * ------|------------
      * on-the-ground | Graphics are draped on the terrain surface. This is the default value for features with [Polyline](https://developers.arcgis.com/javascript/latest/api-reference/esri-geometry-Polyline.html) or [Polygon](https://developers.arcgis.com/javascript/latest/api-reference/esri-geometry-Polygon.html) geometries and features with [Point](https://developers.arcgis.com/javascript/latest/api-reference/esri-geometry-Point.html) geometries rendered with [ObjectSymbol3DLayers](https://developers.arcgis.com/javascript/latest/api-reference/esri-symbols-ObjectSymbol3DLayer.html).
-     * relative-to-ground | Graphics are placed at an elevation relative to the terrain surface. The graphic's elevation is determined by summing up the terrain elevation and the geometry's z-value (if present). If `featureExpressionInfo` is defined, the result of the expression is used instead of the geometry’s z-value. `relative-to-ground` is the default value for [Point](https://developers.arcgis.com/javascript/latest/api-reference/esri-geometry-Point.html) geometries rendered with [IconSymbol3DLayers](https://developers.arcgis.com/javascript/latest/api-reference/esri-symbols-IconSymbol3DLayer.html).
-     * absolute-height | Graphics are placed at an absolute height above sea level. This height is determined by the geometry's z-value (if present). If `featureExpressionInfo` is defined, the result of the expression is used instead of the geometry’s z-value. This mode doesn't take the elevation of the terrain into account. This is the default value of features with any geometry type where [hasZ](https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-FeatureLayer.html#hasZ) is `true`.
+     * relative-to-ground | Graphics are placed at an elevation relative to the terrain surface. The graphic's elevation is determined by summing up the terrain elevation and the geometry's z-value (if present). If `featureExpressionInfo` is defined, the result of the expression is used instead of the geometryâ€™s z-value. `relative-to-ground` is the default value for [Point](https://developers.arcgis.com/javascript/latest/api-reference/esri-geometry-Point.html) geometries rendered with [IconSymbol3DLayers](https://developers.arcgis.com/javascript/latest/api-reference/esri-symbols-IconSymbol3DLayer.html).
+     * absolute-height | Graphics are placed at an absolute height above sea level. This height is determined by the geometry's z-value (if present). If `featureExpressionInfo` is defined, the result of the expression is used instead of the geometryâ€™s z-value. This mode doesn't take the elevation of the terrain into account. This is the default value of features with any geometry type where [hasZ](https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-FeatureLayer.html#hasZ) is `true`.
      * relative-to-scene | Graphics are aligned to buildings and other objects part of 3D Object [SceneLayers](https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-SceneLayer.html) or [IntegratedMeshLayers](https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-IntegratedMeshLayer.html), depending on which has higher elevation. If the graphic is not directly above a building or any other feature, it is aligned to the terrain surface elevation. If defined, the result of `featureExpressionInfo` is added to the 3D Object/terrain surface elevation. In this mode z-values are ignored.
      * 
      * 
@@ -7910,7 +7910,7 @@ declare namespace __esri {
      * on-the-ground | Graphics are placed on the terrain surface.
      * relative-to-ground | Graphics are placed at an elevation relative to the terrain surface. The graphic's elevation is determined by summing up
      * the terrain elevation, and the geometry's z-value (if present). In case `featureExpressionInfo` is defined, the result of the expression is used
-     * instead of the geometry’s z-value. absolute-height | Graphics are placed at an absolute height above sea level. This height is determined by the geometry's z-value (if present). If `featureExpressionInfo` is defined, the result of the expression is used instead of the geometry’s z-value. It doesn't take the elevation of the terrain into account. relative-to-scene | Graphics are aligned to buildings and other objects part of 3D Object [SceneLayers](https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-SceneLayer.html) or [IntegratedMeshLayers](https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-IntegratedMeshLayer.html), depending on which has higher elevation. If the graphic is not directly above a building or any other feature, it is aligned to the terrain surface elevation. If defined, the result of `featureExpressionInfo` is added to the 3D Object/terrain surface elevation. In this mode z-values are ignored.
+     * instead of the geometryâ€™s z-value. absolute-height | Graphics are placed at an absolute height above sea level. This height is determined by the geometry's z-value (if present). If `featureExpressionInfo` is defined, the result of the expression is used instead of the geometryâ€™s z-value. It doesn't take the elevation of the terrain into account. relative-to-scene | Graphics are aligned to buildings and other objects part of 3D Object [SceneLayers](https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-SceneLayer.html) or [IntegratedMeshLayers](https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-IntegratedMeshLayer.html), depending on which has higher elevation. If the graphic is not directly above a building or any other feature, it is aligned to the terrain surface elevation. If defined, the result of `featureExpressionInfo` is added to the 3D Object/terrain surface elevation. In this mode z-values are ignored.
      * 
      * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-GraphicsLayer.html#elevationInfo)
      */
@@ -7966,7 +7966,7 @@ declare namespace __esri {
      * Value | Description
      * ------|------------
      * independent | Each child layer manages its visibility independent from other layers.
-     * inherited | Each child layer's visibility matches the [GroupLayer’s visibility](https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-GroupLayer.html#visible).
+     * inherited | Each child layer's visibility matches the [GroupLayerâ€™s visibility](https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-GroupLayer.html#visible).
      * exclusive | Only one child layer is visible at a time.
      * 
      * 
@@ -8005,7 +8005,7 @@ declare namespace __esri {
      * Value | Description
      * ------|------------
      * independent | Each child layer manages its visibility independent from other layers.
-     * inherited | Each child layer's visibility matches the [GroupLayer’s visibility](https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-GroupLayer.html#visible).
+     * inherited | Each child layer's visibility matches the [GroupLayerâ€™s visibility](https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-GroupLayer.html#visible).
      * exclusive | Only one child layer is visible at a time.
      * 
      * 
@@ -13704,7 +13704,7 @@ declare namespace __esri {
      *   * **fields** - Array of [fieldInfos](https://developers.arcgis.com/javascript/latest/api-reference/esri-PopupTemplate.html#fieldInfos) objects. If `fieldInfos` is not set directly within the `content` property, the popup will display whatever is set in the [PopupTemplate.fieldInfos](https://developers.arcgis.com/javascript/latest/api-reference/esri-PopupTemplate.html#fieldInfos) property. This must be defined using the [fields popup element specification table](https://developers.arcgis.com/javascript/latest/api-reference/esri-PopupTemplate.html#fields).
      *   * **attachments** - Array of attachmentInfos objects listed in the popup. This object must be defined using the [attachments popup element specification table](https://developers.arcgis.com/javascript/latest/api-reference/esri-PopupTemplate.html#attachments).
      *   * **promise** - The PopupTemplate's content may also be defined with a promise that resolves to any of the above-mentioned elements. This is useful for cases when you run a task or execute a query and want to display the results in the popup. Simply pass the promise to the popupTemplate's content and ensure that it resolves to a string or other popup element.
-     *   * **function** - Content may be defined with a JavaScript function that returns any of the above-mentioned elements. This is handy when your popup requires additional processing or functionality than what is provided with the four content types listed above. For example, let’s assume that you would like to display charts using third-party JavaScript libraries or categorize information into separate tabs. In these cases, you can use a function that returns either a string, a reference to an HTML element, a popup element, or a promise. When the feature is clicked, the feature is passed as an argument to the function and provides access to the feature’s graphic and attributes. The function then executes and returns a value to display in the popup template. It is also possible to check a specific feature attribute and determine whether to apply a function based on its value. Out-of-the-box formatting functions can be used to format date, time, and number values. The syntax for using an out-of-the-box formatting function is: `{field-name:format-function-name(option-a: value, option-b: value)}`
+     *   * **function** - Content may be defined with a JavaScript function that returns any of the above-mentioned elements. This is handy when your popup requires additional processing or functionality than what is provided with the four content types listed above. For example, letâ€™s assume that you would like to display charts using third-party JavaScript libraries or categorize information into separate tabs. In these cases, you can use a function that returns either a string, a reference to an HTML element, a popup element, or a promise. When the feature is clicked, the feature is passed as an argument to the function and provides access to the featureâ€™s graphic and attributes. The function then executes and returns a value to display in the popup template. It is also possible to check a specific feature attribute and determine whether to apply a function based on its value. Out-of-the-box formatting functions can be used to format date, time, and number values. The syntax for using an out-of-the-box formatting function is: `{field-name:format-function-name(option-a: value, option-b: value)}`
      *   
      *   
      * The formatter functions are described below: 
@@ -13787,7 +13787,7 @@ declare namespace __esri {
      *   * **fields** - Array of [fieldInfos](https://developers.arcgis.com/javascript/latest/api-reference/esri-PopupTemplate.html#fieldInfos) objects. If `fieldInfos` is not set directly within the `content` property, the popup will display whatever is set in the [PopupTemplate.fieldInfos](https://developers.arcgis.com/javascript/latest/api-reference/esri-PopupTemplate.html#fieldInfos) property. This must be defined using the [fields popup element specification table](https://developers.arcgis.com/javascript/latest/api-reference/esri-PopupTemplate.html#fields).
      *   * **attachments** - Array of attachmentInfos objects listed in the popup. This object must be defined using the [attachments popup element specification table](https://developers.arcgis.com/javascript/latest/api-reference/esri-PopupTemplate.html#attachments).
      *   * **promise** - The PopupTemplate's content may also be defined with a promise that resolves to any of the above-mentioned elements. This is useful for cases when you run a task or execute a query and want to display the results in the popup. Simply pass the promise to the popupTemplate's content and ensure that it resolves to a string or other popup element.
-     *   * **function** - Content may be defined with a JavaScript function that returns any of the above-mentioned elements. This is handy when your popup requires additional processing or functionality than what is provided with the four content types listed above. For example, let’s assume that you would like to display charts using third-party JavaScript libraries or categorize information into separate tabs. In these cases, you can use a function that returns either a string, a reference to an HTML element, a popup element, or a promise. When the feature is clicked, the feature is passed as an argument to the function and provides access to the feature’s graphic and attributes. The function then executes and returns a value to display in the popup template. It is also possible to check a specific feature attribute and determine whether to apply a function based on its value. Out-of-the-box formatting functions can be used to format date, time, and number values. The syntax for using an out-of-the-box formatting function is: `{field-name:format-function-name(option-a: value, option-b: value)}`
+     *   * **function** - Content may be defined with a JavaScript function that returns any of the above-mentioned elements. This is handy when your popup requires additional processing or functionality than what is provided with the four content types listed above. For example, letâ€™s assume that you would like to display charts using third-party JavaScript libraries or categorize information into separate tabs. In these cases, you can use a function that returns either a string, a reference to an HTML element, a popup element, or a promise. When the feature is clicked, the feature is passed as an argument to the function and provides access to the featureâ€™s graphic and attributes. The function then executes and returns a value to display in the popup template. It is also possible to check a specific feature attribute and determine whether to apply a function based on its value. Out-of-the-box formatting functions can be used to format date, time, and number values. The syntax for using an out-of-the-box formatting function is: `{field-name:format-function-name(option-a: value, option-b: value)}`
      *   
      *   
      * The formatter functions are described below: 
@@ -17871,7 +17871,7 @@ declare namespace __esri {
      * 
      * Possible Value | Description
      * ---------------|------------
-     * equal-interval | Divides the range of attribute values into equal-sized subranges. For example, if you specify three classes for a field whose values range from 0 to 300, this method will create three classes with ranges of 0–100, 101–200, and 201–300. Equal interval is best applied to familiar data ranges, such as percentages and temperature. This method emphasizes the amount of an attribute value relative to other values. For example, it could show if a store is part of the group of stores that make up the top one-third of all sales.
+     * equal-interval | Divides the range of attribute values into equal-sized subranges. For example, if you specify three classes for a field whose values range from 0 to 300, this method will create three classes with ranges of 0â€“100, 101â€“200, and 201â€“300. Equal interval is best applied to familiar data ranges, such as percentages and temperature. This method emphasizes the amount of an attribute value relative to other values. For example, it could show if a store is part of the group of stores that make up the top one-third of all sales.
      * natural-breaks | Groups similar values that maximize the differences between classes. Features are divided into classes whose boundaries are set where there are relatively big differences in the data values. Natural breaks are data-specific classifications and not useful for comparing multiple maps built from different underlying information.
      * quantile | Assigns the same number of data values to each class. This is well suited to linearly distributed data. Because features are grouped in equal numbers in each class, the resulting map can often be misleading. Similar features can potentially be placed in adjacent classes, or features with widely different values can be put in the same class. You can minimize this distortion by increasing the number of classes.
      * standard-deviation | Creates class breaks with equal value ranges that are a proportion of the standard deviation. This is usually done at intervals of one, one-half, one-third, or one-fourth standard deviations from the mean.
@@ -18099,7 +18099,7 @@ declare namespace __esri {
      * 
      * Possible Value | Description
      * ---------------|------------
-     * equal-interval | Divides the range of attribute values into equal-sized subranges. For example, if you specify three classes for a field whose values range from 0 to 300, this method will create three classes with ranges of 0–100, 101–200, and 201–300. Equal interval is best applied to familiar data ranges, such as percentages and temperature. This method emphasizes the amount of an attribute value relative to other values. For example, it could show if a store is part of the group of stores that make up the top one-third of all sales.
+     * equal-interval | Divides the range of attribute values into equal-sized subranges. For example, if you specify three classes for a field whose values range from 0 to 300, this method will create three classes with ranges of 0â€“100, 101â€“200, and 201â€“300. Equal interval is best applied to familiar data ranges, such as percentages and temperature. This method emphasizes the amount of an attribute value relative to other values. For example, it could show if a store is part of the group of stores that make up the top one-third of all sales.
      * natural-breaks | Groups similar values that maximize the differences between classes. Features are divided into classes whose boundaries are set where there are relatively big differences in the data values. Natural breaks are data-specific classifications and not useful for comparing multiple maps built from different underlying information.
      * quantile | Assigns the same number of data values to each class. This is well suited to linearly distributed data. Because features are grouped in equal numbers in each class, the resulting map can often be misleading. Similar features can potentially be placed in adjacent classes, or features with widely different values can be put in the same class. You can minimize this distortion by increasing the number of classes.
      * standard-deviation | Creates class breaks with equal value ranges that are a proportion of the standard deviation. This is usually done at intervals of one, one-half, one-third, or one-fourth standard deviations from the mean.
@@ -18930,7 +18930,7 @@ declare namespace __esri {
      * 
      * Possible Value | Description
      * ---------------|------------
-     * equal-interval | Divides the range of attribute values into equal-sized subranges. For example, if you specify three classes for a field whose values range from 0 to 300, this method will create three classes with ranges of 0–100, 101–200, and 201–300. Equal interval is best applied to familiar data ranges, such as percentages and temperature. This method emphasizes the amount of an attribute value relative to other values. For example, it could show if a store is part of the group of stores that make up the top one-third of all sales.
+     * equal-interval | Divides the range of attribute values into equal-sized subranges. For example, if you specify three classes for a field whose values range from 0 to 300, this method will create three classes with ranges of 0â€“100, 101â€“200, and 201â€“300. Equal interval is best applied to familiar data ranges, such as percentages and temperature. This method emphasizes the amount of an attribute value relative to other values. For example, it could show if a store is part of the group of stores that make up the top one-third of all sales.
      * natural-breaks | Groups similar values that maximize the differences between classes. Features are divided into classes whose boundaries are set where there are relatively big differences in the data values. Natural breaks are data-specific classifications and not useful for comparing multiple maps built from different underlying information.
      * quantile | Assigns the same number of data values to each class. This is well suited to linearly distributed data. Because features are grouped in equal numbers in each class, the resulting map can often be misleading. Similar features can potentially be placed in adjacent classes, or features with widely different values can be put in the same class. You can minimize this distortion by increasing the number of classes.
      * standard-deviation | Creates class breaks with equal value ranges that are a proportion of the standard deviation. This is usually done at intervals of one, one-half, one-third, or one-fourth standard deviations from the mean.
@@ -19143,7 +19143,7 @@ declare namespace __esri {
      * 
      * Possible Value | Description
      * ---------------|------------
-     * equal-interval | Divides the range of attribute values into equal-sized subranges. For example, if you specify three classes for a field whose values range from 0 to 300, this method will create three classes with ranges of 0–100, 101–200, and 201–300. Equal interval is best applied to familiar data ranges, such as percentages and temperature. This method emphasizes the amount of an attribute value relative to other values. For example, it could show if a store is part of the group of stores that make up the top one-third of all sales.
+     * equal-interval | Divides the range of attribute values into equal-sized subranges. For example, if you specify three classes for a field whose values range from 0 to 300, this method will create three classes with ranges of 0â€“100, 101â€“200, and 201â€“300. Equal interval is best applied to familiar data ranges, such as percentages and temperature. This method emphasizes the amount of an attribute value relative to other values. For example, it could show if a store is part of the group of stores that make up the top one-third of all sales.
      * natural-breaks | Groups similar values that maximize the differences between classes. Features are divided into classes whose boundaries are set where there are relatively big differences in the data values. Natural breaks are data-specific classifications and not useful for comparing multiple maps built from different underlying information.
      * quantile | Assigns the same number of data values to each class. This is well suited to linearly distributed data. Because features are grouped in equal numbers in each class, the resulting map can often be misleading. Similar features can potentially be placed in adjacent classes, or features with widely different values can be put in the same class. You can minimize this distortion by increasing the number of classes.
      * standard-deviation | Creates class breaks with equal value ranges that are a proportion of the standard deviation. This is usually done at intervals of one, one-half, one-third, or one-fourth standard deviations from the mean.
@@ -29204,7 +29204,7 @@ declare namespace __esri {
      * a3-landscape | 16.54 x 11.69 in
      * a3-portrait | 11.69 x 16.54 in
      * a4-landscape | 11.69 x 8.27 in
-     * a4-portrait | 8.27 × 11.69 in
+     * a4-portrait | 8.27 Ã— 11.69 in
      * letter-ansi-a-landscape | 11.0 x 8.5 in
      * letter-ansi-a-portrait | 8.5 x 11.0 in
      * tabloid-ansi-b-landscape| 17.0 x 11.0 in
@@ -29288,7 +29288,7 @@ declare namespace __esri {
      * a3-landscape | 16.54 x 11.69 in
      * a3-portrait | 11.69 x 16.54 in
      * a4-landscape | 11.69 x 8.27 in
-     * a4-portrait | 8.27 × 11.69 in
+     * a4-portrait | 8.27 Ã— 11.69 in
      * letter-ansi-a-landscape | 11.0 x 8.5 in
      * letter-ansi-a-portrait | 8.5 x 11.0 in
      * tabloid-ansi-b-landscape| 17.0 x 11.0 in
@@ -38071,7 +38071,7 @@ declare namespace __esri {
      */
     Extent: Extent;
     /**
-     * Rotation of the map image about its center, in degrees. Values can be ±180. The default is 0 (north). Rotations are specified in a counterclockwise direction.
+     * Rotation of the map image about its center, in degrees. Values can be Â±180. The default is 0 (north). Rotations are specified in a counterclockwise direction.
      * 
      * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-views-layers-KMLLayerView.html#MapImage)
      */
@@ -39922,7 +39922,7 @@ declare namespace __esri {
      * 
      * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-views-SceneView.html#constraints)
      * 
-     * @default -∞
+     * @default -âˆž
      */
     min?: number;
     /**
@@ -39941,7 +39941,7 @@ declare namespace __esri {
      * 
      * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-views-SceneView.html#constraints)
      * 
-     * @default -∞
+     * @default -âˆž
      */
     min?: number;
     /**
@@ -42236,6 +42236,12 @@ declare namespace __esri {
      */
     readonly attributionText: string;
     /**
+     * The widget's default icon font.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Attribution.html#iconClass)
+     */
+    iconClass: string;
+    /**
      * Text used to split attribution by [layers](https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-Layer.html)
      * 
      * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Attribution.html#itemDelimiter)
@@ -42243,6 +42249,12 @@ declare namespace __esri {
      * @default |
      */
     itemDelimiter: string;
+    /**
+     * The widget's default label.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Attribution.html#label)
+     */
+    label: string;
     /**
      * A reference to the [MapView](https://developers.arcgis.com/javascript/latest/api-reference/esri-views-MapView.html) or [SceneView](https://developers.arcgis.com/javascript/latest/api-reference/esri-views-SceneView.html). Set this to link the widget to a specific view.
      * 
@@ -42280,6 +42292,12 @@ declare namespace __esri {
 
   interface AttributionProperties extends WidgetProperties {
     /**
+     * The widget's default icon font.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Attribution.html#iconClass)
+     */
+    iconClass?: string;
+    /**
      * Text used to split attribution by [layers](https://developers.arcgis.com/javascript/latest/api-reference/esri-layers-Layer.html)
      * 
      * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Attribution.html#itemDelimiter)
@@ -42287,6 +42305,12 @@ declare namespace __esri {
      * @default |
      */
     itemDelimiter?: string;
+    /**
+     * The widget's default label.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Attribution.html#label)
+     */
+    label?: string;
     /**
      * A reference to the [MapView](https://developers.arcgis.com/javascript/latest/api-reference/esri-views-MapView.html) or [SceneView](https://developers.arcgis.com/javascript/latest/api-reference/esri-views-SceneView.html). Set this to link the widget to a specific view.
      * 
@@ -42365,6 +42389,18 @@ declare namespace __esri {
      */
     activeBasemap: Basemap;
     /**
+     * The widget's default icon font.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-BasemapGallery.html#iconClass)
+     */
+    iconClass: string;
+    /**
+     * The widget's default label.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-BasemapGallery.html#label)
+     */
+    label: string;
+    /**
      * The source for basemaps that the widget will display. This property can be autocast with an array or [Collection](https://developers.arcgis.com/javascript/latest/api-reference/esri-core-Collection.html) of [Basemap](https://developers.arcgis.com/javascript/latest/api-reference/esri-Basemap.html)s, a [Portal](https://developers.arcgis.com/javascript/latest/api-reference/esri-portal-Portal.html) instance, or a URL to a portal instance. The default source is a [PortalBasemapsSource](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-BasemapGallery-support-PortalBasemapsSource.html) that points to the default portal instance set in [esriConfig.portalUrl](https://developers.arcgis.com/javascript/latest/api-reference/esri-config.html#portalUrl).
      * 
      * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-BasemapGallery.html#source)
@@ -42412,6 +42448,18 @@ declare namespace __esri {
      * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-BasemapGallery.html#activeBasemap)
      */
     activeBasemap?: BasemapProperties;
+    /**
+     * The widget's default icon font.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-BasemapGallery.html#iconClass)
+     */
+    iconClass?: string;
+    /**
+     * The widget's default label.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-BasemapGallery.html#label)
+     */
+    label?: string;
     /**
      * The source for basemaps that the widget will display. This property can be autocast with an array or [Collection](https://developers.arcgis.com/javascript/latest/api-reference/esri-core-Collection.html) of [Basemap](https://developers.arcgis.com/javascript/latest/api-reference/esri-Basemap.html)s, a [Portal](https://developers.arcgis.com/javascript/latest/api-reference/esri-portal-Portal.html) instance, or a URL to a portal instance. The default source is a [PortalBasemapsSource](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-BasemapGallery-support-PortalBasemapsSource.html) that points to the default portal instance set in [esriConfig.portalUrl](https://developers.arcgis.com/javascript/latest/api-reference/esri-config.html#portalUrl).
      * 
@@ -43073,6 +43121,18 @@ declare namespace __esri {
 
   interface Compass extends Widget {
     /**
+     * The widget's default icon font.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Compass.html#iconClass)
+     */
+    iconClass: string;
+    /**
+     * The widget's default label.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Compass.html#label)
+     */
+    label: string;
+    /**
      * The view in which the Compass obtains and indicates camera [heading](https://developers.arcgis.com/javascript/latest/api-reference/esri-Camera.html#heading), using a (SceneView) or rotation (MapView).
      * 
      * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Compass.html#view)
@@ -43116,6 +43176,18 @@ declare namespace __esri {
   export const Compass: CompassConstructor;
 
   interface CompassProperties extends WidgetProperties {
+    /**
+     * The widget's default icon font.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Compass.html#iconClass)
+     */
+    iconClass?: string;
+    /**
+     * The widget's default label.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Compass.html#label)
+     */
+    label?: string;
     /**
      * The view in which the Compass obtains and indicates camera [heading](https://developers.arcgis.com/javascript/latest/api-reference/esri-Camera.html#heading), using a (SceneView) or rotation (MapView).
      * 
@@ -44196,6 +44268,117 @@ declare namespace __esri {
     view?: MapViewProperties | SceneViewProperties;
   }
 
+  interface Feature extends Widget {
+    /**
+     * The [Graphic](https://developers.arcgis.com/javascript/latest/api-reference/esri-Graphic.html) used to represent the feature.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Feature.html#graphic)
+     * 
+     * @default null
+     */
+    graphic: Graphic;
+    /**
+     * The title for the feature.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Feature.html#title)
+     * 
+     * @default null
+     */
+    title: string;
+    /**
+     * A reference to the [MapView](https://developers.arcgis.com/javascript/latest/api-reference/esri-views-MapView.html) or [SceneView](https://developers.arcgis.com/javascript/latest/api-reference/esri-views-SceneView.html). Set this to link the widget to a specific view.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Feature.html#view)
+     * 
+     * @default null
+     */
+    view: MapView | SceneView;
+    /**
+     * The view model for this widget. This is a class that contains all the logic (properties and methods) that controls this widget's behavior. See the module:esri/widgets/Feature/FeatureViewModel class to access all properties and methods on the widget.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Feature.html#viewModel)
+     */
+    viewModel: any;
+
+    /**
+     * Paginates to a specified [media](esri-PopupTemplate.html#media) info object. For example, you may have [media](esri-PopupTemplate.html#media) content which contains multiple `mediaInfos`. This method allows you to specify the index of the `mediaInfos` you wish to display.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Feature.html#goToMedia)
+     * 
+     * @param contentElementIndex The index position of the [media](esri-PopupTemplate.html#media) content element to be updated.
+     * @param mediaInfoIndex The index position of the [media](esri-PopupTemplate.html#media) info object you wish to display.
+     * 
+     */
+    goToMedia(contentElementIndex: number, mediaInfoIndex: number): void;
+    /**
+     * Paginates to the next [media](esri-PopupTemplate.html#media) info.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Feature.html#nextMedia)
+     * 
+     * @param contentElementIndex The index position of the [media](esri-PopupTemplate.html#media) content element.
+     * 
+     */
+    nextMedia(contentElementIndex: number): void;
+    /**
+     * Paginates to the previous [media](esri-PopupTemplate.html#media) info in the specified [media](esri-PopupTemplate.html#media) content element.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Feature.html#previousMedia)
+     * 
+     * @param contentElementIndex The index position of the [media](esri-PopupTemplate.html#media) content element.
+     * 
+     */
+    previousMedia(contentElementIndex: number): void;
+    /**
+     * *This method is primarily used by developers when implementing custom widgets.* It must be implemented by subclasses for rendering.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Feature.html#render)
+     * 
+     * 
+     */
+    render(): any;
+  }
+
+  interface FeatureConstructor {
+
+
+    new(properties?: FeatureProperties): Feature;
+  }
+
+  export const Feature: FeatureConstructor;
+
+  interface FeatureProperties extends WidgetProperties {
+    /**
+     * The [Graphic](https://developers.arcgis.com/javascript/latest/api-reference/esri-Graphic.html) used to represent the feature.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Feature.html#graphic)
+     * 
+     * @default null
+     */
+    graphic?: GraphicProperties;
+    /**
+     * The title for the feature.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Feature.html#title)
+     * 
+     * @default null
+     */
+    title?: string;
+    /**
+     * A reference to the [MapView](https://developers.arcgis.com/javascript/latest/api-reference/esri-views-MapView.html) or [SceneView](https://developers.arcgis.com/javascript/latest/api-reference/esri-views-SceneView.html). Set this to link the widget to a specific view.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Feature.html#view)
+     * 
+     * @default null
+     */
+    view?: MapViewProperties | SceneViewProperties;
+    /**
+     * The view model for this widget. This is a class that contains all the logic (properties and methods) that controls this widget's behavior. See the module:esri/widgets/Feature/FeatureViewModel class to access all properties and methods on the widget.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Feature.html#viewModel)
+     */
+    viewModel?: any;
+  }
+
   interface Fullscreen extends Widget {
     /**
      * The [HTMLElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement) to present in fullscreen mode.
@@ -44332,6 +44515,18 @@ declare namespace __esri {
 
   interface Home extends Widget {
     /**
+     * The widget's default icon font.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Home.html#iconClass)
+     */
+    iconClass: string;
+    /**
+     * The widget's default label.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Home.html#label)
+     */
+    label: string;
+    /**
      * A reference to the [MapView](https://developers.arcgis.com/javascript/latest/api-reference/esri-views-MapView.html) or [SceneView](https://developers.arcgis.com/javascript/latest/api-reference/esri-views-SceneView.html). Set this to link the widget to a specific view.
      * 
      * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Home.html#view)
@@ -44384,6 +44579,18 @@ declare namespace __esri {
   export const Home: HomeConstructor;
 
   interface HomeProperties extends WidgetProperties {
+    /**
+     * The widget's default icon font.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Home.html#iconClass)
+     */
+    iconClass?: string;
+    /**
+     * The widget's default label.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Home.html#label)
+     */
+    label?: string;
     /**
      * A reference to the [MapView](https://developers.arcgis.com/javascript/latest/api-reference/esri-views-MapView.html) or [SceneView](https://developers.arcgis.com/javascript/latest/api-reference/esri-views-SceneView.html). Set this to link the widget to a specific view.
      * 
@@ -44480,6 +44687,18 @@ declare namespace __esri {
      */
     createActionsFunction: Function;
     /**
+     * The widget's default icon font.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-LayerList.html#iconClass)
+     */
+    iconClass: string;
+    /**
+     * The widget's default label.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-LayerList.html#label)
+     */
+    label: string;
+    /**
      * Specifies a function that accesses each [ListItem](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-LayerList-ListItem.html). Each list item can be modified according to its modifiable properties. Actions can be added to list items using the [actionsSections](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-LayerList-ListItem.html#actionsSections) property of the ListItem.
      * 
      * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-LayerList.html#listItemCreatedFunction)
@@ -44547,6 +44766,18 @@ declare namespace __esri {
      * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-LayerList.html#createActionsFunction)
      */
     createActionsFunction?: Function;
+    /**
+     * The widget's default icon font.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-LayerList.html#iconClass)
+     */
+    iconClass?: string;
+    /**
+     * The widget's default label.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-LayerList.html#label)
+     */
+    label?: string;
     /**
      * Specifies a function that accesses each [ListItem](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-LayerList-ListItem.html). Each list item can be modified according to its modifiable properties. Actions can be added to list items using the [actionsSections](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-LayerList-ListItem.html#actionsSections) property of the ListItem.
      * 
@@ -44765,6 +44996,18 @@ declare namespace __esri {
 
   interface Legend extends Widget {
     /**
+     * The widget's default icon font.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Legend.html#iconClass)
+     */
+    iconClass: string;
+    /**
+     * The widget's default label.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Legend.html#label)
+     */
+    label: string;
+    /**
      * Specifies a subset of the layers to display in the legend. If this property is not set, all layers in the map will display in the legend. Objects in this array are defined with the properties listed below.
      * 
      * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Legend.html#layerInfos)
@@ -44800,6 +45043,18 @@ declare namespace __esri {
   export const Legend: LegendConstructor;
 
   interface LegendProperties extends WidgetProperties {
+    /**
+     * The widget's default icon font.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Legend.html#iconClass)
+     */
+    iconClass?: string;
+    /**
+     * The widget's default label.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Legend.html#label)
+     */
+    label?: string;
     /**
      * Specifies a subset of the layers to display in the legend. If this property is not set, all layers in the map will display in the legend. Objects in this array are defined with the properties listed below.
      * 
@@ -44853,6 +45108,12 @@ declare namespace __esri {
      * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Locate.html#graphic)
      */
     graphic: Graphic;
+    /**
+     * The widget's default icon font.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Locate.html#iconClass)
+     */
+    iconClass: string;
     /**
      * Indicates the scale to set on the view once a location is returned.
      * 
@@ -44934,6 +45195,12 @@ declare namespace __esri {
      */
     graphic?: GraphicProperties;
     /**
+     * The widget's default icon font.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Locate.html#iconClass)
+     */
+    iconClass?: string;
+    /**
      * Indicates the scale to set on the view once a location is returned.
      * 
      * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Locate.html#scale)
@@ -44999,6 +45266,18 @@ declare namespace __esri {
 
   interface NavigationToggle extends Widget {
     /**
+     * The widget's default icon font.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-NavigationToggle.html#iconClass)
+     */
+    iconClass: string;
+    /**
+     * The widget's default label.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-NavigationToggle.html#label)
+     */
+    label: string;
+    /**
      * Sets the layout of the widget to either `horizontal` or `vertical`. See the table below for a list of possible values. 
      * 
      * Possible Value | Example
@@ -45056,6 +45335,18 @@ declare namespace __esri {
   export const NavigationToggle: NavigationToggleConstructor;
 
   interface NavigationToggleProperties extends WidgetProperties {
+    /**
+     * The widget's default icon font.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-NavigationToggle.html#iconClass)
+     */
+    iconClass?: string;
+    /**
+     * The widget's default label.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-NavigationToggle.html#label)
+     */
+    label?: string;
     /**
      * Sets the layout of the widget to either `horizontal` or `vertical`. See the table below for a list of possible values. 
      * 
@@ -45857,6 +46148,18 @@ declare namespace __esri {
 
   interface Print extends Widget {
     /**
+     * The widget's default icon font.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Print.html#iconClass)
+     */
+    iconClass: string;
+    /**
+     * The widget's default label.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Print.html#label)
+     */
+    label: string;
+    /**
      * The URL of the REST endpoint of the Export Web Map Task.
      * 
      * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Print.html#printServiceUrl)
@@ -45904,6 +46207,18 @@ declare namespace __esri {
   export const Print: PrintConstructor;
 
   interface PrintProperties extends WidgetProperties {
+    /**
+     * The widget's default icon font.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Print.html#iconClass)
+     */
+    iconClass?: string;
+    /**
+     * The widget's default label.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Print.html#label)
+     */
+    label?: string;
     /**
      * The URL of the REST endpoint of the Export Web Map Task.
      * 
@@ -46036,7 +46351,7 @@ declare namespace __esri {
      * a3-landscape | 16.54 x 11.69 in
      * a3-portrait | 11.69 x 16.54 in
      * a4-landscape | 11.69 x 8.27 in
-     * a4-portrait | 8.27 × 11.69 in
+     * a4-portrait | 8.27 Ã— 11.69 in
      * letter-ansi-a-landscape | 11.0 x 8.5 in
      * letter-ansi-a-portrait | 8.5 x 11.0 in
      * tabloid-ansi-b-landscape| 17.0 x 11.0 in
@@ -46126,7 +46441,7 @@ declare namespace __esri {
      * a3-landscape | 16.54 x 11.69 in
      * a3-portrait | 11.69 x 16.54 in
      * a4-landscape | 11.69 x 8.27 in
-     * a4-portrait | 8.27 × 11.69 in
+     * a4-portrait | 8.27 Ã— 11.69 in
      * letter-ansi-a-landscape | 11.0 x 8.5 in
      * letter-ansi-a-portrait | 8.5 x 11.0 in
      * tabloid-ansi-b-landscape| 17.0 x 11.0 in
@@ -46308,6 +46623,18 @@ declare namespace __esri {
      * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Search.html#defaultSource)
      */
     readonly defaultSource: LocatorSource | FeatureLayerSource;
+    /**
+     * The widget's default icon font.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Search.html#iconClass)
+     */
+    iconClass: string;
+    /**
+     * The widget's default label.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Search.html#label)
+     */
+    label: string;
     /**
      * Enables location services within the widget.  ![locationEnabled](https://developers.arcgis.com/javascript/latest/assets/img/apiref/widgets/search-locationEnabled.png) 
      * > The use of this property is only supported on secure origins. To use it, switch your application to a secure origin, such as HTTPS. Note that localhost is considered "potentially secure" and can be used for easy testing in browsers that supports [Window.isSecureContext](https://developer.mozilla.org/en-US/docs/Web/API/Window/isSecureContext#Browser_compatibility) (currently Chrome and Firefox).
@@ -46538,6 +46865,18 @@ declare namespace __esri {
      * @default true
      */
     autoSelect?: boolean;
+    /**
+     * The widget's default icon font.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Search.html#iconClass)
+     */
+    iconClass?: string;
+    /**
+     * The widget's default label.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Search.html#label)
+     */
+    label?: string;
     /**
      * Enables location services within the widget.  ![locationEnabled](https://developers.arcgis.com/javascript/latest/assets/img/apiref/widgets/search-locationEnabled.png) 
      * > The use of this property is only supported on secure origins. To use it, switch your application to a secure origin, such as HTTPS. Note that localhost is considered "potentially secure" and can be used for easy testing in browsers that supports [Window.isSecureContext](https://developer.mozilla.org/en-US/docs/Web/API/Window/isSecureContext#Browser_compatibility) (currently Chrome and Firefox).
@@ -48658,6 +48997,18 @@ declare namespace __esri {
      */
     graphic: Graphic;
     /**
+     * The widget's default icon font.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Track.html#iconClass)
+     */
+    iconClass: string;
+    /**
+     * The widget's default label.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Track.html#label)
+     */
+    label: string;
+    /**
      * Indicates the scale to set on the view once a location is returned.
      * 
      * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Track.html#scale)
@@ -48753,6 +49104,18 @@ declare namespace __esri {
      * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Track.html#graphic)
      */
     graphic?: GraphicProperties;
+    /**
+     * The widget's default icon font.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Track.html#iconClass)
+     */
+    iconClass?: string;
+    /**
+     * The widget's default label.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Track.html#label)
+     */
+    label?: string;
     /**
      * Indicates the scale to set on the view once a location is returned.
      * 
@@ -49220,6 +49583,18 @@ declare namespace __esri {
 
   interface Zoom extends Widget {
     /**
+     * The widget's default icon font.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Zoom.html#iconClass)
+     */
+    iconClass: string;
+    /**
+     * The widget's default label.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Zoom.html#label)
+     */
+    label: string;
+    /**
      * Determines the layout/orientation of the Zoom widget.  **Known Values:** vertical | horizontal
      * 
      * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Zoom.html#layout)
@@ -49279,6 +49654,18 @@ declare namespace __esri {
   export const Zoom: ZoomConstructor;
 
   interface ZoomProperties extends WidgetProperties {
+    /**
+     * The widget's default icon font.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Zoom.html#iconClass)
+     */
+    iconClass?: string;
+    /**
+     * The widget's default label.
+     * 
+     * [Read more...](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Zoom.html#label)
+     */
+    label?: string;
     /**
      * Determines the layout/orientation of the Zoom widget.  **Known Values:** vertical | horizontal
      * 
@@ -50641,6 +51028,11 @@ declare module "esri/widgets/DirectLineMeasurement3D" {
 declare module "esri/widgets/Expand" {
   import Expand = __esri.Expand;
   export = Expand;
+}
+
+declare module "esri/widgets/Feature" {
+  import Feature = __esri.Feature;
+  export = Feature;
 }
 
 declare module "esri/widgets/Fullscreen" {
