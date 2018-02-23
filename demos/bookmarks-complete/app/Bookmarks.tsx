@@ -17,7 +17,6 @@ import i18n = require("dojo/i18n!./Bookmarks/nls/Bookmarks");
 const CSS = {
   base: "demo-bookmarks",
   baseIconClass: "esri-icon-labels",
-  bookmarksHeader: "demo-bookmarks__header",
   bookmarkList: "demo-bookmarks__list",
   bookmarkItem: "demo-bookmarks__item",
   bookmarkItemActive: "demo-bookmarks__item--active"
@@ -93,8 +92,7 @@ class Bookmarks extends declared(Widget) {
     const bookmarkNodes = this._renderBookmarks();
 
     const bookmarkListNode = bookmarkNodes.length ? [
-      <h2 class={CSS.bookmarksHeader}>{i18n.label}</h2>,
-      <ul class={CSS.bookmarkList}>{bookmarkNodes}</ul>
+      <ul aria-label={i18n.label} class={CSS.bookmarkList}>{bookmarkNodes}</ul>
     ] : null;
 
     return (

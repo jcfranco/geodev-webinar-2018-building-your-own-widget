@@ -3,10 +3,6 @@
   border: 1px solid rgba(0, 0, 0, 0.4);
 }
 
-.demo-bookmarks__header {
-  padding: 0 10px;
-}
-
 .demo-bookmarks__list {
   display: block;
   list-style: none;

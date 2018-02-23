@@ -21,7 +21,6 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
     var CSS = {
         base: "demo-bookmarks",
         baseIconClass: "esri-icon-labels",
-        bookmarksHeader: "demo-bookmarks__header",
         bookmarkList: "demo-bookmarks__list",
         bookmarkItem: "demo-bookmarks__item",
         bookmarkItemActive: "demo-bookmarks__item--active"
@@ -72,8 +71,7 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
             // todo: use state
             var bookmarkNodes = this._renderBookmarks();
             var bookmarkListNode = bookmarkNodes.length ? [
-                widget_1.tsx("h2", { class: CSS.bookmarksHeader }, i18n.label),
-                widget_1.tsx("ul", { class: CSS.bookmarkList }, bookmarkNodes)
+                widget_1.tsx("ul", { "aria-label": i18n.label, class: CSS.bookmarkList }, bookmarkNodes)
             ] : null;
             return (widget_1.tsx("div", { class: CSS.base }, bookmarkListNode));
         };
