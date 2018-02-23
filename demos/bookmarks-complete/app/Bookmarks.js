@@ -20,6 +20,7 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
     "use strict";
     var CSS = {
         base: "demo-bookmarks",
+        bookmarksHeader: "demo-bookmarks__header",
         bookmarkList: "demo-bookmarks__list",
         bookmarkItem: "demo-bookmarks__item"
     };
@@ -59,10 +60,10 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
         Bookmarks.prototype.render = function () {
             var bookmarkNodes = this._renderBookmarks();
             var bookmarkListNode = bookmarkNodes.length ? [
-                widget_1.tsx("h2", null, "Bookmarks"),
+                widget_1.tsx("h2", { class: CSS.bookmarksHeader }, "Bookmarks"),
                 widget_1.tsx("ul", { class: CSS.bookmarkList }, bookmarkNodes)
             ] : null;
-            return (widget_1.tsx("div", null, bookmarkListNode));
+            return (widget_1.tsx("div", { class: CSS.base }, bookmarkListNode));
         };
         //--------------------------------------------------------------------------
         //

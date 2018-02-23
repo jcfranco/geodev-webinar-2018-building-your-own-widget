@@ -14,6 +14,7 @@ import MapView = require("esri/views/MapView");
 
 const CSS = {
   base: "demo-bookmarks",
+  bookmarksHeader: "demo-bookmarks__header",
   bookmarkList: "demo-bookmarks__list",
   bookmarkItem: "demo-bookmarks__item"
 };
@@ -73,12 +74,12 @@ class Bookmarks extends declared(Widget) {
     const bookmarkNodes = this._renderBookmarks();
 
     const bookmarkListNode = bookmarkNodes.length ? [
-      <h2>Bookmarks</h2>,
+      <h2 class={CSS.bookmarksHeader}>Bookmarks</h2>,
       <ul class={CSS.bookmarkList}>{bookmarkNodes}</ul>
     ] : null;
 
     return (
-      <div>{bookmarkListNode}</div>
+      <div class={CSS.base}>{bookmarkListNode}</div>
     );
   }
 

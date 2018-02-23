@@ -1,5 +1,10 @@
 .demo-bookmarks {
-  display: block;
+  background-color: #fff;
+  border: 1px solid #000;
+}
+
+.demo-bookmarks__header {
+  padding: 0 10px;
 }
 
 .demo-bookmarks__list {
@@ -7,8 +12,6 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  background-color: #fff;
-  border: 1px solid #000;
 }
 
 .demo-bookmarks__item {
