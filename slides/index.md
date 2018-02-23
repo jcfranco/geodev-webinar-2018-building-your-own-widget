@@ -398,8 +398,7 @@ class MyClass extends declared(Base) {
 
 ## Suggested Session
 
-- [ArcGIS API for JavaScript: Customizing Widgets
-](https://devsummit2018.schedule.esri.com/schedule/1073688966)
+- [ArcGIS API for JavaScript: Customizing Widgets](https://devsummit2018.schedule.esri.com/schedule/1073688966)
 
 ---
 
