@@ -23,7 +23,8 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
         baseIconClass: "esri-icon-labels",
         bookmarksHeader: "demo-bookmarks__header",
         bookmarkList: "demo-bookmarks__list",
-        bookmarkItem: "demo-bookmarks__item"
+        bookmarkItem: "demo-bookmarks__item",
+        bookmarkItemActive: "demo-bookmarks__item--active"
     };
     var Bookmarks = /** @class */ (function (_super) {
         __extends(Bookmarks, _super);
@@ -59,6 +60,7 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
         }
         Bookmarks.prototype.postInitialize = function () {
             var _this = this;
+            // todo: watch each bookmarkItem active property
             this.own(watchUtils.on(this, "viewModel.bookmarkItems", "change", function () { return _this.scheduleRender(); }));
         };
         //--------------------------------------------------------------------------
@@ -86,7 +88,12 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
             return bookmarkItems.toArray().map(function (bookmarkItem) { return _this._renderBookmark(bookmarkItem); });
         };
         Bookmarks.prototype._renderBookmark = function (bookmarkItem) {
-            return (widget_1.tsx("li", { bind: this, "data-bookmark-item": bookmarkItem, class: CSS.bookmarkItem, onclick: this._goToBookmark, onkeydown: this._goToBookmark, style: bookmarkItem.active ? "background-color: red;" : "", tabIndex: 0, role: "button", "aria-label": bookmarkItem.name }, bookmarkItem.name));
+            var active = bookmarkItem.active, name = bookmarkItem.name;
+            var bookmarkItemClasses = (_a = {},
+                _a[CSS.bookmarkItemActive] = active,
+                _a);
+            return (widget_1.tsx("li", { bind: this, "data-bookmark-item": bookmarkItem, class: CSS.bookmarkItem, classes: bookmarkItemClasses, onclick: this._goToBookmark, onkeydown: this._goToBookmark, tabIndex: 0, role: "button", "aria-label": name }, name));
+            var _a;
         };
         Bookmarks.prototype._goToBookmark = function (event) {
             var node = event.currentTarget;

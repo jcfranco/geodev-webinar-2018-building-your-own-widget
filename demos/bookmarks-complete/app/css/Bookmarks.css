@@ -1,6 +1,6 @@
 .demo-bookmarks {
   background-color: #fff;
-  border: 1px solid #000;
+  border: 1px solid rgba(0, 0, 0, 0.4);
 }
 
 .demo-bookmarks__header {
@@ -16,11 +16,42 @@
 
 .demo-bookmarks__item {
   padding: 5px 10px;
-  border-top: 1px solid #000;
+  border-top: 1px solid rgba(0, 0, 0, 0.4);
   cursor: pointer;
+  position: relative;
 }
 
 .demo-bookmarks__item:first-child {
   border-top: none;
+}
+
+.demo-bookmarks__item--active:after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  top: 0;
+  background-color: #4c4c4c;
+  width: 100%;
+  z-index: 2;
+  animation: looping-progresss-bar-ani 1500ms linear infinite
+}
+
+@keyframes looping-progresss-bar-ani {
+  0% {
+    left: 0%;
+    width: 0%
+  }
+  20% {
+    left: 0%;
+    width: 20%
+  }
+  80% {
+    left: 80%;
+    width: 20%
+  }
+  100% {
+    left: 100%;
+    width: 0%
+  }
 }
 

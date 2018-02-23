@@ -19,7 +19,8 @@ const CSS = {
   baseIconClass: "esri-icon-labels",
   bookmarksHeader: "demo-bookmarks__header",
   bookmarkList: "demo-bookmarks__list",
-  bookmarkItem: "demo-bookmarks__item"
+  bookmarkItem: "demo-bookmarks__item",
+  bookmarkItemActive: "demo-bookmarks__item--active"
 };
 
 @subclass("demo.Bookmarks")
@@ -36,6 +37,7 @@ class Bookmarks extends declared(Widget) {
   }
 
   postInitialize() {
+    // todo: watch each bookmarkItem active property
     this.own(
       watchUtils.on(this, "viewModel.bookmarkItems", "change", () => this.scheduleRender())
     );
@@ -113,17 +115,23 @@ class Bookmarks extends declared(Widget) {
   }
 
   private _renderBookmark(bookmarkItem: BookmarkItem): any {
+    const { active, name } = bookmarkItem;
+
+    const bookmarkItemClasses = {
+      [CSS.bookmarkItemActive]: active
+    };
+
     return (
       <li bind={this}
         data-bookmark-item={bookmarkItem}
         class={CSS.bookmarkItem}
+        classes={bookmarkItemClasses}
         onclick={this._goToBookmark}
         onkeydown={this._goToBookmark}
-        style={bookmarkItem.active ? "background-color: red;" : ""} // todo
         tabIndex={0}
         role="button"
-        aria-label={bookmarkItem.name}
-      >{bookmarkItem.name}</li>
+        aria-label={name}
+      >{name}</li>
     );
   }
 

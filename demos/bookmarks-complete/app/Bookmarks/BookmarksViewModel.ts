@@ -110,13 +110,15 @@ class BookmarksViewModel extends declared(Accessor) {
       return promiseUtils.reject();
     }
 
-    const goTo = view.goTo(bookmarkItem.extent);
-
     bookmarkItem.active = true;
+
+    const goTo = view.goTo(bookmarkItem.extent);
 
     goTo.then(() => {
       bookmarkItem.active = false;
-    }).otherwise(() => {
+    })
+
+    goTo.otherwise(() => {
       bookmarkItem.active = false;
     });
 

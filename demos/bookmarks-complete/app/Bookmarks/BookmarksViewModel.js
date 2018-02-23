@@ -88,11 +88,12 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
             if (!view) {
                 return promiseUtils.reject();
             }
-            var goTo = view.goTo(bookmarkItem.extent);
             bookmarkItem.active = true;
+            var goTo = view.goTo(bookmarkItem.extent);
             goTo.then(function () {
                 bookmarkItem.active = false;
-            }).otherwise(function () {
+            });
+            goTo.otherwise(function () {
                 bookmarkItem.active = false;
             });
             return goTo;
