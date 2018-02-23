@@ -16,7 +16,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/core/tsSupport/decorateHelper", "esri/core/accessorSupport/decorators", "esri/core/Accessor", "esri/core/watchUtils", "esri/core/Collection", "./BookmarkItem"], function (require, exports, __extends, __decorate, decorators_1, Accessor, watchUtils, Collection, BookmarkItem) {
+define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/core/tsSupport/decorateHelper", "esri/core/accessorSupport/decorators", "esri/core/Accessor", "esri/core/promiseUtils", "esri/core/watchUtils", "esri/core/Collection", "./BookmarkItem"], function (require, exports, __extends, __decorate, decorators_1, Accessor, promiseUtils, watchUtils, Collection, BookmarkItem) {
     "use strict";
     var BookmarkItemCollection = Collection.ofType(BookmarkItem);
     var BookmarksViewModel = /** @class */ (function (_super) {
@@ -80,6 +80,23 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
         //  Public Methods
         //
         //--------------------------------------------------------------------------
+        BookmarksViewModel.prototype.goTo = function (bookmarkItem) {
+            var view = this.view;
+            if (!bookmarkItem) {
+                return promiseUtils.reject();
+            }
+            if (!view) {
+                return promiseUtils.reject();
+            }
+            var goTo = view.goTo(bookmarkItem.extent);
+            bookmarkItem.active = true;
+            goTo.then(function () {
+                bookmarkItem.active = false;
+            }).otherwise(function () {
+                bookmarkItem.active = false;
+            });
+            return goTo;
+        };
         //--------------------------------------------------------------------------
         //
         //  Private Methods

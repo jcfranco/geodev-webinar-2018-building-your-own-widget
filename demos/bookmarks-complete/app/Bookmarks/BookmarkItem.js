@@ -28,6 +28,10 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
             //--------------------------------------------------------------------------
             var _this = _super !== null && _super.apply(this, arguments) || this;
             //----------------------------------
+            //  active
+            //----------------------------------
+            _this.active = false;
+            //----------------------------------
             //  extent
             //----------------------------------
             _this.extent = null;
@@ -37,6 +41,9 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
             _this.name = null;
             return _this;
         }
+        __decorate([
+            decorators_1.property()
+        ], BookmarkItem.prototype, "active", void 0);
         __decorate([
             decorators_1.property({
                 type: Extent

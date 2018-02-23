@@ -16,10 +16,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/core/tsSupport/decorateHelper", "esri/core/watchUtils", "esri/core/accessorSupport/decorators", "esri/widgets/Widget", "esri/widgets/support/widget", "./Bookmarks/BookmarksViewModel"], function (require, exports, __extends, __decorate, watchUtils, decorators_1, Widget, widget_1, BookmarksViewModel) {
+define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/core/tsSupport/decorateHelper", "esri/core/watchUtils", "esri/core/accessorSupport/decorators", "esri/widgets/Widget", "esri/widgets/support/widget", "./Bookmarks/BookmarksViewModel", "dojo/i18n!./Bookmarks/nls/Bookmarks"], function (require, exports, __extends, __decorate, watchUtils, decorators_1, Widget, widget_1, BookmarksViewModel, i18n) {
     "use strict";
     var CSS = {
         base: "demo-bookmarks",
+        baseIconClass: "esri-icon-labels",
         bookmarksHeader: "demo-bookmarks__header",
         bookmarkList: "demo-bookmarks__list",
         bookmarkItem: "demo-bookmarks__item"
@@ -38,6 +39,14 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
             //  Properties
             //
             //--------------------------------------------------------------------------
+            //----------------------------------
+            //  iconClass
+            //----------------------------------
+            _this.iconClass = CSS.baseIconClass;
+            //----------------------------------
+            //  label
+            //----------------------------------
+            _this.label = i18n.label;
             //----------------------------------
             //  view
             //----------------------------------
@@ -58,9 +67,10 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
         //
         //--------------------------------------------------------------------------
         Bookmarks.prototype.render = function () {
+            // todo: use state
             var bookmarkNodes = this._renderBookmarks();
             var bookmarkListNode = bookmarkNodes.length ? [
-                widget_1.tsx("h2", { class: CSS.bookmarksHeader }, "Bookmarks"),
+                widget_1.tsx("h2", { class: CSS.bookmarksHeader }, i18n.label),
                 widget_1.tsx("ul", { class: CSS.bookmarkList }, bookmarkNodes)
             ] : null;
             return (widget_1.tsx("div", { class: CSS.base }, bookmarkListNode));
@@ -76,17 +86,19 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
             return bookmarkItems.toArray().map(function (bookmarkItem) { return _this._renderBookmark(bookmarkItem); });
         };
         Bookmarks.prototype._renderBookmark = function (bookmarkItem) {
-            return (widget_1.tsx("li", { bind: this, "data-bookmark-item": bookmarkItem, class: CSS.bookmarkItem, onclick: this._goToBookmark, onkeydown: this._goToBookmark, tabIndex: 0, role: "button", "aria-label": bookmarkItem.name }, bookmarkItem.name));
+            return (widget_1.tsx("li", { bind: this, "data-bookmark-item": bookmarkItem, class: CSS.bookmarkItem, onclick: this._goToBookmark, onkeydown: this._goToBookmark, style: bookmarkItem.active ? "background-color: red;" : "", tabIndex: 0, role: "button", "aria-label": bookmarkItem.name }, bookmarkItem.name));
         };
         Bookmarks.prototype._goToBookmark = function (event) {
             var node = event.currentTarget;
             var bookmarkItem = node["data-bookmark-item"];
-            var view = this.view;
-            if (!bookmarkItem || !view) {
-                return;
-            }
-            view.goTo(bookmarkItem.extent);
+            this.viewModel.goTo(bookmarkItem);
         };
+        __decorate([
+            decorators_1.property()
+        ], Bookmarks.prototype, "iconClass", void 0);
+        __decorate([
+            decorators_1.property()
+        ], Bookmarks.prototype, "label", void 0);
         __decorate([
             decorators_1.aliasOf("viewModel.view")
         ], Bookmarks.prototype, "view", void 0);
@@ -95,8 +107,7 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
                 type: BookmarksViewModel
             }),
             widget_1.renderable([
-                "state",
-                "view.size"
+                "state"
             ])
         ], Bookmarks.prototype, "viewModel", void 0);
         __decorate([

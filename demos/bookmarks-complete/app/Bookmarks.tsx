@@ -12,8 +12,11 @@ import BookmarkItem = require("./Bookmarks/BookmarkItem");
 
 import MapView = require("esri/views/MapView");
 
+import i18n = require("dojo/i18n!./Bookmarks/nls/Bookmarks");
+
 const CSS = {
   base: "demo-bookmarks",
+  baseIconClass: "esri-icon-labels",
   bookmarksHeader: "demo-bookmarks__header",
   bookmarkList: "demo-bookmarks__list",
   bookmarkItem: "demo-bookmarks__item"
@@ -45,6 +48,20 @@ class Bookmarks extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   //----------------------------------
+  //  iconClass
+  //----------------------------------
+
+  @property()
+  iconClass = CSS.baseIconClass;
+
+  //----------------------------------
+  //  label
+  //----------------------------------
+
+  @property()
+  label = i18n.label;
+
+  //----------------------------------
   //  view
   //----------------------------------
 
@@ -59,8 +76,7 @@ class Bookmarks extends declared(Widget) {
     type: BookmarksViewModel
   })
   @renderable([
-    "state",
-    "view.size"
+    "state"
   ])
   viewModel: BookmarksViewModel = new BookmarksViewModel();
 
@@ -71,10 +87,11 @@ class Bookmarks extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   render() {
+    // todo: use state
     const bookmarkNodes = this._renderBookmarks();
 
     const bookmarkListNode = bookmarkNodes.length ? [
-      <h2 class={CSS.bookmarksHeader}>Bookmarks</h2>,
+      <h2 class={CSS.bookmarksHeader}>{i18n.label}</h2>,
       <ul class={CSS.bookmarkList}>{bookmarkNodes}</ul>
     ] : null;
 
@@ -102,6 +119,7 @@ class Bookmarks extends declared(Widget) {
         class={CSS.bookmarkItem}
         onclick={this._goToBookmark}
         onkeydown={this._goToBookmark}
+        style={bookmarkItem.active ? "background-color: red;" : ""} // todo
         tabIndex={0}
         role="button"
         aria-label={bookmarkItem.name}
@@ -113,13 +131,7 @@ class Bookmarks extends declared(Widget) {
   private _goToBookmark(event: Event): void {
     const node = event.currentTarget as Element;
     const bookmarkItem = node["data-bookmark-item"] as BookmarkItem;
-    const { view } = this;
-
-    if (!bookmarkItem || !view) {
-      return;
-    }
-
-    view.goTo(bookmarkItem.extent);
+    this.viewModel.goTo(bookmarkItem);
   }
 
 }

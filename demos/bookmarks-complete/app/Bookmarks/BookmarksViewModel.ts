@@ -8,6 +8,7 @@ import {
 } from "esri/core/accessorSupport/decorators";
 
 import Accessor = require("esri/core/Accessor");
+import promiseUtils = require("esri/core/promiseUtils");
 import watchUtils = require("esri/core/watchUtils");
 
 import Map = require("esri/Map");
@@ -97,6 +98,30 @@ class BookmarksViewModel extends declared(Accessor) {
   //  Public Methods
   //
   //--------------------------------------------------------------------------
+
+  goTo(bookmarkItem: BookmarkItem): IPromise<any> {
+    const { view } = this;
+
+    if (!bookmarkItem) {
+      return promiseUtils.reject();
+    }
+
+    if (!view) {
+      return promiseUtils.reject();
+    }
+
+    const goTo = view.goTo(bookmarkItem.extent);
+
+    bookmarkItem.active = true;
+
+    goTo.then(() => {
+      bookmarkItem.active = false;
+    }).otherwise(() => {
+      bookmarkItem.active = false;
+    });
+
+    return goTo;
+  }
 
   //--------------------------------------------------------------------------
   //
