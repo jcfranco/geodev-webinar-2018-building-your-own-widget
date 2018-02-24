@@ -1,4 +1,4 @@
-<!-- .slide: data-background="img/bg-1.png" data-background-size="cover" style="padding-left: 80px;" -->
+<!-- .slide: data-background="img/bg-1.png" data-background-size="cover" -->
 <!-- Presenter: Matt -->
 
 # Developing Your Own Widget with the ArcGIS API for JavaScript
