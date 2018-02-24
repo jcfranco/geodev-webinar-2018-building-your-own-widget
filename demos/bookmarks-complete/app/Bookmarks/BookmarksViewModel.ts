@@ -36,7 +36,9 @@ class BookmarksViewModel extends declared(Accessor) {
   //--------------------------------------------------------------------------
 
   initialize() {
-    this._handles.add(watchUtils.init(this, "view", view => this._viewUpdated(view)));
+    this._handles.add(
+      watchUtils.init(this, "view", view => this._viewUpdated(view))
+    );
   }
 
   destroy() {
@@ -101,11 +103,11 @@ class BookmarksViewModel extends declared(Accessor) {
     const { view } = this;
 
     if (!bookmarkItem) {
-      return promiseUtils.reject();
+      return promiseUtils.reject(new Error("BookmarkItem is required"));
     }
 
     if (!view) {
-      return promiseUtils.reject();
+      return promiseUtils.reject(new Error("View is required"));
     }
 
     bookmarkItem.active = true;
@@ -114,9 +116,7 @@ class BookmarksViewModel extends declared(Accessor) {
 
     goTo.then(() => {
       bookmarkItem.active = false;
-    })
-
-    goTo.otherwise(() => {
+    }).otherwise(() => {
       bookmarkItem.active = false;
     });
 
@@ -130,17 +130,19 @@ class BookmarksViewModel extends declared(Accessor) {
   //--------------------------------------------------------------------------
 
   private _viewUpdated(view: MapView): void {
-    if (!view) {
-      return;
-    }
-
     const { _handles } = this;
     const mapHandleKey = "map";
 
     _handles.remove(mapHandleKey);
 
+    if (!view) {
+      return;
+    }
+
     view.when(() => {
-      _handles.add(watchUtils.init(view, "map", map => this._mapUpdated(map)), mapHandleKey);
+      _handles.add(
+        watchUtils.init(view, "map", map => this._mapUpdated(map))
+        , mapHandleKey);
     });
   }
 

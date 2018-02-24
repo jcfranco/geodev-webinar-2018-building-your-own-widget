@@ -7,7 +7,7 @@ import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport
 import Widget = require("esri/widgets/Widget");
 import HandleRegistry = require("esri/core/HandleRegistry");
 import widgetUtils = require("esri/widgets/support/widgetUtils");
-import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
+import { accessibleHandler, join, renderable, tsx } from "esri/widgets/support/widget";
 
 import BookmarksViewModel = require("./Bookmarks/BookmarksViewModel");
 import BookmarkItem = require("./Bookmarks/BookmarkItem");
@@ -21,9 +21,10 @@ const CSS = {
   loading: "demo-bookmarks__loading",
   loadingIcon: "esri-icon-loading-indicator esri-rotating",
   fadeIn: "demo-bookmarks--fade-in",
-  baseIconClass: "esri-icon-labels",
+  iconClass: "esri-icon-labels",
   bookmarkList: "demo-bookmarks__list",
   bookmarkItem: "demo-bookmarks__item",
+  bookmarkItemIcon: "demo-bookmarks__item-icon",
   bookmarkItemActive: "demo-bookmarks__item--active"
 };
 
@@ -67,7 +68,7 @@ class Bookmarks extends declared(Widget) {
   //----------------------------------
 
   @property()
-  iconClass = CSS.baseIconClass;
+  iconClass = CSS.iconClass;
 
   //----------------------------------
   //  label
@@ -179,7 +180,9 @@ class Bookmarks extends declared(Widget) {
         role="button"
         title={i18n.zoomTo}
         aria-label={name}
-      >{name}</li>
+      >
+        <span class={join(CSS.iconClass, CSS.bookmarkItemIcon)} /> {name}
+      </li>
     );
   }
 

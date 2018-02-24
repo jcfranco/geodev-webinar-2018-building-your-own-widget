@@ -1,4 +1,6 @@
 .demo-bookmarks {
+  min-width: 250px;
+  max-width: 350px;
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.4);
 }
@@ -30,8 +32,20 @@
   position: relative;
 }
 
+.demo-bookmarks__item:hover {
+  background-color: #eee;
+}
+
 .demo-bookmarks__item:first-child {
   border-top: none;
+}
+
+.demo-bookmarks__item--active,
+.demo-bookmarks__item--active:hover,
+.demo-bookmarks__item--active:focus {
+  color: #333;
+  background-color: #fff;
+  cursor: default;
 }
 
 .demo-bookmarks__item--active:after {

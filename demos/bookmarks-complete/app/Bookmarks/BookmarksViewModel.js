@@ -80,17 +80,16 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
         BookmarksViewModel.prototype.goTo = function (bookmarkItem) {
             var view = this.view;
             if (!bookmarkItem) {
-                return promiseUtils.reject();
+                return promiseUtils.reject(new Error("BookmarkItem is required"));
             }
             if (!view) {
-                return promiseUtils.reject();
+                return promiseUtils.reject(new Error("View is required"));
             }
             bookmarkItem.active = true;
             var goTo = view.goTo(bookmarkItem.extent);
             goTo.then(function () {
                 bookmarkItem.active = false;
-            });
-            goTo.otherwise(function () {
+            }).otherwise(function () {
                 bookmarkItem.active = false;
             });
             return goTo;
@@ -102,12 +101,12 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
         //--------------------------------------------------------------------------
         BookmarksViewModel.prototype._viewUpdated = function (view) {
             var _this = this;
-            if (!view) {
-                return;
-            }
             var _handles = this._handles;
             var mapHandleKey = "map";
             _handles.remove(mapHandleKey);
+            if (!view) {
+                return;
+            }
             view.when(function () {
                 _handles.add(watchUtils.init(view, "map", function (map) { return _this._mapUpdated(map); }), mapHandleKey);
             });

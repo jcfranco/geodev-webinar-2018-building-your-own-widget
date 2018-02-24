@@ -23,9 +23,10 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
         loading: "demo-bookmarks__loading",
         loadingIcon: "esri-icon-loading-indicator esri-rotating",
         fadeIn: "demo-bookmarks--fade-in",
-        baseIconClass: "esri-icon-labels",
+        iconClass: "esri-icon-labels",
         bookmarkList: "demo-bookmarks__list",
         bookmarkItem: "demo-bookmarks__item",
+        bookmarkItemIcon: "demo-bookmarks__item-icon",
         bookmarkItemActive: "demo-bookmarks__item--active"
     };
     var Bookmarks = /** @class */ (function (_super) {
@@ -51,7 +52,7 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
             //----------------------------------
             //  iconClass
             //----------------------------------
-            _this.iconClass = CSS.baseIconClass;
+            _this.iconClass = CSS.iconClass;
             //----------------------------------
             //  label
             //----------------------------------
@@ -120,7 +121,10 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
             var bookmarkItemClasses = (_a = {},
                 _a[CSS.bookmarkItemActive] = active,
                 _a);
-            return (widget_1.tsx("li", { bind: this, "data-bookmark-item": bookmarkItem, class: CSS.bookmarkItem, classes: bookmarkItemClasses, onclick: this._goToBookmark, onkeydown: this._goToBookmark, tabIndex: 0, role: "button", title: i18n.zoomTo, "aria-label": name }, name));
+            return (widget_1.tsx("li", { bind: this, "data-bookmark-item": bookmarkItem, class: CSS.bookmarkItem, classes: bookmarkItemClasses, onclick: this._goToBookmark, onkeydown: this._goToBookmark, tabIndex: 0, role: "button", title: i18n.zoomTo, "aria-label": name },
+                widget_1.tsx("span", { class: widget_1.join(CSS.iconClass, CSS.bookmarkItemIcon) }),
+                " ",
+                name));
             var _a;
         };
         Bookmarks.prototype._goToBookmark = function (event) {
