@@ -16,10 +16,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/core/tsSupport/decorateHelper", "esri/core/watchUtils", "esri/core/accessorSupport/decorators", "esri/widgets/Widget", "esri/widgets/support/widget", "./Bookmarks/BookmarksViewModel", "dojo/i18n!./Bookmarks/nls/Bookmarks"], function (require, exports, __extends, __decorate, watchUtils, decorators_1, Widget, widget_1, BookmarksViewModel, i18n) {
+define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/core/tsSupport/decorateHelper", "esri/core/watchUtils", "esri/core/accessorSupport/decorators", "esri/widgets/Widget", "esri/core/HandleRegistry", "esri/widgets/support/widgetUtils", "esri/widgets/support/widget", "./Bookmarks/BookmarksViewModel", "dojo/i18n!./Bookmarks/nls/Bookmarks"], function (require, exports, __extends, __decorate, watchUtils, decorators_1, Widget, HandleRegistry, widgetUtils, widget_1, BookmarksViewModel, i18n) {
     "use strict";
     var CSS = {
         base: "demo-bookmarks",
+        loading: "demo-bookmarks__loading",
+        loadingIcon: "esri-icon-loading-indicator esri-rotating",
+        fadeIn: "demo-bookmarks--fade-in",
         baseIconClass: "esri-icon-labels",
         bookmarkList: "demo-bookmarks__list",
         bookmarkItem: "demo-bookmarks__item",
@@ -34,6 +37,12 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
         //--------------------------------------------------------------------------
         function Bookmarks(params) {
             var _this = _super.call(this) || this;
+            //--------------------------------------------------------------------------
+            //
+            //  Variables
+            //
+            //--------------------------------------------------------------------------
+            _this._handles = new HandleRegistry();
             //--------------------------------------------------------------------------
             //
             //  Properties
@@ -59,8 +68,8 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
         }
         Bookmarks.prototype.postInitialize = function () {
             var _this = this;
-            // todo: watch each bookmarkItem active property
-            this.own(watchUtils.on(this, "viewModel.bookmarkItems", "change", function () { return _this.scheduleRender(); }));
+            this.own(watchUtils.on(this, "viewModel.bookmarkItems", "change", function () { return _this._bookmarkItemsChanged(); }));
+            this._bookmarkItemsChanged();
         };
         //--------------------------------------------------------------------------
         //
@@ -68,11 +77,17 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
         //
         //--------------------------------------------------------------------------
         Bookmarks.prototype.render = function () {
-            // todo: use state
             var bookmarkNodes = this._renderBookmarks();
-            var bookmarkListNode = bookmarkNodes.length ? [
-                widget_1.tsx("ul", { "aria-label": i18n.label, class: CSS.bookmarkList }, bookmarkNodes)
-            ] : null;
+            var fadeInAnimation = widgetUtils.cssTransition("enter", CSS.fadeIn);
+            var state = this.viewModel.state;
+            var loadingNode = (widget_1.tsx("div", { class: CSS.loading },
+                widget_1.tsx("span", { class: CSS.loadingIcon })));
+            var bookmarkListNode = state === "ready" && bookmarkNodes.length ? [
+                widget_1.tsx("ul", { enterAnimation: fadeInAnimation, "aria-label": i18n.label, class: CSS.bookmarkList }, bookmarkNodes)
+            ] :
+                state === "loading" ?
+                    loadingNode :
+                    null;
             return (widget_1.tsx("div", { class: CSS.base }, bookmarkListNode));
         };
         //--------------------------------------------------------------------------
@@ -80,6 +95,21 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
         //  Private Methods
         //
         //--------------------------------------------------------------------------
+        Bookmarks.prototype._bookmarkItemsChanged = function () {
+            var _this = this;
+            var itemsKey = "items";
+            var bookmarkItems = this.viewModel.bookmarkItems;
+            var _handles = this._handles;
+            _handles.remove(itemsKey);
+            var handles = bookmarkItems.map(function (bookmarkItem) {
+                return watchUtils.watch(bookmarkItem, [
+                    "active",
+                    "name"
+                ], function () { return _this.scheduleRender(); });
+            });
+            _handles.add(handles, itemsKey);
+            this.scheduleRender();
+        };
         Bookmarks.prototype._renderBookmarks = function () {
             var _this = this;
             var bookmarkItems = this.viewModel.bookmarkItems;
@@ -90,7 +120,7 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
             var bookmarkItemClasses = (_a = {},
                 _a[CSS.bookmarkItemActive] = active,
                 _a);
-            return (widget_1.tsx("li", { bind: this, "data-bookmark-item": bookmarkItem, class: CSS.bookmarkItem, classes: bookmarkItemClasses, onclick: this._goToBookmark, onkeydown: this._goToBookmark, tabIndex: 0, role: "button", "aria-label": name }, name));
+            return (widget_1.tsx("li", { bind: this, "data-bookmark-item": bookmarkItem, class: CSS.bookmarkItem, classes: bookmarkItemClasses, onclick: this._goToBookmark, onkeydown: this._goToBookmark, tabIndex: 0, role: "button", title: i18n.zoomTo, "aria-label": name }, name));
             var _a;
         };
         Bookmarks.prototype._goToBookmark = function (event) {

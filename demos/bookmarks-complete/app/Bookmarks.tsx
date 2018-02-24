@@ -5,6 +5,8 @@ import watchUtils = require("esri/core/watchUtils");
 import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
 
 import Widget = require("esri/widgets/Widget");
+import HandleRegistry = require("esri/core/HandleRegistry");
+import widgetUtils = require("esri/widgets/support/widgetUtils");
 import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
 
 import BookmarksViewModel = require("./Bookmarks/BookmarksViewModel");
@@ -16,6 +18,9 @@ import i18n = require("dojo/i18n!./Bookmarks/nls/Bookmarks");
 
 const CSS = {
   base: "demo-bookmarks",
+  loading: "demo-bookmarks__loading",
+  loadingIcon: "esri-icon-loading-indicator esri-rotating",
+  fadeIn: "demo-bookmarks--fade-in",
   baseIconClass: "esri-icon-labels",
   bookmarkList: "demo-bookmarks__list",
   bookmarkItem: "demo-bookmarks__item",
@@ -36,11 +41,20 @@ class Bookmarks extends declared(Widget) {
   }
 
   postInitialize() {
-    // todo: watch each bookmarkItem active property
     this.own(
-      watchUtils.on(this, "viewModel.bookmarkItems", "change", () => this.scheduleRender())
+      watchUtils.on(this, "viewModel.bookmarkItems", "change", () => this._bookmarkItemsChanged())
     );
+
+    this._bookmarkItemsChanged();
   }
+
+  //--------------------------------------------------------------------------
+  //
+  //  Variables
+  //
+  //--------------------------------------------------------------------------
+
+  _handles: HandleRegistry = new HandleRegistry();
 
   //--------------------------------------------------------------------------
   //
@@ -88,12 +102,28 @@ class Bookmarks extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   render() {
-    // todo: use state
     const bookmarkNodes = this._renderBookmarks();
 
-    const bookmarkListNode = bookmarkNodes.length ? [
-      <ul aria-label={i18n.label} class={CSS.bookmarkList}>{bookmarkNodes}</ul>
-    ] : null;
+    const fadeInAnimation = widgetUtils.cssTransition("enter", CSS.fadeIn);
+
+    const { state } = this.viewModel;
+
+    const loadingNode = (
+      <div class={CSS.loading}>
+        <span class={CSS.loadingIcon} />
+      </div>
+    );
+
+    const bookmarkListNode = state === "ready" && bookmarkNodes.length ? [
+      <ul
+        enterAnimation={fadeInAnimation}
+        aria-label={i18n.label}
+        class={CSS.bookmarkList}
+      >{bookmarkNodes}</ul>
+    ] :
+      state === "loading" ?
+        loadingNode :
+        null;
 
     return (
       <div class={CSS.base}>{bookmarkListNode}</div>
@@ -105,6 +135,25 @@ class Bookmarks extends declared(Widget) {
   //  Private Methods
   //
   //--------------------------------------------------------------------------
+
+  private _bookmarkItemsChanged(): void {
+    const itemsKey = "items";
+    const { bookmarkItems } = this.viewModel;
+    const { _handles } = this;
+
+    _handles.remove(itemsKey);
+
+    const handles = bookmarkItems.map(bookmarkItem => {
+      return watchUtils.watch(bookmarkItem, [
+        "active",
+        "name"
+      ], () => this.scheduleRender());
+    });
+
+    _handles.add(handles, itemsKey);
+
+    this.scheduleRender();
+  }
 
   private _renderBookmarks(): any {
     const { bookmarkItems } = this.viewModel;
@@ -128,6 +177,7 @@ class Bookmarks extends declared(Widget) {
         onkeydown={this._goToBookmark}
         tabIndex={0}
         role="button"
+        title={i18n.zoomTo}
         aria-label={name}
       >{name}</li>
     );

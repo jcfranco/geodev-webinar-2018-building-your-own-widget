@@ -61,29 +61,29 @@
       Bookmarks
     ) {
 
-      var webmap = new WebMap({
-        portalItem: {
-          id: "402451b7c31247a6a61d7f3d077139bf"
-        }
+        var webmap = new WebMap({
+          portalItem: {
+            id: "402451b7c31247a6a61d7f3d077139bf"
+          }
+        });
+
+        view = new MapView({
+          container: "viewDiv",
+          map: webmap
+        });
+
+        bookmarks = new Bookmarks({
+          view: view
+        });
+
+        // var expand = new Expand({
+        //   view: view,
+        //   content: bookmarks
+        // });
+
+        view.ui.add(bookmarks, "top-right");
+
       });
-
-      view = new MapView({
-        container: "viewDiv",
-        map: webmap
-      });
-
-      var bookmarks = new Bookmarks({
-        view: view
-      });
-
-      // var expand = new Expand({
-      //   view: view,
-      //   content: bookmarks
-      // });
-
-      view.ui.add(bookmarks, "top-right");
-
-    });
 
   </script>
 </head>
@@ -93,4 +93,3 @@
 </body>
 
 </html>
-

@@ -8,6 +8,7 @@ import {
 } from "esri/core/accessorSupport/decorators";
 
 import Accessor = require("esri/core/Accessor");
+import HandleRegistry = require("esri/core/HandleRegistry");
 import promiseUtils = require("esri/core/promiseUtils");
 import watchUtils = require("esri/core/watchUtils");
 
@@ -35,14 +36,12 @@ class BookmarksViewModel extends declared(Accessor) {
   //--------------------------------------------------------------------------
 
   initialize() {
-    this._viewHandle = watchUtils.init(this, "view", view => this._viewUpdated(view))
+    this._handles.add(watchUtils.init(this, "view", view => this._viewUpdated(view)));
   }
 
   destroy() {
-    this._viewHandle && this._viewHandle.remove();
-    this._viewHandle = null;
-    this._mapHandle && this._mapHandle.remove();
-    this._mapHandle = null;
+    this._handles.destroy();
+    this._handles = null;
     this.view = null;
     this.bookmarkItems.removeAll();
   }
@@ -53,8 +52,7 @@ class BookmarksViewModel extends declared(Accessor) {
   //
   //--------------------------------------------------------------------------
 
-  _viewHandle: IHandle = null;
-  _mapHandle: IHandle = null;
+  _handles: HandleRegistry = new HandleRegistry();
 
   //--------------------------------------------------------------------------
   //
@@ -136,14 +134,13 @@ class BookmarksViewModel extends declared(Accessor) {
       return;
     }
 
-    const { _mapHandle } = this;
+    const { _handles } = this;
+    const mapHandleKey = "map";
 
-    if (_mapHandle) {
-      _mapHandle.remove();
-    }
+    _handles.remove(mapHandleKey);
 
     view.when(() => {
-      this._mapHandle = watchUtils.init(view, "map", map => this._mapUpdated(map))
+      _handles.add(watchUtils.init(view, "map", map => this._mapUpdated(map)), mapHandleKey);
     });
   }
 

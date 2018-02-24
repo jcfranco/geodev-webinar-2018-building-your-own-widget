@@ -16,7 +16,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/core/tsSupport/decorateHelper", "esri/core/accessorSupport/decorators", "esri/core/Accessor", "esri/core/promiseUtils", "esri/core/watchUtils", "esri/core/Collection", "./BookmarkItem"], function (require, exports, __extends, __decorate, decorators_1, Accessor, promiseUtils, watchUtils, Collection, BookmarkItem) {
+define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/core/tsSupport/decorateHelper", "esri/core/accessorSupport/decorators", "esri/core/Accessor", "esri/core/HandleRegistry", "esri/core/promiseUtils", "esri/core/watchUtils", "esri/core/Collection", "./BookmarkItem"], function (require, exports, __extends, __decorate, decorators_1, Accessor, HandleRegistry, promiseUtils, watchUtils, Collection, BookmarkItem) {
     "use strict";
     var BookmarkItemCollection = Collection.ofType(BookmarkItem);
     var BookmarksViewModel = /** @class */ (function (_super) {
@@ -33,8 +33,7 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
             //  Variables
             //
             //--------------------------------------------------------------------------
-            _this._viewHandle = null;
-            _this._mapHandle = null;
+            _this._handles = new HandleRegistry();
             //--------------------------------------------------------------------------
             //
             //  Properties
@@ -52,13 +51,11 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
         }
         BookmarksViewModel.prototype.initialize = function () {
             var _this = this;
-            this._viewHandle = watchUtils.init(this, "view", function (view) { return _this._viewUpdated(view); });
+            this._handles.add(watchUtils.init(this, "view", function (view) { return _this._viewUpdated(view); }));
         };
         BookmarksViewModel.prototype.destroy = function () {
-            this._viewHandle && this._viewHandle.remove();
-            this._viewHandle = null;
-            this._mapHandle && this._mapHandle.remove();
-            this._mapHandle = null;
+            this._handles.destroy();
+            this._handles = null;
             this.view = null;
             this.bookmarkItems.removeAll();
         };
@@ -108,12 +105,11 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
             if (!view) {
                 return;
             }
-            var _mapHandle = this._mapHandle;
-            if (_mapHandle) {
-                _mapHandle.remove();
-            }
+            var _handles = this._handles;
+            var mapHandleKey = "map";
+            _handles.remove(mapHandleKey);
             view.when(function () {
-                _this._mapHandle = watchUtils.init(view, "map", function (map) { return _this._mapUpdated(map); });
+                _handles.add(watchUtils.init(view, "map", function (map) { return _this._mapUpdated(map); }), mapHandleKey);
             });
         };
         BookmarksViewModel.prototype._mapUpdated = function (map) {
