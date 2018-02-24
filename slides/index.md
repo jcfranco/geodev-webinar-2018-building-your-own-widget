@@ -11,8 +11,8 @@
 # Agenda
 
 - Widgets
-- Theming
 - Widget Framework
+- Theming
 - Putting it all together
 
 ---
@@ -34,86 +34,6 @@
   - Interchangeable                             <!-- .element: class="fragment" data-fragment-index="7" -->
 - How?                                          <!-- .element: class="fragment" data-fragment-index="8" -->
   - Different frameworks are available          <!-- .element: class="fragment" data-fragment-index="9" -->
-
----
-
-# Widget Theming
-
----
-
-# About
-
-- Why?                  <!-- .element: class="fragment" data-fragment-index="1" -->
-  - Consistency         <!-- .element: class="fragment" data-fragment-index="2" -->
-    - Visual            <!-- .element: class="fragment" data-fragment-index="3" -->
-    - Functional        <!-- .element: class="fragment" data-fragment-index="3" -->
-  - User options        <!-- .element: class="fragment" data-fragment-index="4" -->
-    - Out-of-the-box    <!-- .element: class="fragment" data-fragment-index="5" -->
-    - Custom            <!-- .element: class="fragment" data-fragment-index="6" -->
-- How?                  <!-- .element: class="fragment" data-fragment-index="7" -->
-  - Sass                <!-- .element: class="fragment" data-fragment-index="8" -->
-  - BEM                 <!-- .element: class="fragment" data-fragment-index="9" -->
-
----
-
-# Out-of-the-box themes
-
-[Theme Switcher](../demos/themes/)
-
-<img src="images/theme-switcher.png" width="50%"/>
-
----
-
-# Theming with Sass
-
-- CSS preprocessor                  <!-- .element: class="fragment" data-fragment-index="1" -->
-- Powered-up CSS                     <!-- .element: class="fragment" data-fragment-index="2" -->
-  - Nesting                          <!-- .element: class="fragment" data-fragment-index="3" -->
-  - Variables                         <!-- .element: class="fragment" data-fragment-index="4" -->
-  - Functions                         <!-- .element: class="fragment" data-fragment-index="5" -->
-  - Mixins                            <!-- .element: class="fragment" data-fragment-index="6" -->
-  - Inheritance                       <!-- .element: class="fragment" data-fragment-index="7" -->
-
----
-
-# Sass makes it easier to...
-
-- Restyle                            <!-- .element: class="fragment" data-fragment-index="1" -->
-- Organize                           <!-- .element: class="fragment" data-fragment-index="3" -->
-- Write less code :)                 <!-- .element: class="fragment" data-fragment-index="4" -->
-
----
-
-# Naming CSS classes: [BEM](http://getbem.com/)
-
-#### Block Element Modifier
-
-- Semantic                      <!-- .element: class="fragment" data-fragment-index="1" -->
-- Low specificity               <!-- .element: class="fragment" data-fragment-index="2" -->
-- Scopes styles to blocks       <!-- .element: class="fragment" data-fragment-index="3" -->
-
-```scss
-// block
-.example-widget {}
-
-// block__element
-.example-widget__input {}
-
-// block--modifier
-.example-widget--loading {}
-
-// block__element--modifier
-.example-widget__input--disabled {}
-```
-<!-- .element: class="fragment" data-fragment-index="4" -->
-
----
-
-# Recap
-
-- Consistency              <!-- .element: class="fragment" data-fragment-index="1" -->
-- User options             <!-- .element: class="fragment" data-fragment-index="2" -->
-- Authoring                <!-- .element: class="fragment" data-fragment-index="3" -->
 
 ---
 
@@ -350,10 +270,90 @@ class MyClass extends declared(Base) {
 
 ---
 
+
+# Widget Theming
+
+---
+
+# About
+
+- Why?                  <!-- .element: class="fragment" data-fragment-index="1" -->
+  - Consistency         <!-- .element: class="fragment" data-fragment-index="2" -->
+    - Visual            <!-- .element: class="fragment" data-fragment-index="3" -->
+    - Functional        <!-- .element: class="fragment" data-fragment-index="3" -->
+  - User options        <!-- .element: class="fragment" data-fragment-index="4" -->
+    - Out-of-the-box    <!-- .element: class="fragment" data-fragment-index="5" -->
+    - Custom            <!-- .element: class="fragment" data-fragment-index="6" -->
+- How?                  <!-- .element: class="fragment" data-fragment-index="7" -->
+  - Sass                <!-- .element: class="fragment" data-fragment-index="8" -->
+  - BEM                 <!-- .element: class="fragment" data-fragment-index="9" -->
+
+---
+
+# Out-of-the-box themes
+
+[Theme Switcher](../demos/themes/)
+
+<img src="images/theme-switcher.png" width="50%"/>
+
+---
+
+# Theming with Sass
+
+- CSS preprocessor                  <!-- .element: class="fragment" data-fragment-index="1" -->
+- Powered-up CSS                     <!-- .element: class="fragment" data-fragment-index="2" -->
+  - Nesting                          <!-- .element: class="fragment" data-fragment-index="3" -->
+  - Variables                         <!-- .element: class="fragment" data-fragment-index="4" -->
+  - Functions                         <!-- .element: class="fragment" data-fragment-index="5" -->
+  - Mixins                            <!-- .element: class="fragment" data-fragment-index="6" -->
+  - Inheritance                       <!-- .element: class="fragment" data-fragment-index="7" -->
+
+---
+
+# Sass makes it easier to...
+
+- Restyle                            <!-- .element: class="fragment" data-fragment-index="1" -->
+- Organize                           <!-- .element: class="fragment" data-fragment-index="3" -->
+- Write less code :)                 <!-- .element: class="fragment" data-fragment-index="4" -->
+
+---
+
+# Naming CSS classes: [BEM](http://getbem.com/)
+
+#### Block Element Modifier
+
+- Semantic                      <!-- .element: class="fragment" data-fragment-index="1" -->
+- Low specificity               <!-- .element: class="fragment" data-fragment-index="2" -->
+- Scopes styles to blocks       <!-- .element: class="fragment" data-fragment-index="3" -->
+
+```scss
+// block
+.example-widget {}
+
+// block__element
+.example-widget__input {}
+
+// block--modifier
+.example-widget--loading {}
+
+// block__element--modifier
+.example-widget__input--disabled {}
+```
+<!-- .element: class="fragment" data-fragment-index="4" -->
+
+---
+
+# Recap
+
+- Consistency              <!-- .element: class="fragment" data-fragment-index="1" -->
+- User options             <!-- .element: class="fragment" data-fragment-index="2" -->
+- Authoring                <!-- .element: class="fragment" data-fragment-index="3" -->
+
+---
+
 <!-- Presenter: Matt -->
 
 # Let's build a widget!
-
 
 
 [Bookmarks](../demos/bookmarks-complete)
