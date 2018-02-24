@@ -1,4 +1,4 @@
-<!-- .slide: data-background="images/start-background.png" -->
+<!-- .slide: data-background="img/bg-1.png" data-background-size="cover" style="padding-left: 80px;" -->
 <!-- Presenter: Matt -->
 
 # Developing Your Own Widget with the ArcGIS API for JavaScript
@@ -17,7 +17,7 @@
 
 ---
 
-<!-- .slide: data-background="images/section-background.png" -->
+
 
 # Widgets
 
@@ -36,8 +36,6 @@
   - Different frameworks are available          <!-- .element: class="fragment" data-fragment-index="9" -->
 
 ---
-
-<!-- .slide: data-background="images/section-background.png" -->
 
 # Widget Theming
 
@@ -59,8 +57,6 @@
 ---
 
 # Out-of-the-box themes
-
-<!-- .slide: data-background="images/demo-background.png" -->
 
 [Theme Switcher](../demos/themes/)
 
@@ -122,8 +118,6 @@
 ---
 
 <!-- Presenter: JC -->
-
-<!-- .slide: data-background="images/section-background.png" -->
 
 # Widget Framework
 
@@ -360,7 +354,7 @@ class MyClass extends declared(Base) {
 
 # Let's build a widget!
 
-<!-- .slide: data-background="images/demo-background.png" -->
+
 
 [Bookmarks](../demos/bookmarks-complete)
 
@@ -370,7 +364,7 @@ class MyClass extends declared(Base) {
 
 # Let's build a widget!
 
-<!-- .slide: data-background="images/demo-background.png" -->
+
 
 - [Demo Start](../demos/bookmarks-start/)
 - [HTML Steps](https://github.com/jcfranco/ds-2018-developing-your-own-widget/blob/master/demos/HTML-steps.md)
@@ -418,7 +412,7 @@ class MyClass extends declared(Base) {
 
 ---
 
-<!-- .slide: data-background="images/survey-background.png" -->
+
 
 ---
 
@@ -426,8 +420,10 @@ class MyClass extends declared(Base) {
 
 ---
 
+<!-- .slide: data-background="img/bg-final.jpg" -->
+
 # Thank you!
 
 ---
 
-<!-- .slide: data-background="images/end-background.png" -->
+
