@@ -6,8 +6,7 @@ import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport
 
 import Widget = require("esri/widgets/Widget");
 import HandleRegistry = require("esri/core/HandleRegistry");
-import widgetUtils = require("esri/widgets/support/widgetUtils");
-import { accessibleHandler, join, renderable, tsx } from "esri/widgets/support/widget";
+import { accessibleHandler, join, renderable, cssTransition, tsx } from "esri/widgets/support/widget";
 
 import BookmarksViewModel = require("./Bookmarks/BookmarksViewModel");
 import BookmarkItem = require("./Bookmarks/BookmarkItem");
@@ -105,7 +104,7 @@ class Bookmarks extends declared(Widget) {
   render() {
     const bookmarkNodes = this._renderBookmarks();
 
-    const fadeInAnimation = widgetUtils.cssTransition("enter", CSS.fadeIn);
+    const fadeInAnimation = cssTransition("enter", CSS.fadeIn);
 
     const { state } = this.viewModel;
 
