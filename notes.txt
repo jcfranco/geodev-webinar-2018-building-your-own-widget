@@ -1,0 +1,14 @@
+Building widgets Session
+
+- Dojo 2 widgets (new)
+- Patterns
+- Nesting widgets
+  - ours
+  - 3rd party
+- Virtual dom talk
+
+
+What widget to build?
+
+- Bookmarks/bookmark item
+- overview map
