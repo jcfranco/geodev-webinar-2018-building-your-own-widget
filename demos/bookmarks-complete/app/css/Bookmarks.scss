@@ -1,0 +1,81 @@
+.demo-bookmarks {
+  min-width: 250px;
+  max-width: 350px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+
+  &__loading {
+    padding: 40px;
+  }
+
+  &__list {
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    padding: 5px 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    position: relative;
+
+    &:hover {
+      background-color: #eee;
+    }
+
+    &:first-child {
+      border-top: none;
+    }
+
+    &--active,
+    &--active:hover,
+    &--active:focus {
+      color: #333;
+      background-color: #fff;
+      cursor: default;
+    }
+
+    &--active:after {
+      content: "";
+      position: absolute;
+      height: 2px;
+      top: 0;
+      background-color: #4c4c4c;
+      width: 100%;
+      z-index: 2;
+      animation: looping-progresss-bar-ani 1500ms linear infinite
+    }
+
+  }
+
+  &--fade-in {
+    opacity: 0;
+    transition: opacity 375ms ease-out;
+  }
+
+  &--fade-in-active {
+    opacity: 1;
+  }
+
+  @keyframes looping-progresss-bar-ani {
+    0% {
+      left: 0%;
+      width: 0%
+    }
+    20% {
+      left: 0%;
+      width: 20%
+    }
+    80% {
+      left: 80%;
+      width: 20%
+    }
+    100% {
+      left: 100%;
+      width: 0%
+    }
+  }
+
+}
