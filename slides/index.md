@@ -216,11 +216,11 @@ class MyWidget extends declared(Widget) {
 # Let's build a widget!
 
 - [Demo Start](../demos/bookmarks-start/)
-- [HTML Steps](https://github.com/jcfranco/ds-2018-developing-your-own-widget/blob/master/demos/HTML-steps.md)
-- [ViewModel Steps](https://github.com/jcfranco/ds-2018-developing-your-own-widget/blob/master/demos/ViewModel-steps.md)
+- [HTML Steps](https://github.com/jcfranco/dev-summit-2018-developing-your-own-widget/blob/master/demos/HTML-steps.md)
+- [ViewModel Steps](https://github.com/jcfranco/dev-summit-2018-developing-your-own-widget/blob/master/demos/ViewModel-steps.md)
 <!-- Presenter: JC -->
-- [View Steps](https://github.com/jcfranco/ds-2018-developing-your-own-widget/blob/master/demos/View-steps.md)
-- [Sass Steps](https://github.com/jcfranco/ds-2018-developing-your-own-widget/blob/master/demos/Sass-steps.md)
+- [View Steps](https://github.com/jcfranco/dev-summit-2018-developing-your-own-widget/blob/master/demos/View-steps.md)
+- [Sass Steps](https://github.com/jcfranco/dev-summit-2018-developing-your-own-widget/blob/master/demos/Sass-steps.md)
 
 ---
 
