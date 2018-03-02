@@ -353,6 +353,11 @@ class MyWidget extends declared(Widget) {
 
 ---
 
+<!-- **please rate us** -->
+<!-- .slide: data-background="img/ds18-survey.png" -->
+
+---
+
 <!-- .slide: data-background="img/bg-final.jpg" -->
 
 # Thank you!
