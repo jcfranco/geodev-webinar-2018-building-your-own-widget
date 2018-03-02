@@ -1,7 +1,7 @@
 <!-- .slide: data-background="img/bg-1.png" data-background-size="cover" -->
 <!-- Presenter: Matt -->
 
-# Developing Your Own Widget with the ArcGIS API for JavaScript
+# Building Your Own Widget with the ArcGIS API for JavaScript
 
 ### Matt Driscoll – [@driskull](https://twitter.com/driskull)
 ### JC Franco – [@arfncode](https://twitter.com/arfncode)
@@ -216,11 +216,11 @@ class MyWidget extends declared(Widget) {
 # Let's build a widget!
 
 - [Demo Start](../demos/bookmarks-start/)
-- [HTML Steps](https://github.com/jcfranco/dev-summit-2018-developing-your-own-widget/blob/master/demos/HTML-steps.md)
-- [ViewModel Steps](https://github.com/jcfranco/dev-summit-2018-developing-your-own-widget/blob/master/demos/ViewModel-steps.md)
+- [HTML Steps](https://github.com/jcfranco/dev-summit-2018-building-your-own-widget/blob/master/demos/HTML-steps.md)
+- [ViewModel Steps](https://github.com/jcfranco/dev-summit-2018-building-your-own-widget/blob/master/demos/ViewModel-steps.md)
 <!-- Presenter: JC -->
-- [View Steps](https://github.com/jcfranco/dev-summit-2018-developing-your-own-widget/blob/master/demos/View-steps.md)
-- [Sass Steps](https://github.com/jcfranco/dev-summit-2018-developing-your-own-widget/blob/master/demos/Sass-steps.md)
+- [View Steps](https://github.com/jcfranco/dev-summit-2018-building-your-own-widget/blob/master/demos/View-steps.md)
+- [Sass Steps](https://github.com/jcfranco/dev-summit-2018-building-your-own-widget/blob/master/demos/Sass-steps.md)
 
 ---
 
