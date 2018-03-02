@@ -17,8 +17,6 @@
 
 ---
 
-
-
 # Widgets
 
 ---
@@ -43,7 +41,7 @@
 
 ---
 
-# About
+# Architecture
 
 - Views + ViewModels         <!-- .element: class="fragment" data-fragment-index="1" -->
  - Separation of concerns    <!-- .element: class="fragment" data-fragment-index="2" -->
@@ -56,7 +54,7 @@
 
 # Views
 
-- Extend esri/widgets/Widget      <!-- .element: class="fragment" data-fragment-index="1" -->
+- <!-- .element: class="fragment" data-fragment-index="1" --> Extend `esri/widgets/Widget`
 - Rely on ViewModel                 <!-- .element: class="fragment" data-fragment-index="2" -->
 - Focus on UI                       <!-- .element: class="fragment" data-fragment-index="3" -->
 
@@ -64,9 +62,20 @@
 
 # ViewModels
 
-- Extend esri/core/Accessor       <!-- .element: class="fragment" data-fragment-index="1" -->
+<!-- front-loaded to fade entire fragment -->
+- <!-- .element: class="fragment" data-fragment-index="1" --> Extend `esri/core/Accessor`
 - Provide APIs to support view                    <!-- .element: class="fragment" data-fragment-index="2" -->
 - Focus on business logic                    <!-- .element: class="fragment" data-fragment-index="3" -->
+
+---
+
+# View + ViewModel in action
+
+* View renders its state                          <!-- .element: class="fragment" data-fragment-index="1" -->
+  * state = view + ViewModel props                <!-- .element: class="fragment" data-fragment-index="2" -->
+* View calls VMs APIs                             <!-- .element: class="fragment" data-fragment-index="3" -->
+  * causes a change (e.g., property or result)    <!-- .element: class="fragment" data-fragment-index="4" -->
+* View updates                                    <!-- .element: class="fragment" data-fragment-index="5" -->
 
 ---
 
@@ -94,161 +103,34 @@
 - Defines UI                <!-- .element: class="fragment" data-fragment-index="1" -->
 - Reacts to state           <!-- .element: class="fragment" data-fragment-index="2" -->
 - Uses JSX                  <!-- .element: class="fragment" data-fragment-index="3" -->
-
-```js
-render() {
-  const x = Number(x).toFixed(3);
-  const y = Number(y).toFixed(3);
-  const scale = Number(scale).toFixed(5);
-
-  return (
-    <div bind={this} class={CSS.base} onclick={this._handleClick}>
-      <p>x: {x}</p>
-      <p>y: {y}</p>
-      <p>scale: {scale}</p>
-    </div>
-  );
-}
-```
-<!-- .element: class="fragment current-visible" data-fragment-index="4" -->
+- VDOM                      <!-- .element: class="fragment" data-fragment-index="4" -->
 
 ---
 
-# TypeScript
+# VDOM
 
-- Typed JavaScript <!-- .element: class="fragment" data-fragment-index="1" -->
-
-```ts
-type PresenterName = "Matt" | "JC";
-
-interface Person {
-  name: string;
-}
-
-interface Presenter extends Person {
-  name: PresenterName;
-}
-
-// TS2322: Type '{ name: "Alan" };' is not assignable to type 'Presenter'.
-const myPresenter: Presenter = { name: "Alan" };
-```
-<!-- .element: class="fragment hidden" data-fragment-index="2" -->
+* DOM abstraction                                                                 <!-- .element: class="fragment" data-fragment-index="1" -->
+  * single entry point for rendering                                              <!-- .element: class="fragment" data-fragment-index="2" -->
+  * other part of VDOM system decides whether DOM was affected by diffing         <!-- .element: class="fragment" data-fragment-index="3" -->
+  * only true changes cause DOM updates                                           <!-- .element: class="fragment" data-fragment-index="4" -->
 
 ---
 
-# TypeScript
+# VDOM
 
-- JS of the future, now
-
-```ts
-// const
-const numbers = [1, 2, 3];
-
-// fat arrow functions
-letters.forEach(letter => console.log(letter));
-
-// template literals
-const myString = `last number: ${ numbers[ numbers.length - 1 ] }`;
-
-// decorators
-class Example {
-  @log
-  stringify(item: object): string { /* ... */ }
-}
-```
-<!-- .element: class="fragment" data-fragment-index="1" -->
+* Key components                                                                                        <!-- .element: class="fragment" data-fragment-index="1" -->
+  * projector - attaches to the DOM, does diffing and updates DOM when necessary                        <!-- .element: class="fragment" data-fragment-index="2" -->
+  * vnode trees - virtual representation of the DOM between renders                                     <!-- .element: class="fragment" data-fragment-index="3" -->
+  * in 4x each widget can be a projector                                                                <!-- .element: class="fragment" data-fragment-index="4" -->
+    * <!-- .element: class="fragment" data-fragment-index="5" --> when given a `container` property
+  * but doesn't have to act as one                                                                      <!-- .element: class="fragment" data-fragment-index="6" -->
+    * <!-- .element: class="fragment" data-fragment-index="7" --> Using `render` produces a VNode for that widget that can be used in another widget's rendering
 
 ---
 
-# TypeScript
+# Implementing
 
-- IDE support
-  - Visual Studio, WebStorm, Sublime, and more!  <!-- .element: class="fragment" data-fragment-index="1" -->
-
----
-
-# Defining a class
-
-```ts
-/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
-/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
-
-import { declared, subclass } from "esri/core/accessorSupport/decorators";
- 
-import Base = require("my/class/base");
-
-@subclass("MyClass")
-class MyClass extends declared(Base) {
-
-}
-
-export = MyClass;
-```
-
----
-
-# Defining a variable
-
-```ts
-// ...
-
-@subclass("MyClass")
-class MyClass extends declared(Base) {
-
-  // adds variable `_foo` 
-  _foo: Foo = new Foo();
-  
-}
-
-// ...
-```
-
----
-
-# Defining a property
-
-```ts
-// ...
-
-@subclass("MyClass")
-class MyClass extends declared(Base) {
-
-  // adds property `foo` 
-  @property()
-  foo: Foo = new Foo();
-  
-}
-
-// ...
-```
-
----
-
-# Defining a method
-
-```ts
-// ...
-
-@subclass("MyClass")
-class MyClass extends declared(Base) {
-
-  // adds method `bar` 
-  bar(): string {
-    return this._getText();
-  }
-  
-  private _getText(): string {
-    // gets text
-  }
-  
-}
-
-// ...
-```
-
----
-
-# Widget decorators
+##  Widget decorators
 
 - @subclass + declared      <!-- .element: class="fragment" data-fragment-index="1" -->
 - @property                 <!-- .element: class="fragment" data-fragment-index="2" -->
@@ -262,14 +144,93 @@ class MyClass extends declared(Base) {
 
 ---
 
-# Recap
+# Implementing
 
-- Views + ViewModels           <!-- .element: class="fragment" data-fragment-index="1" -->
-- esri/widgets/Widget     <!-- .element: class="fragment" data-fragment-index="2" -->
-- TypeScript     <!-- .element: class="fragment" data-fragment-index="3" -->
+- <!-- .element: class="fragment" data-fragment-index="1" --> Extend `esri/widgets/Widget`
+
+```js
+/// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
+/// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
+
+@subclass("MyWidget")
+class MyWidget extends declared(Widget) {
+   
+}
+
+export = MyWidget;
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
 
 ---
 
+# Implementing
+
+- <!-- .element: class="fragment" data-fragment-index="1" --> Implement `render`
+
+```js
+// ...
+class MyWidget extends declared(Widget) {
+  render() {
+    return (
+      <div>I'm a widget</div>
+    );
+  }
+}
+// ...
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+---
+
+# Implementing
+
+- <!-- .element: class="fragment" data-fragment-index="1" --> Define properties
+
+```js
+// ...
+  @property()
+  @renderable()
+  name: string = "I'm a widget";
+  
+  render() {
+    return (
+      <div>{this.name}</div>
+    );
+  }
+// ...
+```
+<!-- .element: class="fragment" data-fragment-index="1" -->
+
+---
+
+<!-- Presenter: Matt -->
+
+# Let's build a widget!
+
+[Bookmarks](../demos/bookmarks-complete)
+
+<img src="img/bookmarks.png" width="50%"/>
+
+---
+
+# Let's build a widget!
+
+- [Demo Start](../demos/bookmarks-start/)
+- [HTML Steps](https://github.com/jcfranco/ds-2018-developing-your-own-widget/blob/master/demos/HTML-steps.md)
+- [ViewModel Steps](https://github.com/jcfranco/ds-2018-developing-your-own-widget/blob/master/demos/ViewModel-steps.md)
+<!-- Presenter: JC -->
+- [View Steps](https://github.com/jcfranco/ds-2018-developing-your-own-widget/blob/master/demos/View-steps.md)
+- [Sass Steps](https://github.com/jcfranco/ds-2018-developing-your-own-widget/blob/master/demos/Sass-steps.md)
+
+---
+
+# Recap
+
+- Views + ViewModels <!-- .element: class="fragment" data-fragment-index="1" -->
+- <!-- .element: class="fragment" data-fragment-index="2" --> `esri/widgets/Widget`
+- TypeScript     <!-- .element: class="fragment" data-fragment-index="3" -->
+
+---
 
 # Widget Theming
 
@@ -353,40 +314,16 @@ class MyClass extends declared(Base) {
 
 <!-- Presenter: Matt -->
 
-# Let's build a widget!
-
-
-[Bookmarks](../demos/bookmarks-complete)
-
-<img src="images/magnifier.png" width="50%"/>
-
----
-
-# Let's build a widget!
-
-
-
-- [Demo Start](../demos/bookmarks-start/)
-- [HTML Steps](https://github.com/jcfranco/ds-2018-developing-your-own-widget/blob/master/demos/HTML-steps.md)
-- [ViewModel Steps](https://github.com/jcfranco/ds-2018-developing-your-own-widget/blob/master/demos/ViewModel-steps.md)
-<!-- Presenter: JC -->
-- [View Steps](https://github.com/jcfranco/ds-2018-developing-your-own-widget/blob/master/demos/View-steps.md)
-- [Sass Steps](https://github.com/jcfranco/ds-2018-developing-your-own-widget/blob/master/demos/Sass-steps.md)
-
----
-
-<!-- Presenter: Matt -->
-
 # Let's Recap
 
 - Widgets are single functionality UI components
 - We use them for reusability/interchangeability
-- Widget Themes
-  - SASS
 - Widget Framework
 - Constructing a widget
   - ViewModels
   - Views
+- Widget Themes
+  - SASS
 
 ---
 
@@ -409,10 +346,6 @@ class MyClass extends declared(Base) {
 # Use the source, Luke
 
 ## [esriurl.com/buildwidgetsds2018](http://esriurl.com/buildwidgetsds2018)
-
----
-
-
 
 ---
 
