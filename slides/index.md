@@ -203,11 +203,19 @@ class MyWidget extends declared(Widget) {
 
 ---
 
+# Nesting Widgets
+
+[Expand Widget](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Expand.html)
+[Expand.tsx](https://github.com/Esri/arcgis-js-api/blob/4master/widgets/Expand.tsx)
+
+---
+
 <!-- Presenter: Matt -->
 
 # Let's build a widget!
 
 [Bookmarks](../demos/bookmarks-complete)
+[Bookmarks Doc](https://developers.arcgis.com/javascript/latest/api-reference/esri-WebMap.html#bookmarks)
 
 <img src="img/bookmarks.png" width="50%"/>
 
