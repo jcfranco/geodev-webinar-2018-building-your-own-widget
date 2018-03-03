@@ -57198,7 +57198,7 @@ or if that is not present then it will be automatically generated.
      * @param classNames The class names.
      *
      */
-    classes(classNames: string | string[] | any): string;
+    classes(...classNames: (string | string[] | any)[]): string;
     /**
      * Destroys the widget instance.
      *

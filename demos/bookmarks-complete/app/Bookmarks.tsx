@@ -6,7 +6,7 @@ import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport
 
 import Widget = require("esri/widgets/Widget");
 import HandleRegistry = require("esri/core/HandleRegistry");
-import { accessibleHandler, join, renderable, cssTransition, tsx } from "esri/widgets/support/widget";
+import { accessibleHandler, renderable, cssTransition, tsx } from "esri/widgets/support/widget";
 
 import BookmarksViewModel = require("./Bookmarks/BookmarksViewModel");
 import BookmarkItem = require("./Bookmarks/BookmarkItem");
@@ -152,8 +152,7 @@ class Bookmarks extends declared(Widget) {
     return (
       <li bind={this}
         data-bookmark-item={bookmarkItem}
-        class={CSS.bookmarkItem}
-        classes={bookmarkItemClasses}
+        class={this.classes(CSS.bookmarkItem, bookmarkItemClasses)}
         onclick={this._goToBookmark}
         onkeydown={this._goToBookmark}
         tabIndex={0}
@@ -161,7 +160,7 @@ class Bookmarks extends declared(Widget) {
         title={i18n.goToBookmark}
         aria-label={name}
       >
-        <span class={join(CSS.iconClass, CSS.bookmarkItemIcon)} /> {name}
+        <span class={this.classes(CSS.iconClass, CSS.bookmarkItemIcon)} /> {name}
       </li>
     );
   }

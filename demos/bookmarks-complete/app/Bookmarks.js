@@ -106,8 +106,8 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
             var bookmarkItemClasses = (_a = {},
                 _a[CSS.bookmarkItemActive] = active,
                 _a);
-            return (widget_1.tsx("li", { bind: this, "data-bookmark-item": bookmarkItem, class: CSS.bookmarkItem, classes: bookmarkItemClasses, onclick: this._goToBookmark, onkeydown: this._goToBookmark, tabIndex: 0, role: "button", title: i18n.goToBookmark, "aria-label": name },
-                widget_1.tsx("span", { class: widget_1.join(CSS.iconClass, CSS.bookmarkItemIcon) }),
+            return (widget_1.tsx("li", { bind: this, "data-bookmark-item": bookmarkItem, class: this.classes(CSS.bookmarkItem, bookmarkItemClasses), onclick: this._goToBookmark, onkeydown: this._goToBookmark, tabIndex: 0, role: "button", title: i18n.goToBookmark, "aria-label": name },
+                widget_1.tsx("span", { class: this.classes(CSS.iconClass, CSS.bookmarkItemIcon) }),
                 " ",
                 name));
             var _a;
