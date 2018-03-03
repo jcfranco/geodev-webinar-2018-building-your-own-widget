@@ -102,17 +102,17 @@ class Bookmarks extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   render() {
-    const bookmarkNodes = this._renderBookmarks();
-
     const fadeInAnimation = cssTransition("enter", CSS.fadeIn);
-
-    const { state } = this.viewModel;
 
     const loadingNode = (
       <div class={CSS.loading}>
         <span class={CSS.loadingIcon} />
       </div>
     );
+
+    const bookmarkNodes = this._renderBookmarks();
+
+    const { state } = this.viewModel;
 
     const bookmarkListNode = state === "ready" && bookmarkNodes.length ? [
       <ul
@@ -136,25 +136,6 @@ class Bookmarks extends declared(Widget) {
   //
   //--------------------------------------------------------------------------
 
-  private _bookmarkItemsChanged(): void {
-    const itemsKey = "items";
-    const { bookmarkItems } = this.viewModel;
-    const { _handles } = this;
-
-    _handles.remove(itemsKey);
-
-    const handles = bookmarkItems.map(bookmarkItem => {
-      return watchUtils.watch(bookmarkItem, [
-        "active",
-        "name"
-      ], () => this.scheduleRender());
-    });
-
-    _handles.add(handles, itemsKey);
-
-    this.scheduleRender();
-  }
-
   private _renderBookmarks(): any {
     const { bookmarkItems } = this.viewModel;
 
@@ -177,12 +158,31 @@ class Bookmarks extends declared(Widget) {
         onkeydown={this._goToBookmark}
         tabIndex={0}
         role="button"
-        title={i18n.zoomTo}
+        title={i18n.goToBookmark}
         aria-label={name}
       >
         <span class={join(CSS.iconClass, CSS.bookmarkItemIcon)} /> {name}
       </li>
     );
+  }
+
+  private _bookmarkItemsChanged(): void {
+    const itemsKey = "items";
+    const { bookmarkItems } = this.viewModel;
+    const { _handles } = this;
+
+    _handles.remove(itemsKey);
+
+    const handles = bookmarkItems.map(bookmarkItem => {
+      return watchUtils.watch(bookmarkItem, [
+        "active",
+        "name"
+      ], () => this.scheduleRender());
+    });
+
+    _handles.add(handles, itemsKey);
+
+    this.scheduleRender();
   }
 
   @accessibleHandler()

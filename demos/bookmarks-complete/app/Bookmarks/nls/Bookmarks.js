@@ -1,7 +1,7 @@
 define({
   root: ({
     label: "Bookmarks",
-    zoomTo: "Zoom to bookmark"
+    goToBookmark: "Go to bookmark"
   }),
   "es": 1
 });
