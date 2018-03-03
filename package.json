@@ -10,7 +10,6 @@
     "reveal.js": "^3.5.0"
   },
   "devDependencies": {
-    "@types/arcgis-js-api": "^4.6.0",
     "dojo-typings": "^1.11.7",
     "grunt": "^1.0.1",
     "grunt-sass": "^2.0.0",

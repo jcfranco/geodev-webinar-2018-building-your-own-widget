@@ -16,7 +16,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/core/tsSupport/decorateHelper", "esri/core/watchUtils", "esri/core/accessorSupport/decorators", "esri/widgets/Widget", "esri/core/HandleRegistry", "esri/widgets/support/widgetUtils", "esri/widgets/support/widget", "./Bookmarks/BookmarksViewModel", "dojo/i18n!./Bookmarks/nls/Bookmarks"], function (require, exports, __extends, __decorate, watchUtils, decorators_1, Widget, HandleRegistry, widgetUtils, widget_1, BookmarksViewModel, i18n) {
+define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/core/tsSupport/decorateHelper", "esri/core/watchUtils", "esri/core/accessorSupport/decorators", "esri/widgets/Widget", "esri/core/HandleRegistry", "esri/widgets/support/widget", "./Bookmarks/BookmarksViewModel", "dojo/i18n!./Bookmarks/nls/Bookmarks"], function (require, exports, __extends, __decorate, watchUtils, decorators_1, Widget, HandleRegistry, widget_1, BookmarksViewModel, i18n) {
     "use strict";
     var CSS = {
         base: "demo-bookmarks",
@@ -78,11 +78,11 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
         //
         //--------------------------------------------------------------------------
         Bookmarks.prototype.render = function () {
-            var bookmarkNodes = this._renderBookmarks();
-            var fadeInAnimation = widgetUtils.cssTransition("enter", CSS.fadeIn);
-            var state = this.viewModel.state;
+            var fadeInAnimation = widget_1.cssTransition("enter", CSS.fadeIn);
             var loadingNode = (widget_1.tsx("div", { class: CSS.loading },
                 widget_1.tsx("span", { class: CSS.loadingIcon })));
+            var bookmarkNodes = this._renderBookmarks();
+            var state = this.viewModel.state;
             var bookmarkListNode = state === "ready" && bookmarkNodes.length ? [
                 widget_1.tsx("ul", { enterAnimation: fadeInAnimation, "aria-label": i18n.label, class: CSS.bookmarkList }, bookmarkNodes)
             ] :
@@ -96,6 +96,22 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
         //  Private Methods
         //
         //--------------------------------------------------------------------------
+        Bookmarks.prototype._renderBookmarks = function () {
+            var _this = this;
+            var bookmarkItems = this.viewModel.bookmarkItems;
+            return bookmarkItems.toArray().map(function (bookmarkItem) { return _this._renderBookmark(bookmarkItem); });
+        };
+        Bookmarks.prototype._renderBookmark = function (bookmarkItem) {
+            var active = bookmarkItem.active, name = bookmarkItem.name;
+            var bookmarkItemClasses = (_a = {},
+                _a[CSS.bookmarkItemActive] = active,
+                _a);
+            return (widget_1.tsx("li", { bind: this, "data-bookmark-item": bookmarkItem, class: CSS.bookmarkItem, classes: bookmarkItemClasses, onclick: this._goToBookmark, onkeydown: this._goToBookmark, tabIndex: 0, role: "button", title: i18n.goToBookmark, "aria-label": name },
+                widget_1.tsx("span", { class: widget_1.join(CSS.iconClass, CSS.bookmarkItemIcon) }),
+                " ",
+                name));
+            var _a;
+        };
         Bookmarks.prototype._bookmarkItemsChanged = function () {
             var _this = this;
             var itemsKey = "items";
@@ -110,22 +126,6 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
             });
             _handles.add(handles, itemsKey);
             this.scheduleRender();
-        };
-        Bookmarks.prototype._renderBookmarks = function () {
-            var _this = this;
-            var bookmarkItems = this.viewModel.bookmarkItems;
-            return bookmarkItems.toArray().map(function (bookmarkItem) { return _this._renderBookmark(bookmarkItem); });
-        };
-        Bookmarks.prototype._renderBookmark = function (bookmarkItem) {
-            var active = bookmarkItem.active, name = bookmarkItem.name;
-            var bookmarkItemClasses = (_a = {},
-                _a[CSS.bookmarkItemActive] = active,
-                _a);
-            return (widget_1.tsx("li", { bind: this, "data-bookmark-item": bookmarkItem, class: CSS.bookmarkItem, classes: bookmarkItemClasses, onclick: this._goToBookmark, onkeydown: this._goToBookmark, tabIndex: 0, role: "button", title: i18n.zoomTo, "aria-label": name },
-                widget_1.tsx("span", { class: widget_1.join(CSS.iconClass, CSS.bookmarkItemIcon) }),
-                " ",
-                name));
-            var _a;
         };
         Bookmarks.prototype._goToBookmark = function (event) {
             var node = event.currentTarget;
