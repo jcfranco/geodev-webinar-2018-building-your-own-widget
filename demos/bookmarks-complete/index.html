@@ -5,8 +5,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
 
-  <title>Bookmarks Widget</title>
-
   <link rel="stylesheet" href="https://js.arcgis.com/4.7/esri/css/main.css">
 
   <link rel="stylesheet" href="app/css/Bookmarks.css">
@@ -16,6 +14,7 @@
     var demoLocation = href.slice(0, href.lastIndexOf("/"));
     var dojoConfig = {
       async: true,
+      //locale: "es",
       packages: [{
         name: "demo",
         location: demoLocation + "/app"
@@ -28,18 +27,12 @@
 
   <style>
     html,
-    body {
-      height: 100%;
-      width: 100%;
-      margin: 0;
-      padding: 0;
-    }
-
+    body,
     #viewDiv {
-      padding: 0;
-      margin: 0;
       height: 100%;
       width: 100%;
+      margin: 0;
+      padding: 0;
       overflow: hidden;
     }
 
@@ -61,29 +54,29 @@
       Bookmarks
     ) {
 
-        var webmap = new WebMap({
-          portalItem: {
-            id: "402451b7c31247a6a61d7f3d077139bf"
-          }
-        });
-
-        view = new MapView({
-          container: "viewDiv",
-          map: webmap
-        });
-
-        bookmarks = new Bookmarks({
-          view: view
-        });
-
-        var expand = new Expand({
-          view: view,
-          content: bookmarks
-        });
-
-        view.ui.add(expand, "top-right");
-
+      var map = new WebMap({
+        portalItem: {
+          id: "402451b7c31247a6a61d7f3d077139bf"
+        }
       });
+
+      view = new MapView({
+        container: "viewDiv",
+        map: map
+      });
+
+      bookmarks = new Bookmarks({
+        view: view
+      });
+
+      var expand = new Expand({
+        view: view,
+        content: bookmarks
+      });
+
+      view.ui.add(expand, "top-right");
+
+    });
 
   </script>
 </head>
