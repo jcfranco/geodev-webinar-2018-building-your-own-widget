@@ -207,7 +207,7 @@ We'll need this for typing the `Map`.
 import Map = require("esri/Map");
 ```
 
-### Progress report
+### ** Progress report **
 
 So now once a view has been added to the ViewModel, it will watch the view for its `map` and then get the `map.bookmarks` and create a `Collection` of `BookmarkItem`s.
 
@@ -260,7 +260,7 @@ We'll need to use `esri/core/promiseUtils` to easily return a promise when an er
 import promiseUtils = require("esri/core/promiseUtils");
 ```
 
-### Progress report
+### ** Progress report **
 
 Now we've assembled our ViewModel and the brains of our widget is finished! We can use this ViewModel to build a View.
 
