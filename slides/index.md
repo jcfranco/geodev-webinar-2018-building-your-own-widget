@@ -148,7 +148,7 @@
 
 - <!-- .element: class="fragment" data-fragment-index="1" --> Extend `esri/widgets/Widget`
 
-```js
+```ts
 /// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
@@ -167,7 +167,7 @@ export = MyWidget;
 
 - <!-- .element: class="fragment" data-fragment-index="1" --> Implement `render`
 
-```js
+```ts
 // ...
 class MyWidget extends declared(Widget) {
   render() {
@@ -186,7 +186,7 @@ class MyWidget extends declared(Widget) {
 
 - <!-- .element: class="fragment" data-fragment-index="1" --> Define properties
 
-```js
+```ts
 // ...
   @property()
   @renderable()
