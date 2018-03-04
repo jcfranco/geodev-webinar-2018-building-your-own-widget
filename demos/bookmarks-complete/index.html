@@ -39,8 +39,6 @@
   </style>
 
   <script>
-    var bookmarks, view;
-
     require([
       "esri/WebMap",
       "esri/views/MapView",
@@ -60,12 +58,12 @@
         }
       });
 
-      view = new MapView({
+      var view = new MapView({
         container: "viewDiv",
         map: map
       });
 
-      bookmarks = new Bookmarks({
+      var bookmarks = new Bookmarks({
         view: view
       });
 
