@@ -99,7 +99,7 @@ We need the MapView module for typing our `view` property
 import MapView = require("esri/views/MapView");
 ```
 
-### Progress report
+### ***** Progress report *****
 
 Now our properties are setup.
 
