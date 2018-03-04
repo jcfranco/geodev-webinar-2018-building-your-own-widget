@@ -154,7 +154,7 @@
 
 @subclass("MyWidget")
 class MyWidget extends declared(Widget) {
-   
+
 }
 
 export = MyWidget;
@@ -191,7 +191,7 @@ class MyWidget extends declared(Widget) {
   @property()
   @renderable()
   name: string = "I'm a widget";
-  
+
   render() {
     return (
       <div>{this.name}</div>
@@ -207,6 +207,96 @@ class MyWidget extends declared(Widget) {
 
 - [Expand Widget](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Expand.html)
 - [Expand.tsx](https://github.com/Esri/arcgis-js-api/blob/4master/widgets/Expand.tsx)
+
+---
+
+# **New in 4.7**
+
+* Simpler CSS setup <!-- .element: class="fragment" data-fragment-index="0" -->
+* Animation hooks <!-- .element: class="fragment" data-fragment-index="1" -->
+* <!-- .element: class="fragment" data-fragment-index="2" --> Default `iconClass` and `label` properties
+
+---
+
+# Simpler CSS class setup
+
+* <!-- .element: class="fragment" data-fragment-index="1" --> Use `class` attribute
+* <!-- .element: class="fragment" data-fragment-index="2" --> `Widget#classes` builds node class
+* <!-- .element: class="fragment" data-fragment-index="3" --> `join` utility is deprecated
+* <!-- .element: class="fragment" data-fragment-index="4" --> `classes` attribute is deprecated
+
+---
+
+# Simpler CSS class setup
+
+```ts
+// 4.6
+render() {
+  const dynamicClasses = { [CSS.active]: this.isActive };
+
+  return (
+    <div class={join(CSS.base, CSS.mixin)} classes={dynamicClasses}>{/* ... */}</div>
+  );
+}
+```
+
+---
+
+# Simpler CSS class setup
+
+```ts
+// 4.7
+render() {
+  const dynamicClasses = { [CSS.active]: this.isActive };
+
+  return (
+    <div class={this.classes(CSS.base, CSS.mixin, dynamicClasses)}>{/* ... */}</div>
+  );
+}
+```
+
+---
+
+# Animation Hooks
+
+* <!-- .element: class="fragment" data-fragment-index="0" --> CSS **or** JS
+* Node attributes <!-- .element: class="fragment" data-fragment-index="1" -->
+  *  <!-- .element: class="fragment" data-fragment-index="1" --> `enterAnimation`
+  *  <!-- .element: class="fragment" data-fragment-index="1" --> `exitAnimation`
+  *  <!-- .element: class="fragment" data-fragment-index="1" --> `updateAnimation` (JS-only)
+*  <!-- .element: class="fragment" data-fragment-index="2" --> `cssTransition` (CSS-only)
+
+---
+
+# Animation
+
+```ts
+༼ ༎ຶ ෴ ༎ຶ༽ TBD
+```
+
+---
+
+# `iconClass` and `label`
+
+* UI hints for container widgets <!-- .element: class="fragment" data-fragment-index="0" -->
+  * <!-- .element: class="fragment" data-fragment-index="1" --> `Expand` uses `iconClass` ([example](http://jsbin.com/gaqemat/edit?html,output))
+* <!-- .element: class="fragment" data-fragment-index="2" --> `iconClass` - [Esri icon font](https://developers.arcgis.com/javascript/latest/guide/esri-icon-font/) class name
+* <!-- .element: class="fragment" data-fragment-index="3" -->`label` – localized widget label
+
+```ts
+@subclass("MyWidget")
+class MyWidget extends declared(Widget) {
+
+  @property()
+  iconClass: string = "esri-icon-basemap";
+  
+  @property()
+  label: string = i18n.widgetLabel;
+
+}
+```
+
+<!-- .element: class="fragment" data-fragment-index="4" -->
 
 ---
 
