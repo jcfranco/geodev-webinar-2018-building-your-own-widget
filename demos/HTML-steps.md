@@ -1,12 +1,12 @@
 # `Bookmarks` Widget: HTML Steps
 
-1. Add a stylesheet for our `Bookmarks` widget.
+### 1. Add a stylesheet for our `Bookmarks` widget.
 
 ```html
 <link rel="stylesheet" href="app/css/Bookmarks.css">
 ```
 
-2. Setup Dojo Config for custom package.
+### 2. Setup Dojo Config for custom package.
 
 ```html
 <script>
@@ -14,47 +14,32 @@
   var demoLocation = href.slice(0, href.lastIndexOf("/"));
   var dojoConfig = {
     async: true,
+    //locale: "es",
     packages: [{
       name: "demo",
       location: demoLocation + "/app"
     }]
   };
+
 </script>
 ```
 
-3. Require our `Bookmarks` and `Expand` widgets, along with our map dependencies.
+### 3. Require our `Bookmarks` and `Expand` widgets, along with our other dependencies.
 
 ```js
-"esri/WebMap",
-"esri/views/MapView",
 "esri/widgets/Expand",
 "demo/Bookmarks",
 ```
 
-4. Set up our map
+### 4. Initialize `Bookmarks`
 
 ```js
-var webmap = new WebMap({
-  portalItem: {
-    id: "402451b7c31247a6a61d7f3d077139bf"
-  }
-});
-
-view = new MapView({
-  container: "viewDiv",
-  map: webmap
-});
-```
-
-5. Initialize `Bookmarks`
-
-```js
-bookmarks = new Bookmarks({
+var bookmarks = new Bookmarks({
   view: view
 });
 ```
 
-6. Add `Bookmarks` instance to the Expand widget and place in the view UI
+### 5. Add `Bookmarks` instance to the Expand widget and place in the view UI
 
 ```js
 var expand = new Expand({
@@ -64,3 +49,7 @@ var expand = new Expand({
 
 view.ui.add(expand, "top-right");
 ```
+
+## Next steps
+
+Next, we'll need to [setup a support class BookmarkItem](BookmarkItem-steps.md).

@@ -8,15 +8,14 @@ import HandleRegistry = require("esri/core/HandleRegistry");
 import promiseUtils = require("esri/core/promiseUtils");
 import watchUtils = require("esri/core/watchUtils");
 
-import Map = require("esri/Map");
-
-import MapView = require("esri/views/MapView");
-
 import Extent = require("esri/geometry/Extent");
 
 import Collection = require("esri/core/Collection");
-
 import BookmarkItem = require("./BookmarkItem");
+
+import MapView = require("esri/views/MapView");
+
+import Map = require("esri/Map");
 
 const BookmarkItemCollection = Collection.ofType<BookmarkItem>(BookmarkItem);
 
