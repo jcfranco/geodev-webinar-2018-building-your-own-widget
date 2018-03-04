@@ -3,6 +3,8 @@
   max-width: 350px;
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.4);
+  line-height: 16px;
+  font-size: 14px;
 
   &__loading {
     padding: 40px;
@@ -16,10 +18,14 @@
   }
 
   &__item {
-    padding: 5px 10px;
+    padding: 8px 12px;
     border-top: 1px solid rgba(0, 0, 0, 0.4);
     cursor: pointer;
     position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
 
     &:hover {
       background-color: #eee;
@@ -46,6 +52,14 @@
       width: 100%;
       z-index: 2;
       animation: looping-progresss-bar-ani 1500ms linear infinite
+    }
+
+    &-icon {
+      margin-right: 5px;
+    }
+
+    &-name {
+      flex: 1;
     }
 
   }
@@ -79,3 +93,38 @@
   }
 
 }
+
+html[dir="rtl"] .demo-bookmarks {
+  &__item {
+
+    &--active:after {
+      animation: looping-progresss-bar-ani-rtl 1500ms linear infinite
+    }
+
+    &-icon {
+      margin-right: 0;
+      margin-left: 5px;
+    }
+
+  }
+
+  @keyframes looping-progresss-bar-ani-rtl {
+    0% {
+      right: 0%;
+      width: 0%
+    }
+    20% {
+      right: 0%;
+      width: 20%
+    }
+    80% {
+      right: 80%;
+      width: 20%
+    }
+    100% {
+      right: 100%;
+      width: 0%
+    }
+  }
+}
+

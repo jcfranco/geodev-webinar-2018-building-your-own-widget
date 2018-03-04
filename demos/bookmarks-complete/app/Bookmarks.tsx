@@ -24,6 +24,7 @@ const CSS = {
   bookmarkList: "demo-bookmarks__list",
   bookmarkItem: "demo-bookmarks__item",
   bookmarkItemIcon: "demo-bookmarks__item-icon",
+  bookmarkItemName: "demo-bookmarks__item-name",
   bookmarkItemActive: "demo-bookmarks__item--active"
 };
 
@@ -160,7 +161,7 @@ class Bookmarks extends declared(Widget) {
         title={i18n.goToBookmark}
         aria-label={name}
       >
-        <span class={this.classes(CSS.iconClass, CSS.bookmarkItemIcon)} /> {name}
+        <span class={this.classes(CSS.iconClass, CSS.bookmarkItemIcon)} /><span class={CSS.bookmarkItemName}>{name}</span>
       </li>
     );
   }

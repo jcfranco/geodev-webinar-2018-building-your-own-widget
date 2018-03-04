@@ -27,6 +27,7 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
         bookmarkList: "demo-bookmarks__list",
         bookmarkItem: "demo-bookmarks__item",
         bookmarkItemIcon: "demo-bookmarks__item-icon",
+        bookmarkItemName: "demo-bookmarks__item-name",
         bookmarkItemActive: "demo-bookmarks__item--active"
     };
     var Bookmarks = /** @class */ (function (_super) {
@@ -108,8 +109,7 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
                 _a);
             return (widget_1.tsx("li", { bind: this, "data-bookmark-item": bookmarkItem, class: this.classes(CSS.bookmarkItem, bookmarkItemClasses), onclick: this._goToBookmark, onkeydown: this._goToBookmark, tabIndex: 0, role: "button", title: i18n.goToBookmark, "aria-label": name },
                 widget_1.tsx("span", { class: this.classes(CSS.iconClass, CSS.bookmarkItemIcon) }),
-                " ",
-                name));
+                widget_1.tsx("span", { class: CSS.bookmarkItemName }, name)));
             var _a;
         };
         Bookmarks.prototype._bookmarkItemsChanged = function () {
