@@ -42,9 +42,9 @@ const BookmarkItemCollection = Collection.ofType<BookmarkItem>(BookmarkItem);
 
 Our widget will need...
 
-- an `esri/core/Collection` of `BookmarkItem`s
-- a `state` property for letting the widget view know what is going on. The state will be "ready" when the view is ready, "loading" when the view is loading and "disabled" when there is no view on the ViewModel.
-- a `view` property that a user will set a `esri/views/MapView`. We will get the bookmarks from the view's map and populate the `Collection` of `BookmarkItem`s from this.
+- an `esri/core/Collection` of `BookmarkItem`
+- a `state` computed property for letting the widget view know what is going on. The state will be "ready" when the view is ready, "loading" when the view is loading and "disabled" when there is no view on the ViewModel.
+- a `view` property that a user will set a `esri/views/MapView`. We will get the bookmarks from the view's map and populate the `Collection` of `BookmarkItem` from this.
 
 ```ts
   //--------------------------------------------------------------------------
@@ -103,7 +103,7 @@ import MapView = require("esri/views/MapView");
 
 Now our properties are setup.
 
-The next step is to populate the `Collection` of `BookmarkItem`s once the `view` property has been set on the ViewModel. To do that, we're going to need to import a few modules that will help us.
+The next step is to populate the `Collection` of `BookmarkItem` once the `view` property has been set on the ViewModel. To do that, we're going to need to import a few modules that will help us.
 
 ### 7. Import HandleRegistry and watchUtils.
 
@@ -127,7 +127,7 @@ We'll store our handles on this variable.
   //
   //--------------------------------------------------------------------------
 
-  _handles: HandleRegistry = new HandleRegistry();
+  private _handles: HandleRegistry = new HandleRegistry();
 ```
 
 ### 9. Add Lifecycle methods to our widget
@@ -209,7 +209,7 @@ import Map = require("esri/Map");
 
 ### ** Progress report **
 
-So now once a view has been added to the ViewModel, it will watch the view for its `map` and then get the `map.bookmarks` and create a `Collection` of `BookmarkItem`s.
+So now once a view has been added to the ViewModel, it will watch the view for its `map` and then get the `map.bookmarks` and create a `Collection` of `BookmarkItem`.
 
 The next and last thing we need to do is to add a public method that will zoom to a `BookmarkItem`.
 
@@ -263,6 +263,46 @@ import promiseUtils = require("esri/core/promiseUtils");
 ### ** Progress report **
 
 Now we've assembled our ViewModel and the brains of our widget is finished! We can use this ViewModel to build a View.
+
+Its time to test the ViewModel by compiling it and running in browser.
+
+#### Compile
+
+```js
+tsc
+```
+
+#### Change "Bookmarks" to "Bookmarks/BookmarksViewModel"
+
+```js
+"demo/Bookmarks/BookmarksViewModel",
+```
+
+#### Comment out the expand widget part
+
+```js
+// var expand = new Expand({
+//   view: view,
+//   content: bookmarks
+// });
+
+// view.ui.add(expand, "top-right");
+```
+
+#### Create a global variable to access in the console
+
+```js
+bookmarksViewModel = bookmarks;
+
+console.log(bookmarksViewModel);
+```
+
+### Run the following in the console
+
+```js
+var firstBookmark = bookmarksViewModel.bookmarkItems.getItemAt(0);
+bookmarksViewModel.goTo(firstBookmark);
+```
 
 ## Next steps
 

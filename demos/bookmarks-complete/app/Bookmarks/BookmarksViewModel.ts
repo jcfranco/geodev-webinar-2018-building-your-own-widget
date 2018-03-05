@@ -49,7 +49,7 @@ class BookmarksViewModel extends declared(Accessor) {
   //
   //--------------------------------------------------------------------------
 
-  _handles: HandleRegistry = new HandleRegistry();
+  private _handles: HandleRegistry = new HandleRegistry();
 
   //--------------------------------------------------------------------------
   //

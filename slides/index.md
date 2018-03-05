@@ -203,13 +203,6 @@ class MyWidget extends declared(Widget) {
 
 ---
 
-# Nesting Widgets
-
-- [Expand Widget](https://developers.arcgis.com/javascript/latest/api-reference/esri-widgets-Expand.html)
-- [Expand.tsx](https://github.com/Esri/arcgis-js-api/blob/4master/widgets/Expand.tsx)
-
----
-
 # **New in 4.7**
 
 * Simpler CSS setup <!-- .element: class="fragment" data-fragment-index="0" -->
@@ -304,10 +297,29 @@ class MyWidget extends declared(Widget) {
 
 # Let's build a widget!
 
-- [Bookmarks](../demos/bookmarks-complete)
 - [Bookmarks Doc](https://developers.arcgis.com/javascript/latest/api-reference/esri-WebMap.html#bookmarks)
+- [Bookmarks Completed Demo](../demos/bookmarks-complete)
 
 <img src="img/bookmarks.png" width="50%"/>
+
+---
+
+# We need an API Design for VM
+
+```ts
+interface BookmarksViewModel {
+  bookmarkItems: Collection<BookmarkItem>;
+  state: "loading" | "ready" | "disabled";
+  view: MapView;
+  goTo(item: BookmarkItem): IPromise<any>;
+}
+
+interface BookmarkItem {
+  active: Boolean;
+  extent: Extent;
+  name: string;
+}
+```
 
 ---
 
