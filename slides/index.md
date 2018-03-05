@@ -453,13 +453,17 @@ interface BookmarkItem {
 
 ---
 
-# Use the source, Luke
-
-## [esriurl.com/buildwidgetsds2018](http://esriurl.com/buildwidgetsds2018)
-
----
-
 # Questions?
+
+##### For example
+
+> &#x1f914; Where can I find the slides/source?
+
+&#x1F449; [esriurl.com/buildwidgetsds2018](http://esriurl.com/buildwidgetsds2018) &#x1F448;
+
+<!-- &#1F448; -->
+
+<!-- &euro; -->
 
 ---
 
