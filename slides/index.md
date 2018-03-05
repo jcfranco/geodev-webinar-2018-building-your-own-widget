@@ -91,10 +91,10 @@
 
 # Lifecycle
 
-- constructor         <!-- .element: class="fragment" data-fragment-index="1" -->
-- postInitialize      <!-- .element: class="fragment" data-fragment-index="2" -->
-- render              <!-- .element: class="fragment" data-fragment-index="3" -->
-- destroy             <!-- .element: class="fragment" data-fragment-index="8" -->
+- <!-- .element: class="fragment" data-fragment-index="1" --> `constructor`
+- <!-- .element: class="fragment" data-fragment-index="2" --> `postInitialize`
+- <!-- .element: class="fragment" data-fragment-index="3" --> `render`
+- <!-- .element: class="fragment" data-fragment-index="4" --> `destroy`
 
 ---
 
@@ -434,6 +434,7 @@ interface BookmarkItem {
 - [Widget Development](https://developers.arcgis.com/javascript/latest/guide/custom-widget/index.html)
 - [JS API SDK](https://developers.arcgis.com/javascript/)
 - [Styling](https://developers.arcgis.com/javascript/latest/guide/styling/index.html)
+- [Widget Patterns](https://github.com/jcfranco/4x-widget-patterns)
 
 ---
 
