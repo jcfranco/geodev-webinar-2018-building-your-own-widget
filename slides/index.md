@@ -378,7 +378,7 @@ interface BookmarkItem {
 
 ---
 
-# Styling with Sass
+# Styling with [Sass](sass-lang.com/)
 
 - CSS preprocessor                  <!-- .element: class="fragment" data-fragment-index="1" -->
 - Powered-up CSS                     <!-- .element: class="fragment" data-fragment-index="2" -->
@@ -417,7 +417,7 @@ interface BookmarkItem {
   - Views
 - Styling
   - BEM
-  - SASS
+  - Sass
 
 ---
 
