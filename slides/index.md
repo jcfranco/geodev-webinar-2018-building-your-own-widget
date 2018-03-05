@@ -109,22 +109,10 @@
 
 # VDOM
 
-* DOM abstraction                                                                 <!-- .element: class="fragment" data-fragment-index="1" -->
-  * single entry point for rendering                                              <!-- .element: class="fragment" data-fragment-index="2" -->
-  * other part of VDOM system decides whether DOM was affected by diffing         <!-- .element: class="fragment" data-fragment-index="3" -->
-  * only true changes cause DOM updates                                           <!-- .element: class="fragment" data-fragment-index="4" -->
-
----
-
-# VDOM
-
-* Key components                                                                                        <!-- .element: class="fragment" data-fragment-index="1" -->
-  * projector - attaches to the DOM, does diffing and updates DOM when necessary                        <!-- .element: class="fragment" data-fragment-index="2" -->
-  * vnode trees - virtual representation of the DOM between renders                                     <!-- .element: class="fragment" data-fragment-index="3" -->
-  * in 4x each widget can be a projector                                                                <!-- .element: class="fragment" data-fragment-index="4" -->
-    * <!-- .element: class="fragment" data-fragment-index="5" --> when given a `container` property
-  * but doesn't have to act as one                                                                      <!-- .element: class="fragment" data-fragment-index="6" -->
-    * <!-- .element: class="fragment" data-fragment-index="7" --> Using `render` produces a VNode for that widget that can be used in another widget's rendering
+* DOM abstraction                                                                 <!-- .element: class="fragment" data-fragment-index="0" -->
+  * <!-- .element: class="fragment" data-fragment-index="1" --> `render` produces VNode
+  * VNodes compared                                                                  <!-- .element: class="fragment" data-fragment-index="2" -->
+  * DOM updated for different VNodes                                                                  <!-- .element: class="fragment" data-fragment-index="3" -->
 
 ---
 
