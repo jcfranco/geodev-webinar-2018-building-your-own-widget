@@ -12,7 +12,7 @@
 
 - Widgets
 - Widget Framework
-- Theming
+- Styling
 - Putting it all together
 
 ---
@@ -342,34 +342,43 @@ interface BookmarkItem {
 
 ---
 
-# Widget Theming
+# Styling
 
 ---
 
-# About
+# How?
 
-- Why?                  <!-- .element: class="fragment" data-fragment-index="1" -->
-  - Consistency         <!-- .element: class="fragment" data-fragment-index="2" -->
-    - Visual            <!-- .element: class="fragment" data-fragment-index="3" -->
-    - Functional        <!-- .element: class="fragment" data-fragment-index="3" -->
-  - User options        <!-- .element: class="fragment" data-fragment-index="4" -->
-    - Out-of-the-box    <!-- .element: class="fragment" data-fragment-index="5" -->
-    - Custom            <!-- .element: class="fragment" data-fragment-index="6" -->
-- How?                  <!-- .element: class="fragment" data-fragment-index="7" -->
-  - Sass                <!-- .element: class="fragment" data-fragment-index="8" -->
-  - BEM                 <!-- .element: class="fragment" data-fragment-index="9" -->
+- BEM                 <!-- .element: class="fragment" data-fragment-index="8" -->
+- Sass                <!-- .element: class="fragment" data-fragment-index="9" -->
 
 ---
 
-# Out-of-the-box themes
+# Naming CSS classes
 
-[Theme Switcher](../demos/themes/)
+#### Block Element Modifier ([BEM](http://getbem.com/) )
 
-<img src="images/theme-switcher.png" width="50%"/>
+- Scopes styles to blocks       <!-- .element: class="fragment" data-fragment-index="1" -->
+- Semantic                      <!-- .element: class="fragment" data-fragment-index="2" -->
+- Low specificity               <!-- .element: class="fragment" data-fragment-index="3" -->
+
+```scss
+// block
+.example-widget {}
+
+// block__element
+.example-widget__input {}
+
+// block--modifier
+.example-widget--loading {}
+
+// block__element--modifier
+.example-widget__input--disabled {}
+```
+<!-- .element: class="fragment" data-fragment-index="4" -->
 
 ---
 
-# Theming with Sass
+# Styling with Sass
 
 - CSS preprocessor                  <!-- .element: class="fragment" data-fragment-index="1" -->
 - Powered-up CSS                     <!-- .element: class="fragment" data-fragment-index="2" -->
@@ -389,36 +398,10 @@ interface BookmarkItem {
 
 ---
 
-# Naming CSS classes: [BEM](http://getbem.com/)
-
-#### Block Element Modifier
-
-- Semantic                      <!-- .element: class="fragment" data-fragment-index="1" -->
-- Low specificity               <!-- .element: class="fragment" data-fragment-index="2" -->
-- Scopes styles to blocks       <!-- .element: class="fragment" data-fragment-index="3" -->
-
-```scss
-// block
-.example-widget {}
-
-// block__element
-.example-widget__input {}
-
-// block--modifier
-.example-widget--loading {}
-
-// block__element--modifier
-.example-widget__input--disabled {}
-```
-<!-- .element: class="fragment" data-fragment-index="4" -->
-
----
-
 # Recap
 
-- Consistency              <!-- .element: class="fragment" data-fragment-index="1" -->
-- User options             <!-- .element: class="fragment" data-fragment-index="2" -->
-- Authoring                <!-- .element: class="fragment" data-fragment-index="3" -->
+- BEM              <!-- .element: class="fragment" data-fragment-index="1" -->
+- Sass             <!-- .element: class="fragment" data-fragment-index="2" -->
 
 ---
 
@@ -432,7 +415,8 @@ interface BookmarkItem {
 - Constructing a widget
   - ViewModels
   - Views
-- Widget Themes
+- Styling
+  - BEM
   - SASS
 
 ---
@@ -445,11 +429,11 @@ interface BookmarkItem {
 
 ## Additional Resources
 
-- [Styling](https://developers.arcgis.com/javascript/latest/guide/styling/index.html)
 - [Implementing Accessor](https://developers.arcgis.com/javascript/latest/guide/implementing-accessor/index.html)
 - [Setting up TypeScript](https://developers.arcgis.com/javascript/latest/guide/typescript-setup/index.html)
 - [Widget Development](https://developers.arcgis.com/javascript/latest/guide/custom-widget/index.html)
 - [JS API SDK](https://developers.arcgis.com/javascript/)
+- [Styling](https://developers.arcgis.com/javascript/latest/guide/styling/index.html)
 
 ---
 
