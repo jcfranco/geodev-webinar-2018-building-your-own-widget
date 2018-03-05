@@ -309,7 +309,7 @@ class MyWidget extends declared(Widget) {
 ```ts
 interface BookmarksViewModel {
   bookmarkItems: Collection<BookmarkItem>;
-  state: "loading" | "ready" | "disabled";
+  state: "loading" | "ready" | "disabled"; // will be computed property
   view: MapView;
   goTo(item: BookmarkItem): IPromise<any>;
 }
