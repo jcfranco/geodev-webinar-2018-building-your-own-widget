@@ -12,7 +12,7 @@
 
 - About Widgets
 - Widget Framework
-- Build it!
+- Build A Widget!
 - Styling
 
 ---
