@@ -107,16 +107,15 @@
 
 ---
 
-# `render` (example)
+# `render` example
 
-```tsx
+```ts
 render() {
-  const x = Number(x).toFixed(3);
-  const y = Number(y).toFixed(3);
-  const scale = Number(scale).toFixed(5);
+  const { x, y, scale }  = this;
 
   return (
-    <div bind={this} class={CSS.base} onclick={this._handleClick}>
+    <div bind={this} class={CSS.base} onclick={this._handleClick} 
+         title="map info" tabIndex={0}>
       <p>x: {x}</p>
       <p>y: {y}</p>
       <p>scale: {scale}</p>
@@ -125,11 +124,13 @@ render() {
 }
 ```
 
+[Widget rendering](https://developers.arcgis.com/javascript/latest/guide/custom-widget/index.html#widget-rendering) <!-- .element: class="fragment" data-fragment-index="1" -->
+
 ---
 
 # Implementing
 
-##  Widget decorators
+## Decorators
 
 - @subclass + declared      <!-- .element: class="fragment" data-fragment-index="1" -->
 - @property                 <!-- .element: class="fragment" data-fragment-index="2" -->
@@ -204,13 +205,13 @@ class MyWidget extends declared(Widget) {
 
 # **New in 4.7**
 
-* Simpler CSS setup <!-- .element: class="fragment" data-fragment-index="0" -->
+* Unified CSS classes <!-- .element: class="fragment" data-fragment-index="0" -->
 * Animation hooks <!-- .element: class="fragment" data-fragment-index="1" -->
 * <!-- .element: class="fragment" data-fragment-index="2" --> Default `iconClass` and `label` properties
 
 ---
 
-# Simpler CSS class setup
+# Unified CSS classes
 
 * <!-- .element: class="fragment" data-fragment-index="1" --> Use `class` attribute
 * <!-- .element: class="fragment" data-fragment-index="2" --> `Widget#classes` builds node class
@@ -219,7 +220,7 @@ class MyWidget extends declared(Widget) {
 
 ---
 
-# Simpler CSS class setup
+# Unified CSS classes
 
 ```ts
 // 4.6
@@ -234,7 +235,7 @@ render() {
 
 ---
 
-# Simpler CSS class setup
+# Unified CSS classes
 
 ```ts
 // 4.7
@@ -249,7 +250,7 @@ render() {
 
 ---
 
-# Animation Hooks
+# Animation hooks
 
 * <!-- .element: class="fragment" data-fragment-index="0" --> CSS **or** JS
 * Node attributes <!-- .element: class="fragment" data-fragment-index="1" -->
@@ -260,11 +261,26 @@ render() {
 
 ---
 
-# Animation
+# Animation hooks
 
 ```ts
-༼ ༎ຶ ෴ ༎ຶ༽ TBD
+render() {
+  const { visible } = this;
+  
+  const content = visible ? (
+    <div enterAnimation={cssTransition("enter", CSS.fadeIn)} 
+         exitAnimation={cssTransition("exit", CSS.fadeOut)}>{/*...*/}</div>
+  ) : null; 
+  
+  return (
+    <div class={CSS.base}>
+      {content}
+    </div>
+  );
+}
 ```
+
+<img src="img/expand-animated.gif" width="30%"/> <!-- .element: class="fragment" data-fragment-index="1" -->
 
 ---
 
@@ -336,7 +352,7 @@ class MyWidget extends declared(Widget) {
 
 ---
 
-# Styling with [Sass](sass-lang.com/)
+# Styling with [Sass](https://sass-lang.com/)
 
 - CSS preprocessor                  <!-- .element: class="fragment" data-fragment-index="1" -->
 - Powered-up CSS                     <!-- .element: class="fragment" data-fragment-index="2" -->
@@ -403,6 +419,8 @@ interface BookmarkItem {
 - [Sass Steps](https://github.com/jcfranco/dev-summit-2018-building-your-own-widget/blob/master/demos/Sass-steps.md)
 
 <!-- Presenter: Matt -->
+
+---
 
 # Let's Recap
 
