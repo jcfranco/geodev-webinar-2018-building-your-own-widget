@@ -28,22 +28,32 @@ Let's create the View for our `Bookmarks` widget. We'll extend `esri/widgets/Wid
 #### Bring other imports to simplify steps
 
   ```tsx
+  // watching properties
   import watchUtils = require("esri/core/watchUtils");
+  
+  // building Accessor classes
   import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport/decorators";
   
-  import Widget = require("esri/widgets/Widget");
+  // handle management
   import HandleRegistry = require("esri/core/HandleRegistry");
+  
+  // building Widgets
+  import Widget = require("esri/widgets/Widget");
   import { accessibleHandler, renderable, cssTransition, tsx } from "esri/widgets/support/widget";
   
+  // bookmarks
   import BookmarksViewModel = require("./Bookmarks/BookmarksViewModel");
   import BookmarkItem = require("./Bookmarks/BookmarkItem");
-  
+
+  // type for `view` property   
   import MapView = require("esri/views/MapView");
-  
+
+  // localization  
   import i18n = require("dojo/i18n!./Bookmarks/nls/Bookmarks");
   ```
 
   ```tsx
+  // CSS class lookup object
   const CSS = {
       base: "demo-bookmarks",
       loading: "demo-bookmarks__loading",
