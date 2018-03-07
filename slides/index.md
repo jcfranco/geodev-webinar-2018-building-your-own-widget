@@ -10,10 +10,10 @@
 
 # Agenda
 
-- Widgets
+- About Widgets
 - Widget Framework
+- Build it!
 - Styling
-- Putting it all together
 
 ---
 
@@ -31,7 +31,7 @@
   - Reusable                                    <!-- .element: class="fragment" data-fragment-index="6" -->
   - Interchangeable                             <!-- .element: class="fragment" data-fragment-index="7" -->
 - How?                                          <!-- .element: class="fragment" data-fragment-index="8" -->
-  - Different frameworks are available          <!-- .element: class="fragment" data-fragment-index="9" -->
+  - `esri/Widgets/Widget`                       <!-- .element: class="fragment" data-fragment-index="9" -->
 
 ---
 
@@ -311,7 +311,7 @@ interface BookmarkItem {
 
 ---
 
-# Let's build a widget!
+# Build Steps
 
 - [Demo Start](../demos/bookmarks-start/)
 - [HTML Steps](https://github.com/jcfranco/dev-summit-2018-building-your-own-widget/blob/master/demos/HTML-steps.md)
