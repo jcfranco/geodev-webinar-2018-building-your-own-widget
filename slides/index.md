@@ -292,7 +292,7 @@ class MyWidget extends declared(Widget) {
 
 ---
 
-# We need an API Design for VM
+# VM: API Design
 
 ```ts
 interface BookmarksViewModel {
