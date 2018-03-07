@@ -107,12 +107,23 @@
 
 ---
 
-# VDOM
+# `render` (example)
 
-* DOM abstraction                                                                 <!-- .element: class="fragment" data-fragment-index="0" -->
-  * <!-- .element: class="fragment" data-fragment-index="1" --> `render` produces VNode
-  * VNodes compared                                                                  <!-- .element: class="fragment" data-fragment-index="2" -->
-  * DOM updated for different VNodes                                                                  <!-- .element: class="fragment" data-fragment-index="3" -->
+```tsx
+render() {
+  const x = Number(x).toFixed(3);
+  const y = Number(y).toFixed(3);
+  const scale = Number(scale).toFixed(5);
+
+  return (
+    <div bind={this} class={CSS.base} onclick={this._handleClick}>
+      <p>x: {x}</p>
+      <p>y: {y}</p>
+      <p>scale: {scale}</p>
+    </div>
+  );
+}
+```
 
 ---
 
@@ -281,52 +292,11 @@ class MyWidget extends declared(Widget) {
 
 ---
 
-<!-- Presenter: Matt -->
-
-# Let's build a widget!
-
-- [Bookmarks Doc](https://developers.arcgis.com/javascript/latest/api-reference/esri-WebMap.html#bookmarks)
-- [Bookmarks Completed Demo](../demos/bookmarks-complete)
-
-<img src="img/bookmarks.png" width="50%"/>
-
----
-
-# VM: API Design
-
-```ts
-interface BookmarksViewModel {
-  bookmarkItems: Collection<BookmarkItem>;
-  state: "loading" | "ready" | "disabled"; // will be computed property
-  view: MapView;
-  goTo(item: BookmarkItem): IPromise<any>;
-}
-
-interface BookmarkItem {
-  active: Boolean;
-  extent: Extent;
-  name: string;
-}
-```
-
----
-
-# Build Steps
-
-- [Demo Start](../demos/bookmarks-start/)
-- [HTML Steps](https://github.com/jcfranco/dev-summit-2018-building-your-own-widget/blob/master/demos/HTML-steps.md)
-- [ViewModel Steps](https://github.com/jcfranco/dev-summit-2018-building-your-own-widget/blob/master/demos/ViewModel-steps.md)
-<!-- Presenter: JC -->
-- [View Steps](https://github.com/jcfranco/dev-summit-2018-building-your-own-widget/blob/master/demos/View-steps.md)
-- [Sass Steps](https://github.com/jcfranco/dev-summit-2018-building-your-own-widget/blob/master/demos/Sass-steps.md)
-
----
-
 # Recap
 
 - Views + ViewModels <!-- .element: class="fragment" data-fragment-index="1" -->
 - <!-- .element: class="fragment" data-fragment-index="2" --> `esri/widgets/Widget`
-- TypeScript     <!-- .element: class="fragment" data-fragment-index="3" -->
+- <!-- .element: class="fragment" data-fragment-index="3" --> `render()`
 
 ---
 
@@ -392,6 +362,45 @@ interface BookmarkItem {
 - Sass             <!-- .element: class="fragment" data-fragment-index="2" -->
 
 ---
+
+<!-- Presenter: Matt -->
+
+# Let's build a widget!
+
+- [Bookmarks Doc](https://developers.arcgis.com/javascript/latest/api-reference/esri-WebMap.html#bookmarks)
+- [Bookmarks Completed Demo](../demos/bookmarks-complete)
+
+<img src="img/bookmarks.png" width="50%"/>
+
+---
+
+# VM: API Design
+
+```ts
+interface BookmarksViewModel {
+  bookmarkItems: Collection<BookmarkItem>;
+  state: "loading" | "ready" | "disabled"; // will be computed property
+  view: MapView;
+  goTo(item: BookmarkItem): IPromise<any>;
+}
+
+interface BookmarkItem {
+  active: Boolean;
+  extent: Extent;
+  name: string;
+}
+```
+
+---
+
+# Build Steps
+
+- [Demo Start](../demos/bookmarks-start/)
+- [HTML Steps](https://github.com/jcfranco/dev-summit-2018-building-your-own-widget/blob/master/demos/HTML-steps.md)
+- [ViewModel Steps](https://github.com/jcfranco/dev-summit-2018-building-your-own-widget/blob/master/demos/ViewModel-steps.md)
+<!-- Presenter: JC -->
+- [View Steps](https://github.com/jcfranco/dev-summit-2018-building-your-own-widget/blob/master/demos/View-steps.md)
+- [Sass Steps](https://github.com/jcfranco/dev-summit-2018-building-your-own-widget/blob/master/demos/Sass-steps.md)
 
 <!-- Presenter: Matt -->
 
