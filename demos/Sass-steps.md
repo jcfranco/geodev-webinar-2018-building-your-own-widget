@@ -1,4 +1,6 @@
-# Sass
+# `Bookmarks` Widget: Sass Steps
+
+We'll create the Sass file for our widget. The steps are mostly to demonstrate the different pieces and how BEM can help keep our styles clean and clear.
 
 ## Add **block** class
 
