@@ -12,8 +12,8 @@
 
 - About Widgets
 - Widget Framework
-- Build A Widget!
 - Styling
+- Build A Widget!
 
 ---
 
