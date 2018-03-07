@@ -15,8 +15,9 @@
 
 ## Add **element** classes
 
-**nest under `.demo-bookmarks`
+**nest under `.demo-bookmarks`**
 ```scss
+
   &__loading {
     padding: 40px;
     text-align: center;
@@ -55,11 +56,12 @@
       flex: 1;
     }
   }
+  
 ```
 
 ## Add **modifier** classes (including with supporting animations)
 
-**under `.demo-bookmarks__item` (`&__item`)**
+**nest under `.demo-bookmarks__item` (`&__item`)**
 ```scss
     &--active,
     &--active:hover,
@@ -80,7 +82,7 @@
       animation: looping-progresss-bar-ani 1500ms linear infinite
     }
 ```
-**under `.demo-bookmarks`**
+**nest under `.demo-bookmarks`**
 ```scss
   &--fade-in {
     opacity: 0;
@@ -113,7 +115,7 @@
 
 ## Finally, we'll add some overrides to support RTL
 
-**after `.demo-bookmarks`**
+**place after `.demo-bookmarks`**
 ```scss
 html[dir="rtl"] .demo-bookmarks {
   &__item {
@@ -191,6 +193,14 @@ html[dir="rtl"] .demo-bookmarks {
       border-top: none;
     }
 
+    &-icon {
+      margin-right: 5px;
+    }
+
+    &-name {
+      flex: 1;
+    }
+
     &--active,
     &--active:hover,
     &--active:focus {
@@ -209,15 +219,6 @@ html[dir="rtl"] .demo-bookmarks {
       z-index: 2;
       animation: looping-progresss-bar-ani 1500ms linear infinite
     }
-
-    &-icon {
-      margin-right: 5px;
-    }
-
-    &-name {
-      flex: 1;
-    }
-
   }
 
   &--fade-in {
