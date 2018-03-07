@@ -25,7 +25,7 @@ Let's create the View for our `Bookmarks` widget. We'll extend `esri/widgets/Wid
   export = Bookmarks;         
   ```
 
-#### Bring other imports to simplify steps
+#### Bring all imports and CSS lookup to simplify steps
 
   ```tsx
   // watching properties
@@ -50,9 +50,7 @@ Let's create the View for our `Bookmarks` widget. We'll extend `esri/widgets/Wid
 
   // localization  
   import i18n = require("dojo/i18n!./Bookmarks/nls/Bookmarks");
-  ```
-
-  ```tsx
+  
   // CSS class lookup object
   const CSS = {
       base: "demo-bookmarks",
