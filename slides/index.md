@@ -434,10 +434,6 @@ interface BookmarkItem {
 
 &#x1F449; [esriurl.com/buildwidgetsds2018](http://esriurl.com/buildwidgetsds2018) &#x1F448;
 
-<!-- &#1F448; -->
-
-<!-- &euro; -->
-
 ---
 
 <!-- **please rate us** -->
