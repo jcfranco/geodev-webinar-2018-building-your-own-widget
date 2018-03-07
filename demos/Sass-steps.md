@@ -15,15 +15,8 @@
 
 ## Add **element** classes
 
+**nest under `.demo-bookmarks`
 ```scss
-.demo-bookmarks {
-  min-width: 250px;
-  max-width: 350px;
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.4);
-  line-height: 16px;
-  font-size: 14px;
-
   &__loading {
     padding: 40px;
     text-align: center;
@@ -62,50 +55,12 @@
       flex: 1;
     }
   }
-}
 ```
 
-## Add **modifier** classes (along with supporting animations)
+## Add **modifier** classes (including with supporting animations)
 
+**under `.demo-bookmarks__item` (`&__item`)**
 ```scss
-.demo-bookmarks {
-  min-width: 250px;
-  max-width: 350px;
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.4);
-  line-height: 16px;
-  font-size: 14px;
-
-  &__loading {
-    padding: 40px;
-    text-align: center;
-  }
-
-  &__list {
-    display: block;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  &__item {
-    padding: 8px 12px;
-    border-top: 1px solid rgba(0, 0, 0, 0.4);
-    cursor: pointer;
-    position: relative;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: center;
-
-    &:hover {
-      background-color: #eee;
-    }
-
-    &:first-child {
-      border-top: none;
-    }
-
     &--active,
     &--active:hover,
     &--active:focus {
@@ -124,17 +79,9 @@
       z-index: 2;
       animation: looping-progresss-bar-ani 1500ms linear infinite
     }
-
-    &-icon {
-      margin-right: 5px;
-    }
-
-    &-name {
-      flex: 1;
-    }
-
-  }
-
+```
+**under `.demo-bookmarks`**
+```scss
   &--fade-in {
     opacity: 0;
     transition: opacity 375ms ease-out;
@@ -162,12 +109,11 @@
       width: 0%
     }
   }
-
-}
 ```
 
 ## Finally, we'll add some overrides to support RTL
 
+**after `.demo-bookmarks`**
 ```scss
 html[dir="rtl"] .demo-bookmarks {
   &__item {
