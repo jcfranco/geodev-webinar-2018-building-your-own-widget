@@ -1,7 +1,7 @@
 <!-- .slide: data-background="img/bg-1.png" data-background-size="cover" -->
 <!-- Presenter: Matt -->
 
-# Building Your Own Widget with the ArcGIS API for JavaScript
+# Building a Widget Using the ArcGIS JSAPI
 
 ### Matt Driscoll – [@driskull](https://twitter.com/driskull)
 ### JC Franco – [@arfncode](https://twitter.com/arfncode)
@@ -16,6 +16,8 @@
 - Build A Widget!
 
 ---
+
+<!-- .slide: data-background="img/bg-4.png" data-background-size="cover" -->
 
 # Widgets
 
@@ -34,6 +36,8 @@
   - `esri/Widgets/Widget`                       <!-- .element: class="fragment" data-fragment-index="9" -->
 
 ---
+
+<!-- .slide: data-background="img/bg-4.png" data-background-size="cover" -->
 
 <!-- Presenter: JC -->
 
@@ -316,6 +320,8 @@ class MyWidget extends declared(Widget) {
 
 ---
 
+<!-- .slide: data-background="img/bg-4.png" data-background-size="cover" -->
+
 # Styling
 
 ---
@@ -436,12 +442,6 @@ interface BookmarkItem {
 
 ---
 
-## Suggested Session
-
-- [ArcGIS API for JavaScript: Customizing Widgets](https://devsummit2018.schedule.esri.com/schedule/1073688966)
-
----
-
 ## Additional Resources
 
 - [Implementing Accessor](https://developers.arcgis.com/javascript/latest/guide/implementing-accessor/index.html)
@@ -453,24 +453,13 @@ interface BookmarkItem {
 
 ---
 
-# Questions?
+<!-- .slide: data-background="img/bg-final.png" -->
 
-##### For example
-
-> &#x1f914; Where can I find the slides/source?
-
-&#x1F449; [esriurl.com/buildwidgetsds2018](http://esriurl.com/buildwidgetsds2018) &#x1F448;
-
----
-
-<!-- **please rate us** -->
-<!-- .slide: data-background="img/ds18-survey.png" -->
-
----
-
-<!-- .slide: data-background="img/bg-final.jpg" -->
+<img src="img/esri-science-logo-white.png" width="50%"/>
 
 # Thank you!
+
+[esriurl.com/widgetswebinar2018](http://esriurl.com/widgetswebinar2018)
 
 ---
 
