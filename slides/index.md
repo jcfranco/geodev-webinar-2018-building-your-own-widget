@@ -38,7 +38,6 @@
 ---
 
 <!-- .slide: data-background="img/bg-4.png" data-background-size="cover" -->
-
 <!-- Presenter: JC -->
 
 # Widget Framework
@@ -294,9 +293,8 @@ render() {
 
 ---
 
-<!-- Presenter: Matt -->
-
 <!-- .slide: data-background="img/bg-5.png" data-background-size="cover" -->
+<!-- Presenter: Matt -->
 
 # Demo
 
@@ -341,9 +339,9 @@ interface BookmarkItem {
 - [View Steps](https://github.com/jcfranco/geodev-webinar-2018-building-your-own-widget/blob/master/demos/View-steps.md)
 - [Sass Steps](https://github.com/jcfranco/geodev-webinar-2018-building-your-own-widget/blob/master/demos/Sass-steps.md)
 
-<!-- Presenter: Matt -->
-
 ---
+
+<!-- Presenter: Matt -->
 
 ## Let's Recap
 
