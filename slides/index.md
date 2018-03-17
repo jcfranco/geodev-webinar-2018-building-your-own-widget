@@ -8,7 +8,7 @@
 
 ---
 
-# Agenda
+## Agenda
 
 - About Widgets
 - Widget Framework
@@ -23,7 +23,7 @@
 
 ---
 
-# About
+## About Widgets
 
 - What?                                         <!-- .element: class="fragment" data-fragment-index="1" -->
   - Encapsulated UI components                  <!-- .element: class="fragment" data-fragment-index="2" -->
@@ -33,7 +33,7 @@
   - Reusable                                    <!-- .element: class="fragment" data-fragment-index="6" -->
   - Interchangeable                             <!-- .element: class="fragment" data-fragment-index="7" -->
 - How?                                          <!-- .element: class="fragment" data-fragment-index="8" -->
-  - `esri/Widgets/Widget`                       <!-- .element: class="fragment" data-fragment-index="9" -->
+  - esri/Widgets/Widget                      <!-- .element: class="fragment" data-fragment-index="9" -->
 
 ---
 
@@ -45,7 +45,7 @@
 
 ---
 
-# Architecture
+## Architecture
 
 - Views + ViewModels         <!-- .element: class="fragment" data-fragment-index="1" -->
  - Separation of concerns    <!-- .element: class="fragment" data-fragment-index="2" -->
@@ -56,7 +56,7 @@
 
 ---
 
-# Views
+## Views
 
 - <!-- .element: class="fragment" data-fragment-index="1" --> Extend `esri/widgets/Widget`
 - Rely on ViewModel                 <!-- .element: class="fragment" data-fragment-index="2" -->
@@ -64,7 +64,7 @@
 
 ---
 
-# ViewModels
+## ViewModels
 
 <!-- front-loaded to fade entire fragment -->
 - <!-- .element: class="fragment" data-fragment-index="1" --> Extend `esri/core/Accessor`
@@ -73,7 +73,7 @@
 
 ---
 
-# View + ViewModel in action
+## View + ViewModel in action
 
 * View renders its state                          <!-- .element: class="fragment" data-fragment-index="1" -->
   * state = view + ViewModel props                <!-- .element: class="fragment" data-fragment-index="2" -->
@@ -83,7 +83,7 @@
 
 ---
 
-# `esri/widgets/Widget`
+## `esri/widgets/Widget`
 
 - Lifecycle         <!-- .element: class="fragment" data-fragment-index="1" -->
 - API consistency    <!-- .element: class="fragment" data-fragment-index="2" -->
@@ -93,7 +93,7 @@
 
 ---
 
-# Lifecycle
+## Lifecycle
 
 - <!-- .element: class="fragment" data-fragment-index="1" --> `constructor`
 - <!-- .element: class="fragment" data-fragment-index="2" --> `postInitialize`
@@ -102,7 +102,7 @@
 
 ---
 
-# `render`
+## `render()`
 
 - Defines UI                <!-- .element: class="fragment" data-fragment-index="1" -->
 - Reacts to state           <!-- .element: class="fragment" data-fragment-index="2" -->
@@ -111,7 +111,7 @@
 
 ---
 
-# `render` example
+## `render()` example
 
 ```ts
 render() {
@@ -132,9 +132,20 @@ render() {
 
 ---
 
+<!-- .slide: data-background="img/bg-4.png" data-background-size="cover" -->
+
 # Implementing
 
+---
+
 ## Decorators
+
+- What are @decorators?
+  - todo
+
+---
+
+## Implementing
 
 - @subclass + declared      <!-- .element: class="fragment" data-fragment-index="1" -->
 - @property                 <!-- .element: class="fragment" data-fragment-index="2" -->
@@ -148,7 +159,7 @@ render() {
 
 ---
 
-# Implementing
+## Implementing
 
 - <!-- .element: class="fragment" data-fragment-index="1" --> Extend `esri/widgets/Widget`
 
@@ -167,7 +178,7 @@ export = MyWidget;
 
 ---
 
-# Implementing
+## Implementing
 
 - <!-- .element: class="fragment" data-fragment-index="1" --> Implement `render`
 
@@ -186,7 +197,7 @@ class MyWidget extends declared(Widget) {
 
 ---
 
-# Implementing
+## Implementing
 
 - <!-- .element: class="fragment" data-fragment-index="1" --> Define properties
 
@@ -207,54 +218,7 @@ class MyWidget extends declared(Widget) {
 
 ---
 
-# **New in 4.7**
-
-* Unified CSS classes <!-- .element: class="fragment" data-fragment-index="0" -->
-* Animation hooks <!-- .element: class="fragment" data-fragment-index="1" -->
-* <!-- .element: class="fragment" data-fragment-index="2" --> Default `iconClass` and `label` properties
-
----
-
-# Unified CSS classes
-
-* <!-- .element: class="fragment" data-fragment-index="1" --> Use `class` attribute
-* <!-- .element: class="fragment" data-fragment-index="2" --> `Widget#classes` builds node class
-* <!-- .element: class="fragment" data-fragment-index="3" --> `join` utility is deprecated
-* <!-- .element: class="fragment" data-fragment-index="4" --> `classes` attribute is deprecated
-
----
-
-# Unified CSS classes
-
-```ts
-// 4.6
-render() {
-  const dynamicClasses = { [CSS.active]: this.isActive };
-
-  return (
-    <div class={join(CSS.base, CSS.mixin)} classes={dynamicClasses}>{/* ... */}</div>
-  );
-}
-```
-
----
-
-# Unified CSS classes
-
-```ts
-// 4.7
-render() {
-  const dynamicClasses = { [CSS.active]: this.isActive };
-
-  return (
-    <div class={this.classes(CSS.base, CSS.mixin, dynamicClasses)}>{/* ... */}</div>
-  );
-}
-```
-
----
-
-# Animation hooks
+## Animation hooks
 
 * <!-- .element: class="fragment" data-fragment-index="0" --> CSS **or** JS
 * Node attributes <!-- .element: class="fragment" data-fragment-index="1" -->
@@ -265,7 +229,7 @@ render() {
 
 ---
 
-# Animation hooks
+## Animation hooks
 
 ```ts
 render() {
@@ -288,31 +252,7 @@ render() {
 
 ---
 
-# `iconClass` and `label`
-
-* UI hints for container widgets <!-- .element: class="fragment" data-fragment-index="0" -->
-  * <!-- .element: class="fragment" data-fragment-index="1" --> `Expand` uses `iconClass` ([example](http://jsbin.com/gaqemat/edit?html,output))
-* <!-- .element: class="fragment" data-fragment-index="2" --> `iconClass` - [Esri icon font](https://developers.arcgis.com/javascript/latest/guide/esri-icon-font/) class name
-* <!-- .element: class="fragment" data-fragment-index="3" -->`label` – localized widget label
-
-```ts
-@subclass("MyWidget")
-class MyWidget extends declared(Widget) {
-
-  @property()
-  iconClass: string = "esri-icon-basemap";
-  
-  @property()
-  label: string = i18n.widgetLabel;
-
-}
-```
-
-<!-- .element: class="fragment" data-fragment-index="4" -->
-
----
-
-# Recap
+## Recap
 
 - Views + ViewModels <!-- .element: class="fragment" data-fragment-index="1" -->
 - <!-- .element: class="fragment" data-fragment-index="2" --> `esri/widgets/Widget`
@@ -326,39 +266,14 @@ class MyWidget extends declared(Widget) {
 
 ---
 
-# How?
+## How?
 
-- BEM                 <!-- .element: class="fragment" data-fragment-index="8" -->
-- Sass                <!-- .element: class="fragment" data-fragment-index="9" -->
-
----
-
-# Naming CSS classes
-
-#### Block Element Modifier ([BEM](http://getbem.com/) )
-
-- Scopes styles to blocks       <!-- .element: class="fragment" data-fragment-index="1" -->
-- Semantic                      <!-- .element: class="fragment" data-fragment-index="2" -->
-- Low specificity               <!-- .element: class="fragment" data-fragment-index="3" -->
-
-```scss
-// block
-.example-widget {}
-
-// block__element
-.example-widget__input {}
-
-// block--modifier
-.example-widget--loading {}
-
-// block__element--modifier
-.example-widget__input--disabled {}
-```
-<!-- .element: class="fragment" data-fragment-index="4" -->
+- Sass                 <!-- .element: class="fragment" data-fragment-index="8" -->
+- BEM                <!-- .element: class="fragment" data-fragment-index="9" -->
 
 ---
 
-# Styling with [Sass](https://sass-lang.com/)
+## Styling with [Sass](https://sass-lang.com/)
 
 - CSS preprocessor                  <!-- .element: class="fragment" data-fragment-index="1" -->
 - Powered-up CSS                     <!-- .element: class="fragment" data-fragment-index="2" -->
@@ -370,24 +285,26 @@ class MyWidget extends declared(Widget) {
 
 ---
 
-# Sass makes it easier to...
+## Recap
 
-- Restyle                            <!-- .element: class="fragment" data-fragment-index="1" -->
-- Organize                           <!-- .element: class="fragment" data-fragment-index="3" -->
-- Write less code :)                 <!-- .element: class="fragment" data-fragment-index="4" -->
-
----
-
-# Recap
-
-- BEM              <!-- .element: class="fragment" data-fragment-index="1" -->
-- Sass             <!-- .element: class="fragment" data-fragment-index="2" -->
+- Sass makes it easier to...
+  - Restyle                            <!-- .element: class="fragment" data-fragment-index="1" -->
+  - Organize                           <!-- .element: class="fragment" data-fragment-index="3" -->
+  - Write less code :)                 <!-- .element: class="fragment" data-fragment-index="4" -->
 
 ---
 
 <!-- Presenter: Matt -->
 
-# Let's build a widget!
+<!-- .slide: data-background="img/bg-5.png" data-background-size="cover" -->
+
+# Demo
+
+## Let's build a widget!
+
+---
+
+## Let's build a widget!
 
 - [Bookmarks Doc](https://developers.arcgis.com/javascript/latest/api-reference/esri-WebMap.html#bookmarks)
 - [Bookmarks Completed Demo](../demos/bookmarks-complete)
@@ -396,7 +313,7 @@ class MyWidget extends declared(Widget) {
 
 ---
 
-# VM: API Design
+## VM: API Design
 
 ```ts
 interface BookmarksViewModel {
@@ -415,20 +332,20 @@ interface BookmarkItem {
 
 ---
 
-# Build Steps
+## Build Steps
 
 - [Demo Start](../demos/bookmarks-start/)
-- [HTML Steps](https://github.com/jcfranco/dev-summit-2018-building-your-own-widget/blob/master/demos/HTML-steps.md)
-- [ViewModel Steps](https://github.com/jcfranco/dev-summit-2018-building-your-own-widget/blob/master/demos/ViewModel-steps.md)
+- [HTML Steps](https://github.com/jcfranco/geodev-webinar-2018-building-your-own-widget/blob/master/demos/HTML-steps.md)
+- [ViewModel Steps](https://github.com/jcfranco/geodev-webinar-2018-building-your-own-widget/blob/master/demos/ViewModel-steps.md)
 <!-- Presenter: JC -->
-- [View Steps](https://github.com/jcfranco/dev-summit-2018-building-your-own-widget/blob/master/demos/View-steps.md)
-- [Sass Steps](https://github.com/jcfranco/dev-summit-2018-building-your-own-widget/blob/master/demos/Sass-steps.md)
+- [View Steps](https://github.com/jcfranco/geodev-webinar-2018-building-your-own-widget/blob/master/demos/View-steps.md)
+- [Sass Steps](https://github.com/jcfranco/geodev-webinar-2018-building-your-own-widget/blob/master/demos/Sass-steps.md)
 
 <!-- Presenter: Matt -->
 
 ---
 
-# Let's Recap
+## Let's Recap
 
 - Widgets are single functionality UI components
 - We use them for reusability/interchangeability
@@ -437,8 +354,13 @@ interface BookmarkItem {
   - ViewModels
   - Views
 - Styling
-  - BEM
   - Sass
+
+---
+
+<!-- .slide: data-background="img/bg-4.png" data-background-size="cover" -->
+
+# Resources
 
 ---
 
@@ -455,12 +377,9 @@ interface BookmarkItem {
 
 <!-- .slide: data-background="img/bg-final.png" -->
 
-<img src="img/esri-science-logo-white.png" width="50%"/>
-
 # Thank you!
 
+<img src="img/esri-science-logo-white.png" width="25%"/>
+
 [esriurl.com/widgetswebinar2018](http://esriurl.com/widgetswebinar2018)
-
----
-
 
