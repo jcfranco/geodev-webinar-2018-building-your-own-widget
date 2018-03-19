@@ -288,13 +288,11 @@ render() {
 <!-- .slide: data-background="img/bg-5.png" data-background-size="cover" -->
 <!-- Presenter: Matt -->
 
-# Demo
-
-## Let's build a widget!
+# Let's build a widget!
 
 ---
 
-## Let's build a widget!
+## Building A Bookmarks Widget
 
 - [Bookmarks Doc](https://developers.arcgis.com/javascript/latest/api-reference/esri-WebMap.html#bookmarks)
 - [Bookmarks Completed Demo](../demos/bookmarks-complete)
