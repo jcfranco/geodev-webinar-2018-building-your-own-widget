@@ -329,7 +329,7 @@ interface BookmarkItem {
 - [ViewModel Steps](https://github.com/jcfranco/geodev-webinar-2018-building-your-own-widget/blob/master/demos/ViewModel-steps.md)
 <!-- Presenter: JC -->
 - [View Steps](https://github.com/jcfranco/geodev-webinar-2018-building-your-own-widget/blob/master/demos/View-steps.md)
-- [Sass Steps](https://github.com/jcfranco/geodev-webinar-2018-building-your-own-widget/blob/master/demos/Sass-steps.md)
+- [Sass](https://github.com/jcfranco/geodev-webinar-2018-building-your-own-widget/blob/master/demos/Sass-steps.md)
 
 ---
 
