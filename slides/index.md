@@ -137,13 +137,6 @@ render() {
 
 ---
 
-## Decorators
-
-- What are @decorators?
-  - todo
-
----
-
 ## Implementing
 
 - @subclass + declared      <!-- .element: class="fragment" data-fragment-index="1" -->
@@ -268,7 +261,6 @@ render() {
 ## How?
 
 - Sass                 <!-- .element: class="fragment" data-fragment-index="8" -->
-- BEM                <!-- .element: class="fragment" data-fragment-index="9" -->
 
 ---
 
@@ -353,23 +345,6 @@ interface BookmarkItem {
   - Views
 - Styling
   - Sass
-
----
-
-<!-- .slide: data-background="img/bg-4.png" data-background-size="cover" -->
-
-# Resources
-
----
-
-## Additional Resources
-
-- [Implementing Accessor](https://developers.arcgis.com/javascript/latest/guide/implementing-accessor/index.html)
-- [Setting up TypeScript](https://developers.arcgis.com/javascript/latest/guide/typescript-setup/index.html)
-- [Widget Development](https://developers.arcgis.com/javascript/latest/guide/custom-widget/index.html)
-- [JS API SDK](https://developers.arcgis.com/javascript/)
-- [Styling](https://developers.arcgis.com/javascript/latest/guide/styling/index.html)
-- [Widget Patterns](https://github.com/jcfranco/4x-widget-patterns)
 
 ---
 
