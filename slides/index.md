@@ -271,22 +271,23 @@ render() {
 
 ## Styling with [Sass](https://sass-lang.com/)
 
-- CSS preprocessor                  <!-- .element: class="fragment" data-fragment-index="1" -->
-- Powered-up CSS                     <!-- .element: class="fragment" data-fragment-index="2" -->
-  - Nesting                          <!-- .element: class="fragment" data-fragment-index="3" -->
-  - Variables                         <!-- .element: class="fragment" data-fragment-index="4" -->
-  - Functions                         <!-- .element: class="fragment" data-fragment-index="5" -->
-  - Mixins                            <!-- .element: class="fragment" data-fragment-index="6" -->
-  - Inheritance                       <!-- .element: class="fragment" data-fragment-index="7" -->
+- We use Sass                        <!-- .element: class="fragment" data-fragment-index="1" -->
+- Sass = CSS preprocessor           <!-- .element: class="fragment" data-fragment-index="2" -->
+- Powered-up CSS                     <!-- .element: class="fragment" data-fragment-index="3" -->
+  - Nesting                          
+  - Variables                         
+  - Functions                         
+  - Mixins                            
+  - Inheritance                       
 
 ---
 
 ## Recap
 
-- Sass makes it easier to...
-  - Restyle                            <!-- .element: class="fragment" data-fragment-index="1" -->
-  - Organize                           <!-- .element: class="fragment" data-fragment-index="3" -->
-  - Write less code :)                 <!-- .element: class="fragment" data-fragment-index="4" -->
+- Sass makes it easier to...           <!-- .element: class="fragment" data-fragment-index="1" -->
+  - Restyle                            <!-- .element: class="fragment" data-fragment-index="2" -->
+  - Organize                           <!-- .element: class="fragment" data-fragment-index="2" -->
+  - Write less code :)                 <!-- .element: class="fragment" data-fragment-index="2" -->
 
 ---
 
