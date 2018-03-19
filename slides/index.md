@@ -8,6 +8,10 @@
 
 ---
 
+<img src="img/before-start.png" width="30%"/>
+
+---
+
 ## Agenda
 
 - About Widgets
@@ -258,12 +262,6 @@ render() {
 
 ---
 
-## How?
-
-- Sass                 <!-- .element: class="fragment" data-fragment-index="8" -->
-
----
-
 ## Styling with [Sass](https://sass-lang.com/)
 
 - CSS preprocessor                  <!-- .element: class="fragment" data-fragment-index="1" -->
@@ -332,6 +330,10 @@ interface BookmarkItem {
 ---
 
 <!-- Presenter: Matt -->
+
+# Closing
+
+---
 
 ## Let's Recap
 
