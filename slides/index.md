@@ -12,6 +12,13 @@
 
 ---
 
+# Building a Widget Using the ArcGIS JSAPI
+
+### Matt Driscoll – [@driskull](https://twitter.com/driskull)
+### JC Franco – [@arfncode](https://twitter.com/arfncode)
+
+---
+
 ## Agenda
 
 - About Widgets
@@ -30,14 +37,14 @@
 ## About Widgets
 
 - What?                                         <!-- .element: class="fragment" data-fragment-index="1" -->
-  - Encapsulated UI components                  <!-- .element: class="fragment" data-fragment-index="2" -->
-  - Cohesive (integrated, unified)              <!-- .element: class="fragment" data-fragment-index="3" -->
-  - Single-purpose pieces of functionality      <!-- .element: class="fragment" data-fragment-index="4" -->
-- Why?                                          <!-- .element: class="fragment" data-fragment-index="5" -->
-  - Reusable                                    <!-- .element: class="fragment" data-fragment-index="6" -->
-  - Interchangeable                             <!-- .element: class="fragment" data-fragment-index="7" -->
-- How?                                          <!-- .element: class="fragment" data-fragment-index="8" -->
-  - esri/Widgets/Widget                      <!-- .element: class="fragment" data-fragment-index="9" -->
+  - Encapsulated UI components                  
+  - Cohesive (integrated, unified)             
+  - Single-purpose pieces of functionality      
+- Why?                                          <!-- .element: class="fragment" data-fragment-index="2" -->
+  - Reusable                                    
+  - Interchangeable                             
+- How?                                          <!-- .element: class="fragment" data-fragment-index="3" -->
+  - esri/Widgets/Widget                      
 
 ---
 
