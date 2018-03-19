@@ -359,22 +359,3 @@ Let's create the View for our `Bookmarks` widget. We'll extend `esri/widgets/Wid
     );
   }
 ```
-
-### Finally, let's define our widget's `iconClass` and `label` properties to give hints to other widgets on the icon/label to display
-
-```tsx
-  //----------------------------------
-  //  iconClass
-  //----------------------------------
-  
-  @property()
-  iconClass = CSS.iconClass;
-  
-  //----------------------------------
-  //  label
-  //----------------------------------
-  
-  @property()
-  label = i18n.label;
-```
-
