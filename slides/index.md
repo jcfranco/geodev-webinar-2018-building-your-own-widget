@@ -282,7 +282,7 @@ render() {
 
 ---
 
-## Recap
+## Styling Recap
 
 - Sass makes it easier to...           <!-- .element: class="fragment" data-fragment-index="1" -->
   - Restyle                            <!-- .element: class="fragment" data-fragment-index="2" -->
@@ -343,7 +343,7 @@ interface BookmarkItem {
 
 ---
 
-## Let's Recap
+## Final Recap
 
 - Widgets are single functionality UI components
 - We use them for reusability/interchangeability
