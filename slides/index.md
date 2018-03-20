@@ -44,7 +44,8 @@
   - Reusable                                    
   - Interchangeable                             
 - How?                                          <!-- .element: class="fragment" data-fragment-index="3" -->
-  - esri/Widgets/Widget                      
+  - esri/Widgets/Widget 
+  - ViewModels                     
 
 ---
 
