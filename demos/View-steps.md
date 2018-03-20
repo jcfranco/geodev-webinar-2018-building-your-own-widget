@@ -43,7 +43,7 @@ Let's create the View for our `Bookmarks` widget. We'll extend `esri/widgets/Wid
 
   // building Widgets
   import Widget = require("esri/widgets/Widget");
-  import { accessibleHandler, renderable, cssTransition, tsx } from "esri/widgets/support/widget";
+  import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
 
   // bookmarks
   import BookmarksViewModel = require("./Bookmarks/BookmarksViewModel");
@@ -298,37 +298,6 @@ Let's create the View for our `Bookmarks` widget. We'll extend `esri/widgets/Wid
   }
 ```
 
-### Add enter animation for items
-
-```tsx
-  render() {
-    const fadeInAnimation = cssTransition("enter", CSS.fadeIn);
-
-    const loadingNode = (
-      <div class={CSS.loading}>
-        <span class={CSS.loadingIcon} />
-      </div>
-    );
-
-    const bookmarkNodes = this._renderBookmarks();
-
-    const { state } = this.viewModel;
-
-    const bookmarkListNode = state === "ready" && bookmarkNodes.length ? [
-        <ul enterAnimation={fadeInAnimation}
-            class={CSS.bookmarkList}
-        >{bookmarkNodes}</ul>
-      ] :
-                             state === "loading" ?
-                             loadingNode :
-                             null;
-
-    return (
-      <div class={CSS.base}>{bookmarkListNode}</div>
-    );
-  }
-```
-
 #### Preview &#x1F441;&zwj;&#x1F5E8;
 
 ---
@@ -337,8 +306,6 @@ Let's create the View for our `Bookmarks` widget. We'll extend `esri/widgets/Wid
 
 ```tsx
   render() {
-    const fadeInAnimation = cssTransition("enter", CSS.fadeIn);
-
     const loadingNode = (
       <div class={CSS.loading}>
         <span class={CSS.loadingIcon} />
@@ -350,8 +317,7 @@ Let's create the View for our `Bookmarks` widget. We'll extend `esri/widgets/Wid
     const { state } = this.viewModel;
 
     const bookmarkListNode = state === "ready" && bookmarkNodes.length ? [
-        <ul enterAnimation={fadeInAnimation}
-            aria-label={i18n.label}
+        <ul aria-label={i18n.label}
             class={CSS.bookmarkList}
         >{bookmarkNodes}</ul>
       ] :

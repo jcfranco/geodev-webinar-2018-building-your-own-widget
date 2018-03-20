@@ -79,13 +79,12 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
         //
         //--------------------------------------------------------------------------
         Bookmarks.prototype.render = function () {
-            var fadeInAnimation = widget_1.cssTransition("enter", CSS.fadeIn);
             var loadingNode = (widget_1.tsx("div", { class: CSS.loading },
                 widget_1.tsx("span", { class: CSS.loadingIcon })));
             var bookmarkNodes = this._renderBookmarks();
             var state = this.viewModel.state;
             var bookmarkListNode = state === "ready" && bookmarkNodes.length ? [
-                widget_1.tsx("ul", { enterAnimation: fadeInAnimation, "aria-label": i18n.label, class: CSS.bookmarkList }, bookmarkNodes)
+                widget_1.tsx("ul", { "aria-label": i18n.label, class: CSS.bookmarkList }, bookmarkNodes)
             ] :
                 state === "loading" ?
                     loadingNode :

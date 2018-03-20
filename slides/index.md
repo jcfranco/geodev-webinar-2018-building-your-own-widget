@@ -37,15 +37,15 @@
 ## About Widgets
 
 - What?                                         <!-- .element: class="fragment" data-fragment-index="1" -->
-  - Encapsulated UI components                  
-  - Cohesive (integrated, unified)             
-  - Single-purpose pieces of functionality      
+  - Encapsulated UI components
+  - Cohesive (integrated, unified)
+  - Single-purpose pieces of functionality
 - Why?                                          <!-- .element: class="fragment" data-fragment-index="2" -->
-  - Reusable                                    
-  - Interchangeable                             
+  - Reusable
+  - Interchangeable
 - How?                                          <!-- .element: class="fragment" data-fragment-index="3" -->
-  - esri/Widgets/Widget 
-  - ViewModels                     
+  - esri/Widgets/Widget
+  - ViewModels
 
 ---
 
@@ -224,40 +224,6 @@ render() {
 
 ---
 
-## Animation hooks
-
-* <!-- .element: class="fragment" data-fragment-index="0" --> CSS **or** JS
-* Node attributes <!-- .element: class="fragment" data-fragment-index="1" -->
-  *  <!-- .element: class="fragment" data-fragment-index="1" --> `enterAnimation`
-  *  <!-- .element: class="fragment" data-fragment-index="1" --> `exitAnimation`
-  *  <!-- .element: class="fragment" data-fragment-index="1" --> `updateAnimation` (JS-only)
-*  <!-- .element: class="fragment" data-fragment-index="2" --> `cssTransition` (CSS-only)
-
----
-
-## Animation hooks
-
-```js
-render() {
-  const { visible } = this;
-  
-  const content = visible ? (
-    <div enterAnimation={cssTransition("enter", CSS.fadeIn)} 
-         exitAnimation={cssTransition("exit", CSS.fadeOut)}>{/*...*/}</div>
-  ) : null; 
-  
-  return (
-    <div class={CSS.base}>
-      {content}
-    </div>
-  );
-}
-```
-
-<img src="img/expand-animated.gif" width="30%"/> <!-- .element: class="fragment" data-fragment-index="1" -->
-
----
-
 ## Recap
 
 - Views + ViewModels <!-- .element: class="fragment" data-fragment-index="1" -->
@@ -275,14 +241,14 @@ render() {
 ## Styling with Widgets
 
 - We use Sass                        <!-- .element: class="fragment" data-fragment-index="1" -->
-  - Sass = CSS preprocessor           
-  - More info on [Sass](https://sass-lang.com/) 
+  - Sass = CSS preprocessor
+  - More info on [Sass](https://sass-lang.com/)
 - Powered-up CSS                     <!-- .element: class="fragment" data-fragment-index="2" -->
-  - Nesting                          
-  - Variables                         
-  - Functions                         
-  - Mixins                            
-  - Inheritance                       
+  - Nesting
+  - Variables
+  - Functions
+  - Mixins
+  - Inheritance
 
 ---
 

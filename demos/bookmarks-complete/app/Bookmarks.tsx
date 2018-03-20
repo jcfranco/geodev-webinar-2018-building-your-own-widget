@@ -6,7 +6,7 @@ import { aliasOf, declared, property, subclass } from "esri/core/accessorSupport
 
 import Widget = require("esri/widgets/Widget");
 import HandleRegistry = require("esri/core/HandleRegistry");
-import { accessibleHandler, renderable, cssTransition, tsx } from "esri/widgets/support/widget";
+import { accessibleHandler, renderable, tsx } from "esri/widgets/support/widget";
 
 import BookmarksViewModel = require("./Bookmarks/BookmarksViewModel");
 import BookmarkItem = require("./Bookmarks/BookmarkItem");
@@ -103,8 +103,6 @@ class Bookmarks extends declared(Widget) {
   //--------------------------------------------------------------------------
 
   render() {
-    const fadeInAnimation = cssTransition("enter", CSS.fadeIn);
-
     const loadingNode = (
       <div class={CSS.loading}>
         <span class={CSS.loadingIcon} />
@@ -117,7 +115,6 @@ class Bookmarks extends declared(Widget) {
 
     const bookmarkListNode = state === "ready" && bookmarkNodes.length ? [
       <ul
-        enterAnimation={fadeInAnimation}
         aria-label={i18n.label}
         class={CSS.bookmarkList}
       >{bookmarkNodes}</ul>
