@@ -1,16 +1,25 @@
-# `Bookmarks` Widget: Sass
+# `Bookmarks` Widget: Sass Steps
 
 Here is the Sass for our widget and it demonstrates how we can use Sass to simplify our widget styling.
 
 ```scss
+// variables
+$border: 1px solid rgba(0, 0, 0, 0.4);
+$margin: 5px;
+$background_color: #fff;
+
 .demo-bookmarks {
   min-width: 250px;
   max-width: 350px;
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.4);
+  background-color: $background_color;
+  border: $border;
   line-height: 16px;
   font-size: 14px;
 
+  // nesting
+
+  // reuse parent selector
+  // .demo-bookmarks__loading
   &__loading {
     padding: 40px;
     text-align: center;
@@ -25,7 +34,7 @@ Here is the Sass for our widget and it demonstrates how we can use Sass to simpl
 
   &__item {
     padding: 8px 12px;
-    border-top: 1px solid rgba(0, 0, 0, 0.4);
+    border-top: $border;
     cursor: pointer;
     position: relative;
     display: flex;
@@ -34,7 +43,8 @@ Here is the Sass for our widget and it demonstrates how we can use Sass to simpl
     align-items: center;
 
     &:hover {
-      background-color: #eee;
+      // function (color)
+      background-color: darken($background-color, 10%);
     }
 
     &:first-child {
@@ -42,7 +52,7 @@ Here is the Sass for our widget and it demonstrates how we can use Sass to simpl
     }
 
     &-icon {
-      margin-right: 5px;
+      margin-right: $margin;
     }
 
     &-name {
@@ -52,8 +62,10 @@ Here is the Sass for our widget and it demonstrates how we can use Sass to simpl
     &--active,
     &--active:hover,
     &--active:focus {
-      color: #333;
-      background-color: #fff;
+      // function (color)
+      color: darken($background-color, 80%);
+      
+      background-color: $background-color;
       cursor: default;
     }
 
@@ -62,7 +74,9 @@ Here is the Sass for our widget and it demonstrates how we can use Sass to simpl
       position: absolute;
       height: 2px;
       top: 0;
-      background-color: #4c4c4c;
+      // function (color)
+      background-color: darken($background-color, 75%);
+      
       width: 100%;
       z-index: 2;
       animation: looping-progresss-bar-ani 1500ms linear infinite
@@ -108,7 +122,7 @@ html[dir="rtl"] .demo-bookmarks {
 
     &-icon {
       margin-right: 0;
-      margin-left: 5px;
+      margin-left: $margin;
     }
 
   }
