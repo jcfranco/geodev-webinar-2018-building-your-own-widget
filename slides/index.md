@@ -123,7 +123,7 @@
 
 ## `render()` example
 
-```ts
+```js
 render() {
   const { x, y, scale }  = this;
 
@@ -166,7 +166,7 @@ render() {
 
 - <!-- .element: class="fragment" data-fragment-index="1" --> Extend `esri/widgets/Widget`
 
-```ts
+```js
 /// <amd-dependency path="esri/core/tsSupport/declareExtendsHelper" name="__extends" />
 /// <amd-dependency path="esri/core/tsSupport/decorateHelper" name="__decorate" />
 
@@ -185,8 +185,10 @@ export = MyWidget;
 
 - <!-- .element: class="fragment" data-fragment-index="1" --> Implement `render`
 
-```ts
+```js
 // ...
+import { tsx } from "esri/widgets/support/widget";
+
 class MyWidget extends declared(Widget) {
   render() {
     return (
@@ -204,17 +206,17 @@ class MyWidget extends declared(Widget) {
 
 - <!-- .element: class="fragment" data-fragment-index="1" --> Define properties
 
-```ts
+```js
 // ...
-  @property()
-  @renderable()
-  name: string = "I'm a widget";
+@property()
+@renderable()
+name: string = "I'm a widget";
 
-  render() {
-    return (
-      <div>{this.name}</div>
-    );
-  }
+render() {
+  return (
+    <div>{this.name}</div>
+  );
+}
 // ...
 ```
 <!-- .element: class="fragment" data-fragment-index="1" -->
@@ -234,7 +236,7 @@ class MyWidget extends declared(Widget) {
 
 ## Animation hooks
 
-```ts
+```js
 render() {
   const { visible } = this;
   
