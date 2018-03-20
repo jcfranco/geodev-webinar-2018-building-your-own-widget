@@ -271,11 +271,12 @@ render() {
 
 ---
 
-## Styling with [Sass](https://sass-lang.com/)
+## Styling with Widgets
 
 - We use Sass                        <!-- .element: class="fragment" data-fragment-index="1" -->
-- Sass = CSS preprocessor           <!-- .element: class="fragment" data-fragment-index="2" -->
-- Powered-up CSS                     <!-- .element: class="fragment" data-fragment-index="3" -->
+  - Sass = CSS preprocessor           
+  - More info on [Sass](https://sass-lang.com/) 
+- Powered-up CSS                     <!-- .element: class="fragment" data-fragment-index="2" -->
   - Nesting                          
   - Variables                         
   - Functions                         
@@ -309,7 +310,7 @@ render() {
 
 ---
 
-## VM: API Design
+## Our Widget's API Design
 
 ```ts
 interface BookmarksViewModel {
