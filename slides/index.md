@@ -358,6 +358,27 @@ interface BookmarkItem {
 
 ---
 
+<!-- .slide: data-background="img/bg-4.png" data-background-size="cover" -->
+
+# Resources
+
+---
+
+## Additional Resources
+
+- [JS API SDK](https://developers.arcgis.com/javascript/)
+  - [Setting up TypeScript](https://developers.arcgis.com/javascript/latest/guide/typescript-setup/index.html)
+  - [Implementing Accessor](https://developers.arcgis.com/javascript/latest/guide/implementing-accessor/index.html)
+  - [Widget Development](https://developers.arcgis.com/javascript/latest/guide/custom-widget/index.html)
+  - [Styling](https://developers.arcgis.com/javascript/latest/guide/styling/index.html)
+  - [Widget Patterns](https://github.com/jcfranco/4x-widget-patterns)
+
+- Tooling
+  - [TypeScript](http://www.typescriptlang.org/)
+  - [Sass](https://sass-lang.com/)
+
+---
+
 <!-- .slide: data-background="img/bg-final.png" -->
 
 # Thank you!
