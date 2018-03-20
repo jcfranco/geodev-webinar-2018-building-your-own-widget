@@ -302,8 +302,8 @@ render() {
 
 ## Building A Bookmarks Widget
 
-- [Bookmarks Doc](https://developers.arcgis.com/javascript/latest/api-reference/esri-WebMap.html#bookmarks)
 - [Bookmarks Completed Demo](../demos/bookmarks-complete)
+- [Bookmarks Doc](https://developers.arcgis.com/javascript/latest/api-reference/esri-WebMap.html#bookmarks)
 
 <img src="img/bookmarks.png" width="50%"/>
 

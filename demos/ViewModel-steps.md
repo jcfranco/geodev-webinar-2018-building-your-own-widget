@@ -27,7 +27,7 @@ export = BookmarksViewModel;
 
 ### 3. Import Collection and BookmarkItem
 
-Import the BookmarkItem Accessor class that we created and `esri/core/Collection` which we will use to store the bookmark items.
+Import the BookmarkItem Accessor class and `esri/core/Collection` which we will use to store the bookmark items.
 
 Also create a constant to be used for the Collection of BookmarkItems.
 

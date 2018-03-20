@@ -52,4 +52,4 @@ view.ui.add(expand, "top-right");
 
 ## Next steps
 
-Next, we'll need to [setup a support class BookmarkItem](BookmarkItem-steps.md).
+Next, we'll need to [setup the BookmarksViewModel](ViewModel-steps.md).
