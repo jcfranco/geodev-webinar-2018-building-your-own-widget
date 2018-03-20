@@ -386,5 +386,5 @@ interface BookmarkItem {
 
 <img src="img/esri-science-logo-white.png" width="25%"/>
 
-[esriurl.com/widgetswebinar2018](http://esriurl.com/widgetswebinar2018)
+Source Code: [esriurl.com/widgetswebinar2018](http://esriurl.com/widgetswebinar2018)
 
