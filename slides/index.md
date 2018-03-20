@@ -288,10 +288,12 @@ render() {
 
 ## Styling Recap
 
+- We use Sass for our Widgets
 - Sass makes it easier to...           <!-- .element: class="fragment" data-fragment-index="1" -->
   - Restyle                            <!-- .element: class="fragment" data-fragment-index="2" -->
   - Organize                           <!-- .element: class="fragment" data-fragment-index="2" -->
   - Write less code :)                 <!-- .element: class="fragment" data-fragment-index="2" -->
+- Use what you like <!-- .element: class="fragment" data-fragment-index="3" -->
 
 ---
 
@@ -387,5 +389,5 @@ interface BookmarkItem {
 
 <img src="img/esri-science-logo-white.png" width="25%"/>
 
-Source Code: [esriurl.com/widgetswebinar2018](http://esriurl.com/widgetswebinar2018)
+Source: [esriurl.com/widgetswebinar2018](http://esriurl.com/widgetswebinar2018)
 
