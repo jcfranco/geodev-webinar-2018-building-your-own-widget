@@ -119,6 +119,7 @@
 - Reacts to state           <!-- .element: class="fragment" data-fragment-index="2" -->
 - Uses JSX                  <!-- .element: class="fragment" data-fragment-index="3" -->
 - VDOM                      <!-- .element: class="fragment" data-fragment-index="4" -->
+- <!-- .element: class="fragment" data-fragment-index="5" -->`scheduleRender()`
 
 ---
 

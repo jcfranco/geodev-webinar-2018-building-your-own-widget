@@ -25,7 +25,7 @@ Let's create the View for our `Bookmarks` widget. We'll extend `esri/widgets/Wid
   export = Bookmarks;
   ```
 
-#### Preview &#x1F441;&zwj;&#x1F5E8;
+#### Let's check it out... &#x1F441;&zwj;&#x1F5E8;
 
 ---
 
@@ -70,7 +70,7 @@ Let's create the View for our `Bookmarks` widget. We'll extend `esri/widgets/Wid
     };
   ```
 
-#### Preview &#x1F441;&zwj;&#x1F5E8;
+#### Let's check it out... &#x1F441;&zwj;&#x1F5E8;
 
 ---
 
@@ -90,7 +90,7 @@ Let's create the View for our `Bookmarks` widget. We'll extend `esri/widgets/Wid
   }
 ```
 
-#### Preview &#x1F441;&zwj;&#x1F5E8;
+#### Let's check it out... &#x1F441;&zwj;&#x1F5E8;
 
 ---
 
@@ -173,7 +173,7 @@ Let's create the View for our `Bookmarks` widget. We'll extend `esri/widgets/Wid
   }
 ```
 
-#### Preview &#x1F441;&zwj;&#x1F5E8;
+#### Let's check it out... &#x1F441;&zwj;&#x1F5E8;
 
 ---
 
@@ -209,7 +209,7 @@ Let's create the View for our `Bookmarks` widget. We'll extend `esri/widgets/Wid
   }
 ```
 
-#### Preview &#x1F441;&zwj;&#x1F5E8;
+#### Let's check it out... &#x1F441;&zwj;&#x1F5E8;
 
 ---
 
@@ -271,7 +271,7 @@ Let's create the View for our `Bookmarks` widget. We'll extend `esri/widgets/Wid
   }
 ```
 
-#### Preview &#x1F441;&zwj;&#x1F5E8;
+#### Let's check it out... &#x1F441;&zwj;&#x1F5E8;
 
 ---
 
@@ -303,7 +303,7 @@ Let's create the View for our `Bookmarks` widget. We'll extend `esri/widgets/Wid
   }
 ```
 
-#### Preview &#x1F441;&zwj;&#x1F5E8;
+#### Let's check it out... &#x1F441;&zwj;&#x1F5E8;
 
 ---
 
@@ -359,4 +359,4 @@ Let's create the View for our `Bookmarks` widget. We'll extend `esri/widgets/Wid
   }
 ```
 
-#### Preview &#x1F441;&zwj;&#x1F5E8;
+#### Let's check it out... &#x1F441;&zwj;&#x1F5E8;

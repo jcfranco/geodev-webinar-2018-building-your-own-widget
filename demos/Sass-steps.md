@@ -112,38 +112,4 @@ $background_color: #fff;
   }
 
 }
-
-html[dir="rtl"] .demo-bookmarks {
-  &__item {
-
-    &--active:after {
-      animation: looping-progresss-bar-ani-rtl 1500ms linear infinite
-    }
-
-    &-icon {
-      margin-right: 0;
-      margin-left: $margin;
-    }
-
-  }
-
-  @keyframes looping-progresss-bar-ani-rtl {
-    0% {
-      right: 0%;
-      width: 0%
-    }
-    20% {
-      right: 0%;
-      width: 20%
-    }
-    80% {
-      right: 80%;
-      width: 20%
-    }
-    100% {
-      right: 100%;
-      width: 0%
-    }
-  }
-}
 ```
