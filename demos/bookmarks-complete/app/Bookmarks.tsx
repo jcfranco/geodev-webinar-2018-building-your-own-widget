@@ -49,6 +49,11 @@ class Bookmarks extends declared(Widget) {
     this._bookmarkItemsChanged();
   }
 
+  destroy() {
+    this._handles.destroy();
+    this._handles = null;
+  }
+
   //--------------------------------------------------------------------------
   //
   //  Variables

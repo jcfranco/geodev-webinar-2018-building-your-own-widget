@@ -73,6 +73,10 @@ define(["require", "exports", "esri/core/tsSupport/declareExtendsHelper", "esri/
             this.own(watchUtils.on(this, "viewModel.bookmarkItems", "change", function () { return _this._bookmarkItemsChanged(); }));
             this._bookmarkItemsChanged();
         };
+        Bookmarks.prototype.destroy = function () {
+            this._handles.destroy();
+            this._handles = null;
+        };
         //--------------------------------------------------------------------------
         //
         //  Public Methods

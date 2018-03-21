@@ -233,6 +233,11 @@ Let's create the View for our `Bookmarks` widget. We'll extend `esri/widgets/Wid
 
     this._bookmarkItemsChanged();
   }
+
+  destroy() {
+    this._handles.destroy();
+    this._handles = null;
+  }
 ```
 
 ```tsx
